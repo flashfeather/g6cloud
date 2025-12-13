@@ -69,6 +69,8 @@
             'GRAD' 0,
             'opsz' 24
         }
+
+
         
         /* Estilo para aplicar a imagem de fundo na seção Hero */
         .hero-bg {
@@ -83,6 +85,13 @@
         .will-change-transform {
             will-change: transform;
         }
+
+        /* Adiciona scroll suave  */
+        html {
+            scroll-behavior: smooth;
+  
+        }
+
     </style>
 </head>
 <body class="font-body bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark antialiased">
@@ -145,7 +154,8 @@
                 <section id="servicos" class="bg-background-light dark:bg-background-dark py-16 sm:py-20">
                     <div class="layout-container px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
                         <h2 class="text-3xl font-bold text-center mb-10 text-text-light dark:text-text-dark">Nossos Serviços</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+
                             
                             <div class="flex flex-col gap-3 rounded-lg bg-surface-light dark:bg-surface-dark p-6 text-center items-start border border-border-light dark:border-border-dark shadow-xl 
                                         cursor-pointer hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 will-change-transform">
@@ -190,6 +200,17 @@
                                     </p>
                                 </div>
                             </div>
+
+                            <div class="flex flex-col gap-3 rounded-lg bg-surface-light dark:bg-surface-dark p-6 text-center items-start border border-border-light dark:border-border-dark shadow-xl
+                                        cursor-pointer hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 will-change-transform">
+    <span class="material-symbols-outlined text-primary" style="font-size: 32px;">payments</span>
+    <div class="flex flex-col gap-1 text-left">
+        <h3 class="text-lg font-bold leading-tight text-text-light dark:text-text-dark">Consultoria de FinOps</h3>
+        <p class="text-sm font-normal leading-normal text-subtle-light dark:text-subtle-dark">
+            Redução de custos em nuvem. Auditoria e otimizações financeiras para maximizar seu investimento.
+        </p>
+    </div>
+</div>
 
                         </div>
                     </div>
@@ -288,7 +309,7 @@
                             </a>
                             <div class="flex flex-col gap-1">
                                 <p class="text-sm font-medium text-subtle-light dark:text-subtle-dark">Fale Conosco:</p>
-                                <a href="mailto:contato@g6cloud.com" class="text-sm text-primary hover:underline">contato@g6cloud.com</a>
+                                <a href="mailto:contato@g6cloud.com" class="text-sm text-primary hover:underline">g6cloud@g6cloud.com.br</a>
                                 <p class="text-sm text-subtle-light dark:text-subtle-dark">(11) 98765-4321</p>
                             </div>
                         </div>
