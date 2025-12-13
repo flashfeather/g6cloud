@@ -4,7 +4,7 @@ Repositorio para os Dev da G6 Cloud
 
 # G6 Cloud Website
 
-![G6 Cloud Logo](assets/g6cloud_logo.png)
+![G6 Cloud Logo](g6cloud/g6cloud_logo.png.png)
 
 Repositório oficial de desenvolvimento do site da G6 Cloud, empresa de tecnologia focada em computação em nuvem, migração, infraestrutura, DevOps e serviços gerenciados para pequenas e médias empresas.
 
