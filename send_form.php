@@ -9,11 +9,13 @@ $toName  = 'G6 Cloud';
 // Captura e sanitiza os campos
 $name    = trim($_POST['name']    ?? '');
 $email   = trim($_POST['email']   ?? '');
+$phone   = trim($_POST['phone']   ?? '');
+$company = trim($_POST['company'] ?? '');
 $subject = trim($_POST['subject'] ?? '');
 $message = trim($_POST['message'] ?? '');
 
 // Validação básica de campos obrigatórios
-if ($name === '' || $email === '' || $subject === '' || $message === '') {
+if ($name === '' || $email === '' || $phone === '' || $company === '' || $subject === '' || $message === '') {
     echo json_encode([
         'success' => false,
         'message' => 'Por favor, preencha todos os campos.'
@@ -44,7 +46,9 @@ $fromEmail = 'no-reply@g6cloud.com.br'; // ajuste para um email válido do seu d
 
 // Corpo do email
 $body = "Nome: {$name}\n";
-$body .= "Email: {$email}\n\n";
+$body .= "Email: {$email}\n";
+$body .= "Telefone: {$phone}\n";
+$body .= "Empresa: {$company}\n\n";
 $body .= "Mensagem:\n{$message}\n";
 
 // Headers para o email

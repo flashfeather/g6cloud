@@ -283,6 +283,32 @@
           />
         </div>
         <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-phone">
+            Telefone
+          </label>
+          <input
+            id="modal-phone"
+            name="phone"
+            class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+            placeholder="(11) 99999-9999"
+            type="tel"
+            required
+          />
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-company">
+            Empresa
+          </label>
+          <input
+            id="modal-company"
+            name="company"
+            class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+            placeholder="Nome da empresa"
+            type="text"
+            required
+          />
+        </div>
+        <div>
           <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-message">
             Mensagem
           </label>
@@ -390,9 +416,11 @@
     const formData = new FormData(modalForm);
     const name = (formData.get("name") || "").toString().trim();
     const email = (formData.get("email") || "").toString().trim();
+    const phone = (formData.get("phone") || "").toString().trim();
+    const company = (formData.get("company") || "").toString().trim();
     const message = (formData.get("message") || "").toString().trim();
 
-    if (!name || !email || !message) {
+    if (!name || !email || !phone || !company || !message) {
       modalStatusEl.textContent = "Por favor, preencha todos os campos.";
       return;
     }
