@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DevOps e Automação - G6 Cloud</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navbar -->
+<header class="w-full bg-white dark:bg-[#1a2632] border-b border-[#f0f2f4] dark:border-[#2a3844] sticky top-0 z-50">
+<div class="px-4 md:px-10 py-4 max-w-[1200px] mx-auto flex items-center justify-between">
+<!-- Navigation Links (Left Aligned as requested) -->
+<nav class="flex items-center gap-6 md:gap-9 overflow-x-auto no-scrollbar">
+<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors whitespace-nowrap" href="index.html">Home</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors whitespace-nowrap" href="#">Serviços</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors whitespace-nowrap" href="#">Sobre</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors whitespace-nowrap" href="#">Contato</a>
+</nav>
+<!-- CTA Button -->
+<button class="hidden sm:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary hover:bg-blue-600 text-white text-sm font-bold leading-normal transition-colors ml-4">
+<span class="truncate">Falar com Especialista</span>
+</button>
+<!-- Mobile Menu Icon (Placeholder for responsive design) -->
+<button class="sm:hidden text-[#111418] dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Hero Section -->
+<div class="flex flex-col">
+<div class="px-4 md:px-10 py-10 md:py-16 flex justify-center bg-white dark:bg-[#1a2632]">
+<div class="flex flex-col max-w-[1200px] w-full gap-10 lg:flex-row items-center">
+<!-- Hero Content -->
+<div class="flex flex-col gap-6 lg:w-1/2">
+<div class="flex flex-col gap-4 text-left">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 w-fit">
+<span class="material-symbols-outlined text-primary text-sm">rocket_launch</span>
+<span class="text-primary text-xs font-bold uppercase tracking-wide">Agilidade para sua TI</span>
+</div>
+<h1 class="text-[#111418] dark:text-white text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                            DevOps e Automação para Escalar seu Negócio
+                        </h1>
+<h2 class="text-[#617589] dark:text-gray-300 text-base md:text-lg font-normal leading-relaxed">
+                            A G6 Cloud impulsiona sua migração e modernização. Implemente CI/CD e Infraestrutura como Código (IaC) com agilidade. Reduza custos, elimine erros manuais e foque no que importa: inovação.
+                        </h2>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 mt-2">
+<button class="flex items-center justify-center rounded-lg h-12 px-8 bg-primary hover:bg-blue-600 text-white text-base font-bold leading-normal transition-colors">
+                            Otimize seu Fluxo
+                        </button>
+<button class="flex items-center justify-center rounded-lg h-12 px-8 bg-[#f0f2f4] dark:bg-[#2a3844] text-[#111418] dark:text-white hover:bg-[#e0e2e4] dark:hover:bg-[#3a4854] text-base font-bold leading-normal transition-colors">
+                            Conheça Nossos Cases
+                        </button>
+</div>
+</div>
+<!-- Hero Image -->
+<div class="w-full lg:w-1/2 rounded-xl overflow-hidden shadow-2xl">
+<div class="w-full aspect-video bg-cover bg-center" data-alt="Abstract visualization of cloud computing data flow and devops pipelines with blue gradients" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLAaK_Wph1OgLDd-ZOCHJ8REMqcBzUlNhBbK80CUKiWiu16MRAwhANnLmqLj9e5ia1glN89WCD7s0KTS5gUkIFi6q9CHy1DKCGo7qPXmpRH8h18cnYEPygfWaPKExc3_2HGPG35BpKcaqjdso8_QmkV88Tav4YGbWZP9BuThfYvpCNKkSowjzmjBlp4R0nKwOtnZJd5ZlCDNu_Wmic81T-vGiIAeHWV0L6DPSUD8TwLtDdJZxMKM7Zqzto6SmQkDkYL28kVCUMs-k");'>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature Section: Agility & Efficiency -->
+<div class="bg-background-light dark:bg-background-dark py-16 px-4 md:px-10">
+<div class="max-w-[1200px] mx-auto flex flex-col gap-12">
+<div class="flex flex-col gap-4 text-center items-center">
+<h2 class="text-[#111418] dark:text-white text-3xl md:text-4xl font-bold leading-tight">
+                    Agilidade e Eficiência
+                </h2>
+<p class="text-[#617589] dark:text-gray-400 text-base md:text-lg max-w-[720px]">
+                    Nossa abordagem foca na redução do time-to-market e na estabilidade dos ambientes, permitindo que sua equipe entregue valor continuamente.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-[#2a3844] bg-white dark:bg-[#1a2632] p-6 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">bolt</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#111418] dark:text-white text-xl font-bold">Entregas Rápidas</h3>
+<p class="text-[#617589] dark:text-gray-400 text-sm leading-relaxed">
+                            Pipelines de CI/CD otimizados para deploy contínuo, reduzindo o tempo entre o commit e a produção.
+                        </p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-[#2a3844] bg-white dark:bg-[#1a2632] p-6 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">shield_lock</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#111418] dark:text-white text-xl font-bold">Segurança Integrada</h3>
+<p class="text-[#617589] dark:text-gray-400 text-sm leading-relaxed">
+                            Práticas de DevSecOps aplicadas desde o primeiro dia. Análise de código e vulnerabilidades automatizada.
+                        </p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-[#2a3844] bg-white dark:bg-[#1a2632] p-6 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">ssid_chart</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#111418] dark:text-white text-xl font-bold">Escalabilidade Automática</h3>
+<p class="text-[#617589] dark:text-gray-400 text-sm leading-relaxed">
+                            Infraestrutura elástica que cresce com você. Gerenciamento automático de recursos baseado em demanda.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Specialties Section: Tools & Tech -->
+<div class="bg-white dark:bg-[#1a2632] py-16 px-4 md:px-10 border-t border-[#f0f2f4] dark:border-[#2a3844]">
+<div class="max-w-[1200px] mx-auto flex flex-col gap-12">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6">
+<div class="flex flex-col gap-4">
+<h2 class="text-[#111418] dark:text-white text-3xl md:text-4xl font-bold leading-tight max-w-[720px]">
+                        Nossas Especialidades Técnicas
+                    </h2>
+<p class="text-[#617589] dark:text-gray-400 text-base md:text-lg max-w-[600px]">
+                        Dominamos as principais ferramentas do mercado para garantir que sua infraestrutura seja robusta, reprodutível e moderna.
+                    </p>
+</div>
+<button class="hidden md:flex items-center gap-2 text-primary font-bold hover:underline">
+                    Ver todas as tecnologias <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Service 1 -->
+<div class="flex flex-col group">
+<div class="w-full aspect-video bg-cover bg-center rounded-xl mb-4 overflow-hidden" data-alt="Illustration of continuous integration pipeline with code branches merging" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAWFoQC24tgzb9Xb-fW4E3zeSwhpDqAJcB0z6_hZlRyDPKylUhAAvv1U_2mieeJ3e7EhewhvjcweYro7R4BB9D8QvZdRbz79TmqzRwrmR6JWjcXGvw5gcWahdOuRKao6etMxocujGjRxd2O4dNipdn7RrfbcyEtZ0O47_eHsYGbo9onuOUFOGeqS0OJg4vmWM_M3xgpVw4YGkg0OWXqvtO24c-xvRD4Bd7TEi-BFqTJA7ZpAo1gb0MLzmvd9o_lybXTXtIIbRGn22k");'>
+<div class="w-full h-full bg-black/10 group-hover:bg-black/0 transition-colors"></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary">all_inclusive</span>
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">Pipelines CI/CD</h3>
+</div>
+<p class="text-[#617589] dark:text-gray-400 text-sm leading-normal">
+                            Automação completa do build ao deploy. Especialistas em <span class="font-semibold text-[#111418] dark:text-white">GitHub Actions</span>, <span class="font-semibold text-[#111418] dark:text-white">GitLab CI</span> e <span class="font-semibold text-[#111418] dark:text-white">Azure DevOps</span>.
+                        </p>
+</div>
+</div>
+<!-- Service 2 -->
+<div class="flex flex-col group">
+<div class="w-full aspect-video bg-cover bg-center rounded-xl mb-4 overflow-hidden" data-alt="Code editor screen showing infrastructure as code configuration script" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwKQUJzy1SBasE9hyIzXXEFg8A-Prf3J7zG2ayXOLfg7fgc-DugQ-bcRy6l3eVLmeY1yVFyQpptlW99xPr1FJC68cHvt4Zo_9l2Jm684sKA3z1Mt-hY7SBmyh9rsp8c2OBPE8afxIjU2KEFmqAutFh-PuN3h1sBUD8tSdIShmRN7XnJQbACNZiVhK-HpnZEVXb8bYurEXE88UV8NJcJp48k_ZS81lh1hHrKncQQEbhZ8tEH8GGsdk28ikg9WudyXwCWlVLzMB8nPc");'>
+<div class="w-full h-full bg-black/10 group-hover:bg-black/0 transition-colors"></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary">cloud</span>
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">Infraestrutura como Código (IaC)</h3>
+</div>
+<p class="text-[#617589] dark:text-gray-400 text-sm leading-normal">
+                            Gestão de ambientes como software. Versionamento e provisionamento seguro com <span class="font-semibold text-[#111418] dark:text-white">Terraform</span> e <span class="font-semibold text-[#111418] dark:text-white">CloudFormation</span>.
+                        </p>
+</div>
+</div>
+<!-- Service 3 -->
+<div class="flex flex-col group">
+<div class="w-full aspect-video bg-cover bg-center rounded-xl mb-4 overflow-hidden" data-alt="Data dashboard monitoring system performance and server metrics" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAd0O-HPspK2wEPw6D1XCE-Md17ZsVL6XrECtRKO58Jd4OlJm35RarXv3M3sWHWd9SGbvg7R5XjO2aeV38q9j8FUZxUs5g4-YYi4VW6kJ8a6N4yoJghvjLroonOl7xeWw6_wC1-slB6_0tbPwf68zEKXeVJhWxiNcEKC7nW_KJpJOzugFppnYo_7hGh3p-t__BkEtmd51jfd5dLKGcUBsaHYKV1GvDsGVkiw2CCZ88Dt1-Aupspjd1F2CUx6YuzEHCw7oxNMFSRysc");'>
+<div class="w-full h-full bg-black/10 group-hover:bg-black/0 transition-colors"></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary">visibility</span>
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">Monitoramento e Observabilidade</h3>
+</div>
+<p class="text-[#617589] dark:text-gray-400 text-sm leading-normal">
+                            Visibilidade total da sua aplicação. Dashboards personalizados e alertas inteligentes para antecipar problemas.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tech Stack Logos (Visual Trust) -->
+<div class="bg-background-light dark:bg-background-dark py-12 px-4 md:px-10">
+<div class="max-w-[1200px] mx-auto flex flex-col items-center gap-8">
+<p class="text-sm font-bold uppercase tracking-wider text-[#617589] dark:text-gray-500">Stacks que utilizamos</p>
+<div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+<!-- Using text representation for logos to avoid external SVG dependencies issues, styled to look like logos -->
+<div class="flex items-center gap-2 text-xl font-black text-[#111418] dark:text-white"><span class="material-symbols-outlined">code</span>GitHub Actions</div>
+<div class="flex items-center gap-2 text-xl font-black text-[#fc6d26]"><span class="material-symbols-outlined">polyline</span>GitLab</div>
+<div class="flex items-center gap-2 text-xl font-black text-[#0078d4]"><span class="material-symbols-outlined">window</span>Azure DevOps</div>
+<div class="flex items-center gap-2 text-xl font-black text-[#7b42bc]"><span class="material-symbols-outlined">cloud_circle</span>Terraform</div>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="bg-white dark:bg-[#1a2632] py-20 px-4 md:px-10 border-t border-[#f0f2f4] dark:border-[#2a3844]">
+<div class="max-w-[800px] mx-auto text-center flex flex-col gap-8">
+<h2 class="text-3xl md:text-4xl font-black text-[#111418] dark:text-white leading-tight">
+                Pronto para automatizar sua infraestrutura?
+            </h2>
+<p class="text-lg text-[#617589] dark:text-gray-400">
+                Converse com nossos consultores e descubra como a G6 Cloud pode reduzir seus custos operacionais e aumentar a velocidade de entrega do seu time.
+            </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="flex items-center justify-center rounded-lg h-14 px-8 bg-primary hover:bg-blue-600 text-white text-lg font-bold shadow-lg shadow-blue-500/20 transition-all transform hover:-translate-y-1">
+                    Agendar Consultoria Gratuita
+                </button>
+<button class="flex items-center justify-center rounded-lg h-14 px-8 border border-[#dbe0e6] dark:border-[#2a3844] hover:bg-gray-50 dark:hover:bg-[#2a3844] text-[#111418] dark:text-white text-lg font-medium transition-colors">
+                    Ver Planos de Suporte
+                </button>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-[#111418] text-white py-12 px-4 md:px-10">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between gap-10">
+<div class="flex flex-col gap-4">
+<h3 class="text-2xl font-bold tracking-tight">G6 Cloud</h3>
+<p class="text-gray-400 max-w-xs text-sm">
+                    Consultoria especializada em Cloud Computing, DevOps e Modernização de Aplicações para PMEs.
+                </p>
+</div>
+<div class="flex gap-12 flex-wrap">
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-sm uppercase tracking-wide text-gray-500">Empresa</h4>
+<a class="text-gray-300 hover:text-white text-sm" href="#">Sobre Nós</a>
+<a class="text-gray-300 hover:text-white text-sm" href="#">Carreiras</a>
+<a class="text-gray-300 hover:text-white text-sm" href="#">Blog</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-sm uppercase tracking-wide text-gray-500">Serviços</h4>
+<a class="text-gray-300 hover:text-white text-sm" href="#">Migração Cloud</a>
+<a class="text-gray-300 hover:text-white text-sm" href="#">DevOps &amp; Automação</a>
+<a class="text-gray-300 hover:text-white text-sm" href="#">Segurança</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-sm uppercase tracking-wide text-gray-500">Legal</h4>
+<a class="text-gray-300 hover:text-white text-sm" href="#">Privacidade</a>
+<a class="text-gray-300 hover:text-white text-sm" href="#">Termos de Uso</a>
+</div>
+</div>
+</div>
+<div class="max-w-[1200px] mx-auto mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-gray-500 text-sm">© 2023 G6 Cloud. Todos os direitos reservados.</p>
+<div class="flex gap-4">
+<a class="text-gray-500 hover:text-white" href="#"><span class="material-symbols-outlined text-lg">public</span></a>
+<a class="text-gray-500 hover:text-white" href="#"><span class="material-symbols-outlined text-lg">mail</span></a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

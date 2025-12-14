@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Arquitetura Cloud - G6 Cloud</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white overflow-x-hidden">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header: Minimal, Left-aligned links, No Logo -->
+<header class="sticky top-0 z-50 w-full bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-[#e5e7eb] dark:border-[#283039]">
+<div class="flex items-center justify-between px-6 py-4 lg:px-40">
+<!-- Navigation Links Aligned Left -->
+<nav class="flex items-center gap-8">
+<a class="text-[#111418] dark:text-white text-sm font-medium hover:text-primary transition-colors" href="index.html">Home</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Serviços</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Sobre</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Contato</a>
+</nav>
+<!-- Optional Mobile Menu Icon for smaller screens (hidden on desktop per "form factor: desktop") -->
+<button class="lg:hidden text-[#111418] dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="flex flex-col flex-1">
+<!-- Hero Section -->
+<section class="relative flex flex-col items-center justify-center py-20 px-6 lg:px-40 bg-[#101922]">
+<div class="absolute inset-0 z-0">
+<img alt="Abstract blue network connections and cloud data visualization" class="h-full w-full object-cover opacity-20" data-alt="Abstract blue network connections and cloud data visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6V_jSGrXuHjVJvA_czfHwr5uPnaCU6-KKmmAYkpw-L8EfMKoELBXUHtc6Z-shG14WxeKS7IVx2MDNJDrQRBHXAvgwMchFypw2qlgxqWmlYZ9y9xnrcYS63V_hNMHhg7Qc9tZaq0iLk-cBdjN6lpoM7q7juse0pp2pTyY6_lRoJVH42OCQY1PFdJMEVB458GUlq5cGtymmZMgjmh7FKbJx7iFYtfb4yfrkYsiqxaGotmDtSvMUIu3Pzgelz9fO4twQ3iXCprj4Cd0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#101922] via-[#101922]/80 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full max-w-5xl flex flex-col gap-8 lg:gap-12 lg:flex-row items-center">
+<div class="flex flex-col gap-6 flex-1">
+<h1 class="text-4xl lg:text-6xl font-black leading-tight tracking-tight text-white">
+                            Infraestrutura Cloud <span class="text-primary">Escalável e Segura</span>
+</h1>
+<p class="text-lg text-gray-300 max-w-2xl leading-relaxed">
+                            Potencialize seu negócio com arquiteturas resilientes focadas em segurança, otimização de custos e alta performance. Especialistas em migração e serviços gerenciados para PMEs.
+                        </p>
+<div class="flex flex-wrap gap-4 pt-2">
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
+<span>Falar com um Arquiteto</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="bg-[#1c2127] hover:bg-[#283039] border border-[#3b4754] text-white font-medium py-3 px-6 rounded-lg transition-all">
+                                Ver Casos de Sucesso
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Tech Stack / Trust Bar -->
+<div class="w-full border-y border-[#283039] bg-[#0d1218] py-8">
+<div class="max-w-5xl mx-auto px-6 lg:px-40 flex flex-wrap justify-center lg:justify-between gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<!-- Text placeholders for logos as per no image mod rule, but styled as logos -->
+<span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">cloud</span> AWS</span>
+<span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">grid_view</span> Azure</span>
+<span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">deployed_code</span> Google Cloud</span>
+<span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">layers</span> Terraform</span>
+<span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">anchor</span> Kubernetes</span>
+</div>
+</div>
+<!-- Core Features Grid -->
+<section class="py-20 px-6 lg:px-40 bg-background-light dark:bg-background-dark">
+<div class="max-w-5xl mx-auto flex flex-col gap-12">
+<div class="flex flex-col gap-4">
+<h2 class="text-[#111418] dark:text-white text-3xl font-bold leading-tight">Fundamentos de uma Cloud Robusta</h2>
+<p class="text-gray-600 dark:text-gray-400 max-w-2xl">
+                            Nossa abordagem garante que sua infraestrutura esteja preparada para crescer com segurança desde o primeiro dia.
+                        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="group flex flex-col gap-4 rounded-xl border border-[#e5e7eb] dark:border-[#3b4754] bg-white dark:bg-[#1c2127] p-6 hover:border-primary/50 transition-colors">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">lan</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">VPC &amp; Networking</h3>
+<p class="text-gray-600 dark:text-[#9dabb9] text-sm leading-relaxed">Configuração de redes isoladas, subnets públicas e privadas para máxima proteção dos seus dados.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group flex flex-col gap-4 rounded-xl border border-[#e5e7eb] dark:border-[#3b4754] bg-white dark:bg-[#1c2127] p-6 hover:border-primary/50 transition-colors">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">shield</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">Security Groups</h3>
+<p class="text-gray-600 dark:text-[#9dabb9] text-sm leading-relaxed">Regras de firewall rigorosas para controle granular de tráfego de entrada e saída.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group flex flex-col gap-4 rounded-xl border border-[#e5e7eb] dark:border-[#3b4754] bg-white dark:bg-[#1c2127] p-6 hover:border-primary/50 transition-colors">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">vpn_key</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">Conectividade VPN</h3>
+<p class="text-gray-600 dark:text-[#9dabb9] text-sm leading-relaxed">Túneis criptografados para acesso remoto seguro e conexões Site-to-Site estáveis.</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group flex flex-col gap-4 rounded-xl border border-[#e5e7eb] dark:border-[#3b4754] bg-white dark:bg-[#1c2127] p-6 hover:border-primary/50 transition-colors">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">badge</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">IAM &amp; Governança</h3>
+<p class="text-gray-600 dark:text-[#9dabb9] text-sm leading-relaxed">Gestão de identidades e políticas de acesso (Least Privilege) para evitar falhas de segurança.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Highlight / Deep Dive -->
+<section class="py-16 px-6 lg:px-40 bg-[#f1f3f5] dark:bg-[#0d1218]">
+<div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+<div class="order-2 lg:order-1">
+<div class="bg-[#101922] rounded-2xl overflow-hidden shadow-2xl border border-[#283039] p-2">
+<div class="rounded-xl overflow-hidden bg-[#1c2127] relative h-[300px] w-full" data-alt="Schematic representation of a secure cloud architecture layout" style="background-image: linear-gradient(135deg, rgba(19, 127, 236, 0.1) 0%, rgba(16, 25, 34, 1) 100%);">
+<!-- Abstract decorative elements simulating architecture diagram -->
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 border border-dashed border-primary/30 rounded-lg flex items-center justify-center">
+<div class="absolute -top-3 left-4 bg-[#1c2127] px-2 text-xs text-primary font-mono">VPC PRIVATE</div>
+<div class="grid grid-cols-2 gap-4 w-full p-4">
+<div class="h-16 bg-[#111418] rounded border border-[#3b4754] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-gray-500">dns</span>
+<span class="text-xs text-gray-400">DB Master</span>
+</div>
+<div class="h-16 bg-[#111418] rounded border border-[#3b4754] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-gray-500">dns</span>
+<span class="text-xs text-gray-400">DB Slave</span>
+</div>
+<div class="col-span-2 h-16 bg-[#111418] rounded border border-[#3b4754] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-primary">memory</span>
+<span class="text-xs text-gray-400">App Cluster</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2 flex flex-col gap-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-bold text-primary tracking-wide uppercase">Segurança por Design</span>
+</div>
+<h2 class="text-3xl lg:text-4xl font-black text-[#111418] dark:text-white leading-tight">
+                            Proteção em Camadas para Dados Críticos
+                        </h2>
+<p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
+                            Não tratamos segurança como um "add-on". Ela é integrada na arquitetura. Utilizamos criptografia em repouso e em trânsito, rotação automática de chaves e monitoramento contínuo de conformidade.
+                        </p>
+<ul class="flex flex-col gap-4 mt-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-500 mt-0.5">check_circle</span>
+<div>
+<strong class="block text-[#111418] dark:text-white">Criptografia Ponta a Ponta</strong>
+<span class="text-sm text-gray-500 dark:text-gray-400">Seus dados ilegíveis para terceiros não autorizados.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-500 mt-0.5">check_circle</span>
+<div>
+<strong class="block text-[#111418] dark:text-white">Automação de Infraestrutura (IaC)</strong>
+<span class="text-sm text-gray-500 dark:text-gray-400">Ambientes replicáveis e sem erros manuais usando Terraform.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-500 mt-0.5">check_circle</span>
+<div>
+<strong class="block text-[#111418] dark:text-white">Backup e Disaster Recovery</strong>
+<span class="text-sm text-gray-500 dark:text-gray-400">Planos de contingência testados para garantir continuidade.</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Detailed Methodology Steps -->
+<section class="py-20 px-6 lg:px-40 bg-background-light dark:bg-background-dark">
+<div class="max-w-4xl mx-auto text-center mb-16">
+<h2 class="text-3xl font-bold text-[#111418] dark:text-white mb-4">Como trabalhamos</h2>
+<p class="text-gray-600 dark:text-gray-400">Do diagnóstico à implementação, nosso processo é transparente e ágil.</p>
+</div>
+<div class="max-w-5xl mx-auto relative">
+<!-- Connector Line (Desktop) -->
+<div class="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 dark:bg-[#283039] -translate-y-1/2 z-0"></div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center gap-4 bg-background-light dark:bg-background-dark p-4">
+<div class="w-16 h-16 rounded-full bg-[#1c2127] border-4 border-background-light dark:border-background-dark shadow-lg flex items-center justify-center text-primary text-2xl font-bold">1</div>
+<h3 class="text-xl font-bold text-[#111418] dark:text-white">Assessment</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">Analisamos sua infraestrutura atual, identificando gargalos e vulnerabilidades.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center gap-4 bg-background-light dark:bg-background-dark p-4">
+<div class="w-16 h-16 rounded-full bg-[#1c2127] border-4 border-background-light dark:border-background-dark shadow-lg flex items-center justify-center text-primary text-2xl font-bold">2</div>
+<h3 class="text-xl font-bold text-[#111418] dark:text-white">Design &amp; Planejamento</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">Desenhamos a arquitetura ideal considerando custos, segurança e escalabilidade.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center gap-4 bg-background-light dark:bg-background-dark p-4">
+<div class="w-16 h-16 rounded-full bg-[#1c2127] border-4 border-background-light dark:border-background-dark shadow-lg flex items-center justify-center text-primary text-2xl font-bold">3</div>
+<h3 class="text-xl font-bold text-[#111418] dark:text-white">Execução &amp; Gestão</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">Implementação via IaC, testes de carga e monitoramento contínuo.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20 px-6 lg:px-40 bg-[#101922] border-t border-[#283039]">
+<div class="max-w-4xl mx-auto rounded-2xl bg-gradient-to-r from-primary/20 to-[#101922] border border-primary/20 p-8 lg:p-12 text-center">
+<h2 class="text-3xl lg:text-4xl font-black text-white mb-6">Pronto para modernizar sua infraestrutura?</h2>
+<p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                        Agende uma conversa gratuita com nossos arquitetos e descubra como a G6 Cloud pode transformar a tecnologia da sua empresa.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-lg flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">calendar_month</span>
+                            Agendar Consultoria
+                        </button>
+<button class="bg-transparent hover:bg-white/5 border border-white/20 text-white font-bold py-3 px-8 rounded-lg transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">mail</span>
+                            Entrar em Contato
+                        </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0d1218] border-t border-[#283039] pt-16 pb-8 px-6 lg:px-40">
+<div class="max-w-5xl mx-auto flex flex-col gap-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-2 flex flex-col gap-4">
+<h3 class="text-xl font-bold text-white">G6 Cloud</h3>
+<p class="text-sm text-gray-400 max-w-xs">
+                            Consultoria especializada em Cloud Computing, DevOps e Modernização de Aplicações para empresas que buscam o próximo nível.
+                        </p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-sm font-bold text-white uppercase tracking-wider">Links Rápidos</h4>
+<a class="text-sm text-gray-400 hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm text-gray-400 hover:text-primary transition-colors" href="#">Serviços</a>
+<a class="text-sm text-gray-400 hover:text-primary transition-colors" href="#">Sobre Nós</a>
+<a class="text-sm text-gray-400 hover:text-primary transition-colors" href="#">Contato</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-sm font-bold text-white uppercase tracking-wider">Legal</h4>
+<a class="text-sm text-gray-400 hover:text-primary transition-colors" href="#">Privacidade</a>
+<a class="text-sm text-gray-400 hover:text-primary transition-colors" href="#">Termos de Uso</a>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 border-t border-[#283039] pt-8">
+<p class="text-xs text-gray-500">© 2023 G6 Cloud. Todos os direitos reservados.</p>
+<div class="flex gap-4">
+<a class="text-gray-500 hover:text-white transition-colors" href="#">
+<span class="sr-only">LinkedIn</span>
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
