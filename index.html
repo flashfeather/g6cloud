@@ -311,7 +311,7 @@
       </main>
 
       <!-- Modal de Contato -->
-      <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+      <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
         <div class="bg-surface-light dark:bg-surface-dark rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <div class="p-6">
             <div class="flex justify-between items-center mb-6">
@@ -477,12 +477,16 @@
   <script src="assets/js/form.min.js" defer></script>
   <script>
     function openContactModal() {
-      document.getElementById('contact-modal').classList.remove('hidden');
+      const modal = document.getElementById('contact-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.add('opacity-100'), 10); // Pequeno delay para permitir a transição
       document.body.style.overflow = 'hidden';
     }
 
     function closeContactModal() {
-      document.getElementById('contact-modal').classList.add('hidden');
+      const modal = document.getElementById('contact-modal');
+      modal.classList.remove('opacity-100');
+      setTimeout(() => modal.classList.add('hidden'), 300); // Tempo da transição
       document.body.style.overflow = 'auto';
     }
 
@@ -510,12 +514,12 @@
 
       const formData = new FormData(modalForm);
       const name = (formData.get("name") || "").toString().trim();
+      const company = (formData.get("company") || "").toString().trim();
       const email = (formData.get("email") || "").toString().trim();
       const phone = (formData.get("phone") || "").toString().trim();
-      const company = (formData.get("company") || "").toString().trim();
       const message = (formData.get("message") || "").toString().trim();
 
-      if (!name || !email || !phone || !company || !message) {
+      if (!name || !company || !email || !phone || !message) {
         modalStatusEl.textContent = "Por favor, preencha todos os campos.";
         return;
       }
