@@ -46,7 +46,7 @@
 <div class="flex justify-end gap-4">
 <!-- Added a text label for context since logo is removed, but kept minimal -->
 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest hidden md:block self-center mr-4">G6 Cloud Systems</span>
-<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors shadow-md shadow-blue-500/20">
+<button onclick="openContactModal()" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors shadow-md shadow-blue-500/20">
 <span class="truncate">Portal do Cliente</span>
 </button>
 </div>
@@ -272,6 +272,82 @@
 </div>
 </section>
 </main>
+
+<!-- Modal de Contato -->
+<div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+  <div class="bg-background-light dark:bg-gray-800 rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-[#111418] dark:text-white">Entre em contato</h2>
+        <button onclick="closeContactModal()" class="text-[#617589] dark:text-gray-400 hover:text-[#111418] dark:hover:text-white">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+      <p class="text-[#617589] dark:text-gray-300 mb-6">
+        Vamos conversar sobre como podemos ajudar sua empresa a crescer com as melhores soluções em nuvem.
+      </p>
+      <form id="contact-modal-form" action="send_form.php" method="POST" class="space-y-6">
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-name">
+            Nome
+          </label>
+          <input
+            id="modal-name"
+            name="name"
+            class="block w-full rounded-md border-0 py-3 px-4 text-[#111418] dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-input-border-dark placeholder:text-[#617589] focus:ring-2 focus:ring-inset focus:ring-primary bg-background-light dark:bg-input-bg-dark sm:text-sm transition-colors duration-200"
+            placeholder="Seu nome"
+            type="text"
+            required
+          />
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-email">
+            E-mail
+          </label>
+          <input
+            id="modal-email"
+            name="email"
+            class="block w-full rounded-md border-0 py-3 px-4 text-[#111418] dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-input-border-dark placeholder:text-[#617589] focus:ring-2 focus:ring-inset focus:ring-primary bg-background-light dark:bg-input-bg-dark sm:text-sm transition-colors duration-200"
+            placeholder="seu.email@exemplo.com"
+            type="email"
+            required
+          />
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-message">
+            Mensagem
+          </label>
+          <textarea
+            id="modal-message"
+            name="message"
+            rows="4"
+            class="block w-full rounded-md border-0 py-3 px-4 text-[#111418] dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-input-border-dark placeholder:text-[#617589] focus:ring-2 focus:ring-inset focus:ring-primary bg-background-light dark:bg-input-bg-dark sm:text-sm transition-colors duration-200 resize-y"
+            placeholder="Descreva brevemente o que precisa — migração, suporte, otimização de custos, etc."
+            required
+          ></textarea>
+        </div>
+        <div id="modal-contact-status" class="text-center text-sm text-[#617589] dark:text-gray-300"></div>
+        <div class="flex gap-4">
+          <button
+            id="modal-contact-submit"
+            class="flex-1 justify-center rounded-lg bg-primary px-3 py-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors duration-200"
+            type="submit"
+          >
+            Enviar mensagem
+          </button>
+          <button
+            onclick="closeContactModal()"
+            class="flex-1 justify-center rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-3 text-sm font-semibold leading-6 text-[#111418] dark:text-white shadow-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+            type="button"
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <footer class="bg-background-light dark:bg-background-dark py-10 border-t border-gray-200 dark:border-gray-800">
 <div class="px-4 md:px-10 lg:px-40 flex justify-center">
 <div class="max-w-[960px] w-full flex flex-col md:flex-row justify-between items-center gap-6">
@@ -287,4 +363,75 @@
 </div>
 </footer>
 </div>
+<script>
+  function openContactModal() {
+    document.getElementById('contact-modal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeContactModal() {
+    document.getElementById('contact-modal').classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Fechar modal ao clicar fora
+  document.getElementById('contact-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeContactModal();
+    }
+  });
+
+  // Fechar modal com ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !document.getElementById('contact-modal').classList.contains('hidden')) {
+      closeContactModal();
+    }
+  });
+
+  // Script para envio do formulário do modal
+  const modalForm = document.getElementById("contact-modal-form");
+  const modalStatusEl = document.getElementById("modal-contact-status");
+  const modalSubmitBtn = document.getElementById("modal-contact-submit");
+
+  modalForm?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(modalForm);
+    const name = (formData.get("name") || "").toString().trim();
+    const email = (formData.get("email") || "").toString().trim();
+    const message = (formData.get("message") || "").toString().trim();
+
+    if (!name || !email || !message) {
+      modalStatusEl.textContent = "Por favor, preencha todos os campos.";
+      return;
+    }
+
+    const subject = `Lead-${name.replace(/\s+/g, "")}`;
+    formData.append("subject", subject);
+
+    modalSubmitBtn.disabled = true;
+    modalSubmitBtn.classList.add("opacity-60");
+    modalStatusEl.textContent = "Enviando...";
+
+    try {
+      const res = await fetch(modalForm.action, {
+        method: "POST",
+        body: formData
+      });
+      const data = await res.json();
+      modalStatusEl.textContent =
+        data.message || (data.success ? "Mensagem enviada." : "Erro ao enviar.");
+      if (data.success) {
+        modalForm.reset();
+        setTimeout(() => closeContactModal(), 2000);
+      }
+    } catch (err) {
+      console.error(err);
+      modalStatusEl.textContent = "Erro de conexão. Tente novamente mais tarde.";
+    } finally {
+      modalSubmitBtn.disabled = false;
+      modalSubmitBtn.classList.remove("opacity-60");
+    }
+  });
+</script>
 </body></html>
