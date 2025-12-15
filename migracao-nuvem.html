@@ -222,47 +222,62 @@
 </div>
 </section>
 <!-- Supported Platforms -->
-<section class="w-full max-w-7xl px-4 md:px-10 py-16">
-<div class="flex flex-col gap-10">
-<div class="flex flex-col gap-4 text-center md:text-left">
-<h2 class="text-[#111418] dark:text-white text-3xl font-bold leading-tight">Plataformas Suportadas</h2>
-<p class="text-text-secondary dark:text-gray-400 text-base max-w-[720px]">
-                            Trabalhamos com os principais provedores de nuvem do mercado para oferecer a melhor solução agnóstica para sua empresa.
-                        </p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-<!-- AWS -->
-<div class="flex flex-col gap-4 pb-3 group">
-<div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
-<img alt="Amazon_Web_Services-Logo.png.png" class="max-w-[120px] max-h-[60px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="Amazon Web Services logo showing the smile arrow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe4mqewuEGjnPAt6Rx-tULJgah8F13Joe1bAa1kR7KHMbcxGRxfU658yrJRt3ZwoMU83sJk5_VtF8cfLRLax1O3y_1dMwx_5r58sFBmroBHPe8flsUY69SyyJVy6aWQzjP4h_Xe4tZ2dwTtWU0ABHmW1n3_aT8p_pqyFvw5X5HwpHO-IRoetCvcosXmZSgUfDvDha85fU3V9hSgiQu9gHXh3nZ48LUUNqcQe7BVI3xKpyLRr_Zpf1x8t40CZiq2WFeLqZwqrqtK38"/>
-</div>
-<div>
-<p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">AWS</p>
-<p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Amazon Web Services</p>
-</div>
-</div>
-<!-- Azure -->
-<div class="flex flex-col gap-4 pb-3 group">
-<div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
-<img alt="Azure Logo" class="max-w-[120px] max-h-[60px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="Microsoft Azure blue logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKP0RKtdL0Jby9uN4a8V6ZsN9d4iJ2CJT6l9652rN37FM6iZxglYsmeBWgPSE3Y1r8T-TSExt48Drp7E9jYFYzfl0imhhHbNK3CeAXVP-1cC85CQhC_bcAlA0qGNpoxBDZCbMvK2yJ-bL_SiBenEdqhyPRKrwT0vgw_2H73feapdvyUjqK9_1WqYaK7aChkQJe7aaGwMzUcaHS5-AHim7QlwYQqMzoHSodV-r5dWsCMdrYyT6kWykuJt2cEj4lr2c_Xx0EydOsst0"/>
-</div>
-<div>
-<p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Microsoft Azure</p>
-<p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Azure Cloud Solutions</p>
-</div>
-</div>
-<!-- GCP -->
-<div class="flex flex-col gap-4 pb-3 group">
-<div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
-<img alt="Google Cloud Logo" class="max-w-[120px] max-h-[60px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="Google Cloud Platform colorful logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGSNFfKWQr8J1z5z5zXOdmLp4faDZuDBs_-qZikOf9blH4YNCmEVB3v_cGandRVhxT7NNi2XtzqyOBdjlAAeqNLuZmeKL3qFsbW24_rwiIuEte_qz-TOu6Wjd9pf-58WLvGkJhaNtFYgZnWlFcqqIH5oeDcy07txQzUnuSyrP_Gfcx0QY-COHfywINcvAUwWK6rGO-5EyzlPSm3E_VyAE374aGdkGN7_RPL959DGJISyA-PWLHWtWnJnkisebME2UzIjZMPRflTDc"/>
-</div>
-<div>
-<p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Google Cloud</p>
-<p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Google Cloud Platform</p>
-</div>
-</div>
-</div>
-</div>
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold leading-tight mb-4">Plataformas Suportadas</h2>
+        <p class="text-lg text-gray-600 mb-12">
+            Trabalhamos com os principais provedores de nuvem do mercado para oferecer a melhor solução agnóstica para sua empresa.
+        </p>
+
+        <div class="flex justify-between gap-6">
+
+            <div class="w-1/3 flex flex-col gap-4 pb-3 group">
+                <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
+                    <img 
+                        alt="AWS Logo" 
+                        class="max-w-[120px] max-h-[60px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300" 
+                        data-alt="Amazon Web Services logo" 
+                        src="assets/img/AWS_Logo.png.png"
+                    />
+                </div>
+                <div>
+                    <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">AWS</p>
+                    <p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Amazon Web Services</p>
+                </div>
+            </div>
+
+            <div class="w-1/3 flex flex-col gap-4 pb-3 group">
+                <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
+                    <img 
+                        alt="Microsoft Azure Logo" 
+                        class="max-w-[120px] max-h-[60px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300" 
+                        data-alt="Microsoft Azure logo" 
+                        src="assets/img/Microsoft_Azure-Logo.png.png"
+                    />
+                </div>
+                <div>
+                    <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Microsoft Azure</p>
+                    <p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Azure Cloud Solutions</p>
+                </div>
+            </div>
+
+            <div class="w-1/3 flex flex-col gap-4 pb-3 group">
+                <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
+                    <img 
+                        alt="Google Cloud Logo" 
+                        class="max-w-[120px] max-h-[60px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300" 
+                        data-alt="Google Cloud logo" 
+                        src="assets/img/Google-Cloud-Logo.png.png"
+                    />
+                </div>
+                <div>
+                    <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Google Cloud</p>
+                    <p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Google Cloud Platform</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </section>
 <!-- Final CTA -->
 <section class="w-full bg-[#f0f4f8] dark:bg-gray-800/50 py-20 px-4">
