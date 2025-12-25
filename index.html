@@ -1,5 +1,3 @@
-index
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -98,34 +96,34 @@ index
       <!-- ====== Header / Navegação ====== -->
       <header class="fixed inset-x-0 top-0 z-30 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm shadow-md">
         <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
-          <div class="flex items-center justify-between py-4">
-            <a class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2" href="#">
+         <div class="flex items-center justify-between py-4">
+           <a class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2" href="#">
 <span class="material-symbols-outlined text-primary">cloud</span>
-                       G6 Cloud
-                   </a>
-            <!-- Navegação desktop -->
-            <nav class="hidden md:flex flex-1 justify-center items-center gap-6 ml-12">
-              <div class="flex items-center gap-8">
-                <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="#topo">Início</a>
-                <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="#servicos">Serviços</a>
-                <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="#sobre-nos">Sobre Nós</a>
-                <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="#contato">Contato</a>
-              </div>
-            </nav>
+                G6 Cloud
+             </a>
+           <!-- Navegação desktop -->
+           <nav class="hidden md:flex flex-1 justify-center items-center gap-6 ml-12">
+             <div class="flex items-center gap-8">
+               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="#topo">Início</a>
+               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="#servicos">Serviços</a>
+               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="#sobre-nos">Sobre Nós</a>
+               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="#contato">Contato</a>
+             </div>
+           </nav>
 
-            <!-- Ações -->
-            <div class="flex items-center gap-4 ml-auto">
-              <button
-                class="relative inline-flex items-center h-10 w-10 justify-center rounded-lg text-primary hover:bg-primary/10 transition-colors"
-                id="theme-toggle"
-                type="button"
-                aria-label="Alternar tema claro/escuro"
-              >
-                <span class="material-symbols-outlined dark:hidden">light_mode</span>
-                <span class="material-symbols-outlined hidden dark:inline">dark_mode</span>
-              </button>
-            </div>
-          </div>
+           <!-- Ações -->
+           <div class="flex items-center gap-4 ml-auto">
+             <button
+               class="relative inline-flex items-center h-10 w-10 justify-center rounded-lg text-primary hover:bg-primary/10 transition-colors"
+               id="theme-toggle"
+               type="button"
+               aria-label="Alternar tema claro/escuro"
+             >
+               <span class="material-symbols-outlined dark:hidden">light_mode</span>
+               <span class="material-symbols-outlined hidden dark:inline">dark_mode</span>
+             </button>
+           </div>
+         </div>
         </div>
       </header>
 
@@ -231,111 +229,119 @@ index
         </section>
       </main>
 
-      <!-- Modal de Contato (MELHORADO) -->
+      <!-- Modal de Contato (CORRIGIDO - SEM SCROLL) -->
       <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
-        <div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-         <div class="p-8">
-           <div class="flex justify-between items-center mb-8">
-             <h2 class="text-3xl font-black text-text-light dark:text-text-dark">Entre em <span class="text-primary">contato</span></h2>
-             <button onclick="closeContactModal()" class="text-subtle-light dark:text-subtle-dark hover:text-text-light dark:hover:text-text-dark p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
-               <span class="material-symbols-outlined text-2xl">close</span>
-             </button>
-           </div>
-           <p class="text-lg text-subtle-light dark:text-subtle-dark mb-8 leading-relaxed">
-             Vamos conversar sobre como podemos ajudar sua empresa a crescer com as melhores soluções em nuvem.
-           </p>
-           <form id="contact-modal-form" action="send_form.php" method="POST" class="space-y-6">
-             <div>
-               <label class="block text-sm font-bold text-text-light dark:text-text-dark mb-3" for="modal-name">
-                 <span class="material-symbols-outlined text-primary mr-2 align-middle">person</span>
-                 Nome completo
-               </label>
-               <input
-                 id="modal-name"
-                 name="name"
-                 class="block w-full rounded-lg border-0 py-4 px-5 text-text-light dark:text-text-dark shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-input-border-dark placeholder:text-subtle-light focus:ring-2 focus:ring-inset focus:ring-primary bg-surface-light dark:bg-input-bg-dark sm:text-sm transition-all duration-200 text-lg"
-                 placeholder="Seu nome completo"
-                 type="text"
-                 required
-               />
-             </div>
-             <div>
-               <label class="block text-sm font-bold text-text-light dark:text-text-dark mb-3" for="modal-email">
-                 <span class="material-symbols-outlined text-primary mr-2 align-middle">email</span>
-                 E-mail corporativo
-               </label>
-               <input
-                 id="modal-email"
-                 name="email"
-                 class="block w-full rounded-lg border-0 py-4 px-5 text-text-light dark:text-text-dark shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-input-border-dark placeholder:text-subtle-light focus:ring-2 focus:ring-inset focus:ring-primary bg-surface-light dark:bg-input-bg-dark sm:text-sm transition-all duration-200 text-lg"
-                 placeholder="seu.email@empresa.com"
-                 type="email"
-                 required
-               />
-             </div>
-             <div>
-               <label class="block text-sm font-bold text-text-light dark:text-text-dark mb-3" for="modal-phone">
-                 <span class="material-symbols-outlined text-primary mr-2 align-middle">phone</span>
-                 Telefone/WhatsApp
-               </label>
-               <input
-                 id="modal-phone"
-                 name="phone"
-                 class="block w-full rounded-lg border-0 py-4 px-5 text-text-light dark:text-text-dark shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-input-border-dark placeholder:text-subtle-light focus:ring-2 focus:ring-inset focus:ring-primary bg-surface-light dark:bg-input-bg-dark sm:text-sm transition-all duration-200 text-lg"
-                 placeholder="(11) 99999-9999"
-                 type="tel"
-                 required
-               />
-             </div>
-             <div>
-               <label class="block text-sm font-bold text-text-light dark:text-text-dark mb-3" for="modal-company">
-                 <span class="material-symbols-outlined text-primary mr-2 align-middle">business</span>
-                 Empresa
-               </label>
-               <input
-                 id="modal-company"
-                 name="company"
-                 class="block w-full rounded-lg border-0 py-4 px-5 text-text-light dark:text-text-dark shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-input-border-dark placeholder:text-subtle-light focus:ring-2 focus:ring-inset focus:ring-primary bg-surface-light dark:bg-input-bg-dark sm:text-sm transition-all duration-200 text-lg"
-                 placeholder="Nome da sua empresa"
-                 type="text"
-                 required
-               />
-             </div>
-             <div>
-               <label class="block text-sm font-bold text-text-light dark:text-text-dark mb-3" for="modal-message">
-                 <span class="material-symbols-outlined text-primary mr-2 align-middle">chat</span>
-                 Qual é a sua necessidade?
-               </label>
-               <textarea
-                 id="modal-message"
-                 name="message"
-                 rows="5"
-                 class="block w-full rounded-lg border-0 py-4 px-5 text-text-light dark:text-text-dark shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-input-border-dark placeholder:text-subtle-light focus:ring-2 focus:ring-inset focus:ring-primary bg-surface-light dark:bg-input-bg-dark sm:text-sm transition-all duration-200 resize-y text-lg"
-                 placeholder="Descreva brevemente o que precisa — migração para nuvem, suporte, DevOps, otimização de custos, infraestrutura, etc."
-                 required
-               ></textarea>
-             </div>
-             <div id="modal-contact-status" class="text-center text-sm font-medium py-4 rounded-lg transition-all duration-200"></div>
-             <div class="flex flex-col sm:flex-row gap-4 pt-2">
-               <button
-                 id="modal-contact-submit"
-                 class="flex-1 justify-center rounded-xl bg-primary px-8 py-4 text-lg font-bold text-white shadow-lg hover:bg-primary-hover hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200 flex items-center gap-3 shadow-blue-900/30 hover:shadow-blue-900/50"
-                 type="submit"
-               >
-                 <span class="material-symbols-outlined">send</span>
-                 Enviar mensagem
-               </button>
-               <button
-                 onclick="closeContactModal()"
-                 class="flex-1 justify-center rounded-xl border-2 border-gray-300 dark:border-gray-600 px-8 py-4 text-lg font-bold text-text-light dark:text-text-dark shadow-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-200 flex items-center gap-3"
-                 type="button"
-               >
-                 <span class="material-symbols-outlined">close</span>
-                 Cancelar
-               </button>
-             </div>
-           </form>
-         </div>
+        <div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl w-full max-w-2xl h-[95vh] max-h-[900px] flex flex-col">
+          <!-- Conteúdo do modal SEM overflow -->
+          <div class="flex-1 p-6 sm:p-8 flex flex-col">
+            <div class="flex justify-between items-center mb-6 sm:mb-8">
+              <h2 class="text-2xl sm:text-3xl font-black text-text-light dark:text-text-dark"><span class="text-primary">Entre em contato</span></h2>
+              <button onclick="closeContactModal()" class="text-subtle-light dark:text-subtle-dark hover:text-text-light dark:hover:text-text-dark p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+                <span class="material-symbols-outlined text-xl sm:text-2xl">close</span>
+              </button>
+            </div>
+            <p class="text-base sm:text-lg text-subtle-light dark:text-subtle-dark mb-6 sm:mb-8 leading-relaxed flex-shrink-0">
+              Vamos conversar sobre como podemos ajudar sua empresa a crescer com as melhores soluções em nuvem.
+            </p>
+            <form id="contact-modal-form" action="send_form.php" method="POST" class="flex-1 flex flex-col space-y-4 sm:space-y-6 overflow-visible">
+              <div class="flex-shrink-0">
+                <label class="block text-sm font-bold text-text-light dark:text-text-dark mb-2 sm:mb-3" for="modal-name">
+                  <span class="material-symbols-outlined text-primary mr-2 align-middle">person</span>
+                  Nome completo
+                </label>
+                <input
+                  id="modal-name"
+                  name="name"
+                  class="block w-full rounded-lg border-0 py-3 sm:py-4 px-4 sm:px-5 text-text-light dark:text-text-dark shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-input-border-dark placeholder:text-subtle-light focus:ring-2 focus:ring-inset focus:ring-primary bg-surface-light dark:bg-input-bg-dark text-base sm:text-lg transition-all duration-200 flex-shrink-0"
+                  placeholder="Seu nome completo"
+                  type="text"
+                  required
+                />
+              </div>
+              
+              <div class="flex-shrink-0">
+                <label class="block text-sm font-bold text-text-light dark:text-text-dark mb-2 sm:mb-3" for="modal-email">
+                  <span class="material-symbols-outlined text-primary mr-2 align-middle">email</span>
+                  E-mail corporativo
+                </label>
+                <input
+                  id="modal-email"
+                  name="email"
+                  class="block w-full rounded-lg border-0 py-3 sm:py-4 px-4 sm:px-5 text-text-light dark:text-text-dark shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-input-border-dark placeholder:text-subtle-light focus:ring-2 focus:ring-inset focus:ring-primary bg-surface-light dark:bg-input-bg-dark text-base sm:text-lg transition-all duration-200 flex-shrink-0"
+                  placeholder="seu.email@empresa.com"
+                  type="email"
+                  required
+                />
+              </div>
+              
+              <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-shrink-0">
+                <div class="flex-1">
+                  <label class="block text-sm font-bold text-text-light dark:text-text-dark mb-2 sm:mb-3" for="modal-phone">
+                    <span class="material-symbols-outlined text-primary mr-2 align-middle">phone</span>
+                    Telefone/WhatsApp
+                  </label>
+                  <input
+                    id="modal-phone"
+                    name="phone"
+                    class="block w-full rounded-lg border-0 py-3 sm:py-4 px-4 sm:px-5 text-text-light dark:text-text-dark shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-input-border-dark placeholder:text-subtle-light focus:ring-2 focus:ring-inset focus:ring-primary bg-surface-light dark:bg-input-bg-dark text-base sm:text-lg transition-all duration-200 flex-shrink-0"
+                    placeholder="(11) 99999-9999"
+                    type="tel"
+                    required
+                  />
+                </div>
+                <div class="flex-1">
+                  <label class="block text-sm font-bold text-text-light dark:text-text-dark mb-2 sm:mb-3" for="modal-company">
+                    <span class="material-symbols-outlined text-primary mr-2 align-middle">business</span>
+                    Empresa
+                  </label>
+                  <input
+                    id="modal-company"
+                    name="company"
+                    class="block w-full rounded-lg border-0 py-3 sm:py-4 px-4 sm:px-5 text-text-light dark:text-text-dark shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-input-border-dark placeholder:text-subtle-light focus:ring-2 focus:ring-inset focus:ring-primary bg-surface-light dark:bg-input-bg-dark text-base sm:text-lg transition-all duration-200 flex-shrink-0"
+                    placeholder="Nome da sua empresa"
+                    type="text"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div class="flex-shrink-0">
+                <label class="block text-sm font-bold text-text-light dark:text-text-dark mb-2 sm:mb-3" for="modal-message">
+                  <span class="material-symbols-outlined text-primary mr-2 align-middle">chat</span>
+                  Qual é a sua necessidade?
+                </label>
+                <textarea
+                  id="modal-message"
+                  name="message"
+                  rows="3"
+                  class="block w-full rounded-lg border-0 py-3 sm:py-4 px-4 sm:px-5 text-text-light dark:text-text-dark shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-input-border-dark placeholder:text-subtle-light focus:ring-2 focus:ring-inset focus:ring-primary bg-surface-light dark:bg-input-bg-dark text-base sm:text-lg transition-all duration-200 resize-vertical flex-shrink-0"
+                  placeholder="Descreva brevemente o que precisa — migração para nuvem, suporte, DevOps, otimização de custos, infraestrutura, etc."
+                  required
+                ></textarea>
+              </div>
+              
+              <div id="modal-contact-status" class="text-center text-sm font-medium py-3 sm:py-4 rounded-lg transition-all duration-200 flex-shrink-0"></div>
+              
+              <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 flex-shrink-0">
+                <button
+                  id="modal-contact-submit"
+                  class="flex-1 justify-center rounded-xl bg-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold text-white shadow-lg hover:bg-primary-hover hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200 flex items-center gap-2 sm:gap-3 shadow-blue-900/30 hover:shadow-blue-900/50 flex-shrink-0"
+                  type="submit"
+                >
+                  <span class="material-symbols-outlined">send</span>
+                  Enviar mensagem
+                </button>
+                <button
+                  onclick="closeContactModal()"
+                  class="flex-1 justify-center rounded-xl border-2 border-gray-300 dark:border-gray-600 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold text-text-light dark:text-text-dark shadow-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-200 flex items-center gap-2 sm:gap-3 flex-shrink-0"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined">close</span>
+                  Cancelar
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
       
@@ -355,43 +361,43 @@ index
 </div>
 </section>
 
-            <!-- ====== Rodapé ====== -->
+      <!-- ====== Rodapé ====== -->
       <footer class="bg-background-light dark:bg-background-dark border-t border-border-light dark:border-border-dark py-12">
         <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            <div class="col-span-2 md:col-span-1 flex flex-col gap-4">
-              <a href="#topo" class="flex items-center gap-2">
-                <img src="assets/img/G6-Cloud.png.png" alt="Logo G6 Cloud" class="h-8 w-auto" width="32" height="32" />
-                <span class="text-xl font-black text-text-light dark:text-text-dark">G6 Cloud</span>
-              </a>
-              <div class="flex flex-col gap-1">
-                <p class="text-sm font-medium text-subtle-light dark:text-subtle-dark">Fale Conosco:</p>
-                <a href="mailto:g6cloud@g6cloud.com.br" class="text-sm text-primary hover:underline">g6cloud@g6cloud.com.br</a>
-                <p class="text-sm text-subtle-light dark:text-subtle-dark">(11) 97659-6203</p>
-              </div>
-            </div>
+         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+           <div class="col-span-2 md:col-span-1 flex flex-col gap-4">
+             <a href="#topo" class="flex items-center gap-2">
+               <img src="assets/img/G6-Cloud.png.png" alt="Logo G6 Cloud" class="h-8 w-auto" width="32" height="32" />
+               <span class="text-xl font-black text-text-light dark:text-text-dark">G6 Cloud</span>
+             </a>
+             <div class="flex flex-col gap-1">
+               <p class="text-sm font-medium text-subtle-light dark:text-subtle-dark">Fale Conosco:</p>
+               <a href="mailto:g6cloud@g6cloud.com.br" class="text-sm text-primary hover:underline">g6cloud@g6cloud.com.br</a>
+               <p class="text-sm text-subtle-light dark:text-subtle-dark">(11) 97659-6203</p>
+             </div>
+           </div>
 
-            <div class="flex flex-col gap-4">
-              <h4 class="text-base font-bold text-text-light dark:text-text-dark">Acesso Rápido</h4>
-              <div class="flex flex-col gap-2">
-                <a href="#topo" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Início</a>
-                <a href="#servicos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Serviços</a>
-                <a href="#sobre-nos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Sobre Nós</a>
-                <a href="#contato" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Contato</a>
-              </div>
-            </div>
+           <div class="flex flex-col gap-4">
+             <h4 class="text-base font-bold text-text-light dark:text-text-dark">Acesso Rápido</h4>
+             <div class="flex flex-col gap-2">
+               <a href="#topo" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Início</a>
+               <a href="#servicos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Serviços</a>
+               <a href="#sobre-nos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Sobre Nós</a>
+               <a href="#contato" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Contato</a>
+             </div>
+           </div>
 
-            <div class="flex flex-col gap-4">
-              <h4 class="text-base font-bold text-text-light dark:text-text-dark">Legal</h4>
-              <div class="flex flex-col gap-2">
-                <a href="#" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Termos de Serviço</a>
-                <a href="#" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Política de Privacidade</a>
-              </div>
-            </div>
+           <div class="flex flex-col gap-4">
+             <h4 class="text-base font-bold text-text-light dark:text-text-dark">Legal</h4>
+             <div class="flex flex-col gap-2">
+               <a href="#" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Termos de Serviço</a>
+               <a href="#" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Política de Privacidade</a>
+             </div>
+           </div>
 
-            <div class="flex flex-col gap-4">
-              <h4 class="text-base font-bold text-text-light dark:text-text-dark">Siga-nos</h4>
-              <div class="flex space-x-4">
+           <div class="flex flex-col gap-4">
+             <h4 class="text-base font-bold text-text-light dark:text-text-dark">Siga-nos</h4>
+             <div class="flex space-x-4">
 <a class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors" href="https://www.linkedin.com/company/g6-cloud">
 <img src="assets/img/icons8-linkedin-30.png" alt="LinkedIn G6 Cloud" class="w-6 h-6" width="24" height="24">
 </a>
@@ -400,18 +406,17 @@ index
 </a>
 <a class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors" href="https://www.instagram.com/g6cloud/">
 <img src="assets/img/icons8-instagram-64.png" alt="LinkedIn G6 Cloud" class="w-6 h-6" width="24" height="24" >
-
 </a>
 <a class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors" href="#">
 <span class="material-symbols-outlined text-xl">public</span>
 </a>
-              </div>
-            </div>
-          </div>
+             </div>
+           </div>
+         </div>
 
-          <div class="mt-12 pt-8 border-t border-border-light dark:border-border-dark text-center">
-            <p class="text-sm text-subtle-light dark:text-subtle-dark">© 2025 G6 Cloud. Todos os direitos reservados.</p>
-          </div>
+         <div class="mt-12 pt-8 border-t border-border-light dark:border-border-dark text-center">
+           <p class="text-sm text-subtle-light dark:text-subtle-dark">© 2025 G6 Cloud. Todos os direitos reservados.</p>
+         </div>
         </div>
       </footer>
     </div>
@@ -424,14 +429,14 @@ index
     function openContactModal() {
       const modal = document.getElementById('contact-modal');
       modal.classList.remove('hidden');
-      setTimeout(() => modal.classList.add('opacity-100'), 10); // Pequeno delay para permitir a transição
+      setTimeout(() => modal.classList.add('opacity-100'), 10);
       document.body.style.overflow = 'hidden';
     }
 
     function closeContactModal() {
       const modal = document.getElementById('contact-modal');
       modal.classList.remove('opacity-100');
-      setTimeout(() => modal.classList.add('hidden'), 300); // Tempo da transição
+      setTimeout(() => modal.classList.add('hidden'), 300);
       document.body.style.overflow = 'auto';
     }
 
@@ -449,7 +454,7 @@ index
       }
     });
 
-    // Script para envio do formulário do modal
+    // Script para envio do formulário do modal (MELHORADO)
     const modalForm = document.getElementById("contact-modal-form");
     const modalStatusEl = document.getElementById("modal-contact-status");
     const modalSubmitBtn = document.getElementById("modal-contact-submit");
@@ -465,7 +470,8 @@ index
       const message = (formData.get("message") || "").toString().trim();
 
       if (!name || !company || !email || !phone || !message) {
-        modalStatusEl.textContent = "Por favor, preencha todos os campos.";
+        modalStatusEl.textContent = "❌ Por favor, preencha todos os campos obrigatórios.";
+        modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
         return;
       }
 
@@ -473,8 +479,9 @@ index
       formData.append("subject", subject);
 
       modalSubmitBtn.disabled = true;
-      modalSubmitBtn.classList.add("opacity-60");
-      modalStatusEl.textContent = "Enviando...";
+      modalSubmitBtn.classList.add("opacity-70", "cursor-not-allowed");
+      modalStatusEl.textContent = "📤 Enviando mensagem...";
+      modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-800";
 
       try {
         const res = await fetch(modalForm.action, {
@@ -482,18 +489,23 @@ index
           body: formData
         });
         const data = await res.json();
-        modalStatusEl.textContent =
-          data.message || (data.success ? "Mensagem enviada." : "Erro ao enviar.");
+        
         if (data.success) {
+          modalStatusEl.textContent = "✅ Mensagem enviada com sucesso! Em breve entraremos em contato.";
+          modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800";
           modalForm.reset();
-          setTimeout(() => closeContactModal(), 2000);
+          setTimeout(() => closeContactModal(), 3000);
+        } else {
+          modalStatusEl.textContent = "❌ Erro ao enviar. Tente novamente.";
+          modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
         }
       } catch (err) {
         console.error(err);
-        modalStatusEl.textContent = "Erro de conexão. Tente novamente mais tarde.";
+        modalStatusEl.textContent = "❌ Erro de conexão. Verifique sua internet e tente novamente.";
+        modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
       } finally {
         modalSubmitBtn.disabled = false;
-        modalSubmitBtn.classList.remove("opacity-60");
+        modalSubmitBtn.classList.remove("opacity-70", "cursor-not-allowed");
       }
     });
   </script>
