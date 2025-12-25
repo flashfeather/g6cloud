@@ -42,7 +42,7 @@ if (preg_match('/[\r\n]/', $name) || preg_match('/[\r\n]/', $email)) {
 }
 
 // Remetente do email (usar conta do domínio para evitar SPAM)
-$fromEmail = 'no-reply@g6cloud.com.br'; // ajuste para um email válido do seu domínio
+$fromEmail = 'g6cloud@g6cloud.com.br'; // ajuste para um email válido do seu domínio
 
 // Corpo do email
 $body = "Nome: {$name}\n";
