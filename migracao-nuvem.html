@@ -282,26 +282,34 @@
         </div>
     </div>
 </section>
-<!-- Final CTA -->
-<section class="w-full bg-[#f0f4f8] dark:bg-gray-800/50 py-20 px-4">
-<div class="max-w-4xl mx-auto text-center flex flex-col gap-8">
-<h2 class="text-[#111418] dark:text-white text-3xl md:text-4xl font-black leading-tight">
-                        Pronto para modernizar sua empresa?
-                    </h2>
-<p class="text-text-secondary dark:text-gray-300 text-lg max-w-2xl mx-auto">
-                        Converse com nossos arquitetos de soluções e descubra como podemos ajudar a sua empresa a migrar para a nuvem de forma segura e econômica.
-                    </p>
-<div class="flex flex-col sm:flex-row justify-center gap-4">
-<button class="flex cursor-pointer items-center justify-center rounded-lg h-12 px-8 bg-primary hover:bg-primary-dark transition-colors text-white text-base font-bold leading-normal shadow-lg">
-                            Falar com um Especialista
-                        </button>
-<button class="flex cursor-pointer items-center justify-center rounded-lg h-12 px-8 bg-white border border-gray-200 dark:bg-transparent dark:border-gray-600 dark:text-white text-text-main text-base font-bold leading-normal hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                            Saiba mais sobre DevOps
-                        </button>
-</div>
-</div>
+<!-- CTA Section -->
+<section class="py-20 px-6 lg:px-40 bg-gray-50 dark:bg-[#101922] border-t border-gray-200 dark:border-[#283039] transition-colors duration-300">
+  <div class="max-w-4xl mx-auto rounded-2xl 
+              bg-gradient-to-r from-blue-50 to-white 
+              dark:from-[#162a3d] dark:to-[#101922] 
+              border border-blue-100 dark:border-blue-900/30 
+              p-8 lg:p-12 text-center flex flex-col items-center shadow-sm dark:shadow-none">
+    
+    <h2 class="text-3xl lg:text-4xl font-black text-[#101922] dark:text-white mb-6">
+      Pronto para modernizar sua infraestrutura?
+    </h2>
+    
+    <p class="text-lg text-slate-600 dark:text-gray-300 mb-8 max-w-2xl">
+      Agende uma conversa gratuita com nossos arquitetos e descubra como a G6 Cloud pode transformar a tecnologia da sua empresa.
+    </p>
+
+    <button onclick="openContactModal()" 
+            class="flex items-center justify-center gap-2 
+                   bg-[#1a365d] dark:bg-transparent 
+                   hover:bg-[#2a4365] dark:hover:bg-white/5 
+                   border border-[#1a365d] dark:border-white/20 
+                   text-white font-bold py-3 px-8 rounded-lg transition-all">
+      <span class="material-symbols-outlined text-[20px]">mail</span>
+      Entre em contato
+    </button>
+    
+  </div>
 </section>
-</main>
 
 <!-- Modal de Contato -->
 <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
