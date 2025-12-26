@@ -356,7 +356,6 @@
 </div>
 </div>
 </div>
-<!-- CTA Section -->
 <section class="py-20 px-6 lg:px-40 bg-gray-50 dark:bg-[#101922] border-t border-gray-200 dark:border-[#283039] transition-colors duration-300">
   <div class="max-w-4xl mx-auto rounded-2xl 
               bg-gradient-to-r from-blue-50 to-white 
@@ -384,6 +383,93 @@
     
   </div>
 </section>
+
+<div id="contact-modal" class="fixed inset-0 bg-black/50 hidden z-50 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none">
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform transition-transform duration-300 scale-95" id="modal-content">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-[#111418] dark:text-white">Entre em contato</h2>
+        <button onclick="closeContactModal()" class="text-gray-500 hover:text-[#111418] dark:text-gray-400 dark:hover:text-white">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+      <p class="text-gray-600 dark:text-gray-300 mb-6">
+        Vamos conversar sobre como podemos ajudar sua empresa a crescer com as melhores soluções em nuvem.
+      </p>
+      
+      <form id="contact-modal-form" action="send_form.php" method="POST" class="space-y-6">
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-name">Nome</label>
+          <input id="modal-name" name="name" class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm bg-white dark:bg-gray-700 sm:text-sm focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Seu nome" type="text" required />
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-email">E-mail</label>
+          <input id="modal-email" name="email" class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm bg-white dark:bg-gray-700 sm:text-sm focus:ring-2 focus:ring-blue-500 outline-none" placeholder="seu.email@exemplo.com" type="email" required />
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-phone">Telefone</label>
+          <input id="modal-phone" name="phone" class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm bg-white dark:bg-gray-700 sm:text-sm focus:ring-2 focus:ring-blue-500 outline-none" placeholder="(11) 99999-9999" type="tel" required />
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-company">Empresa</label>
+          <input id="modal-company" name="company" class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm bg-white dark:bg-gray-700 sm:text-sm focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Nome da empresa" type="text" required />
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-message">Mensagem</label>
+          <textarea id="modal-message" name="message" rows="4" class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm bg-white dark:bg-gray-700 sm:text-sm focus:ring-2 focus:ring-blue-500 outline-none resize-y" placeholder="Descreva brevemente o que precisa..." required></textarea>
+        </div>
+        
+        <div class="flex gap-4">
+          <button type="submit" class="flex-1 justify-center rounded-lg bg-blue-600 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors">
+            Enviar mensagem
+          </button>
+          <button onclick="closeContactModal()" type="button" class="flex-1 justify-center rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-3 text-sm font-semibold text-[#111418] dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openContactModal() {
+    const modal = document.getElementById('contact-modal');
+    const content = document.getElementById('modal-content');
+    
+    modal.classList.remove('hidden');
+    
+    // Pequeno delay para permitir que o navegador registre a remoção do 'hidden' antes da animação
+    setTimeout(() => {
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      content.classList.remove('scale-95');
+      content.classList.add('scale-100');
+    }, 10);
+  }
+
+  function closeContactModal() {
+    const modal = document.getElementById('contact-modal');
+    const content = document.getElementById('modal-content');
+    
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    content.classList.remove('scale-100');
+    content.classList.add('scale-95');
+    
+    // Espera a animação de 300ms terminar antes de esconder totalmente
+    setTimeout(() => {
+      modal.classList.add('hidden');
+    }, 300);
+  }
+
+  // Fecha o modal se clicar na parte escura (fora da caixa branca)
+  window.addEventListener('click', function(event) {
+    const modal = document.getElementById('contact-modal');
+    if (event.target === modal) {
+      closeContactModal();
+    }
+  });
+</script>
+
 <!-- Footer Links -->
 <div class="w-full bg-background-dark text-gray-400 py-12 border-t border-white/10">
 <div class="max-w-[1280px] mx-auto px-4 sm:px-10 flex flex-col md:flex-row justify-between items-center gap-6">
