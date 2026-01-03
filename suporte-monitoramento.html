@@ -95,7 +95,12 @@
 <!-- Header: Minimal, Left-aligned links, No Logo -->
 <header class="w-full bg-white dark:bg-[#1a2632] border-b border-[#f0f2f4] dark:border-[#2a3844] sticky top-0 z-50">
 <div class="px-4 md:px-10 py-4 max-w-[1200px] mx-auto flex items-center justify-between">
-        <div class="flex items-center justify-between py-4"></div>
+        <div class="flex items-center justify-between py-4">
+          <a class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2" href="#">
+            <span class="material-symbols-outlined text-primary">cloud</span>
+                G6 Cloud
+          </a>
+        </div>
 <!-- Navigation Links Aligned Left -->
             <nav class="hidden md:flex flex-1 justify-center items-center gap-6 ml-12">
               <div class="flex items-center gap-8">
@@ -146,8 +151,11 @@
                                 <button onclick="openContactModal()" class="flex items-center justify-center rounded-lg h-12 px-8 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors shadow-lg shadow-blue-900/50 w-full sm:w-auto">
                                     <span class="truncate">Entre em contato</span>
                                 </button>
-                                <button class="flex items-center justify-center rounded-lg h-12 px-8 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-base font-bold leading-normal hover:bg-white/20 transition-colors w-full sm:w-auto">
-                                    <span class="truncate">Ver Planos</span>
+                                <button
+                                  type="button"
+                                  onclick="document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' });"
+                                  class="flex items-center justify-center rounded-lg h-12 px-8 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-base font-bold leading-normal hover:bg-white/20 transition-colors w-full sm:w-auto">
+                                  <span class="truncate">Ver Planos</span>
                                 </button>
                             </div>
                         </div>
@@ -267,7 +275,7 @@
     </section>
 
 <!-- Pricing/Plans Section -->
-<section class="layout-container flex flex-col py-16 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700">
+<section id="planos" class="layout-container flex flex-col py-16 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700">
   <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center">
     <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
       <div class="text-center mb-12">
