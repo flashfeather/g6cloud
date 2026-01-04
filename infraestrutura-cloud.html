@@ -43,44 +43,42 @@
 <body class="font-body bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark antialiased">
   <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
 <!-- Header: Minimal, Left-aligned links, No Logo -->
-<header class="w-full bg-white dark:bg-[#1a2632] border-b border-[#f0f2f4] dark:border-[#2a3844] sticky top-0 z-50">
-<div class="px-4 md:px-10 py-4 max-w-[1200px] mx-auto flex items-center justify-between">
-        <div class="flex items-center justify-between py-4">
-          <a class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2" href="#">
+      <!-- ====== Header / Navegação ====== -->
+      <header class="fixed inset-x-0 top-0 z-30 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm shadow-md">
+        <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
+         <div class="flex items-center justify-between py-4">
+           <a class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2" href="index.html">
             <span class="material-symbols-outlined text-primary">cloud</span>
                 G6 Cloud
-          </a>
+             </a>
+           <!-- Navegação desktop -->
+           <nav class="hidden md:flex flex-1 justify-center items-center gap-6 ml-12">
+             <div class="flex items-center gap-8">
+               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="index.html#topo">Início</a>
+               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="index.html#servicos">Serviços</a>
+               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="index.html#sobre-nos">Sobre Nós</a>
+               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="index.html#contato">Contato</a>
+             </div>
+           </nav>
+
+           <!-- Ações -->
+           <div class="flex items-center gap-4 ml-auto">
+             <button
+               class="relative inline-flex items-center h-10 w-10 justify-center rounded-lg text-primary hover:bg-primary/10 transition-colors"
+               id="theme-toggle"
+               type="button"
+               aria-label="Alternar tema claro/escuro"
+             >
+               <span class="material-symbols-outlined dark:hidden">light_mode</span>
+               <span class="material-symbols-outlined hidden dark:inline">dark_mode</span>
+             </button>
+           </div>
+         </div>
         </div>
-<!-- Navigation Links Aligned Left -->
-            <nav class="hidden md:flex flex-1 justify-center items-center gap-6 ml-12">
-              <div class="flex items-center gap-8">
-                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="index.html">Início</a>
-                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="migracao-nuvem.html">Migração</a>
-                <a class="text-primary text-sm font-bold leading-normal" href="#">Infraestrutura</a>
-                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="devops-automacao.html">DevOps</a>
-                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="suporte-monitoramento.html">Suporte e Monitoramento</a>
-                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="consultoria-finops.html">FinOps</a>
-              </div>
-            </nav>
-<!-- Optional Mobile Menu Icon for smaller screens (hidden on desktop per "form factor: desktop") -->
- <div class="flex items-center gap-4"></div>
-<button class="lg:hidden text-[#111418] dark:text-white">
-<span class="material-symbols-outlined">menu</span>
-</button>
-              <button
-                class="relative inline-flex items-center h-10 w-10 justify-center rounded-lg text-primary hover:bg-primary/10 transition-colors"
-                id="theme-toggle"
-                type="button"
-                aria-label="Alternar tema claro/escuro"
-              >
-                <span class="material-symbols-outlined dark:hidden">light_mode</span>
-                <span class="material-symbols-outlined hidden dark:inline">dark_mode</span>
-              </button>
-</div>
-</header>
+      </header>
 <main class="flex flex-col flex-1">
 <!-- Hero Section -->
-<section class="relative flex flex-col items-center justify-center py-20 px-6 lg:px-40 bg-[#101922]">
+<section class="relative flex flex-col items-center justify-center py-20 px-6 lg:px-40 bg-[#101922] pt-28">
 <div class="absolute inset-0 z-0">
 <img alt="Abstract blue network connections and cloud data visualization" class="h-full w-full object-cover opacity-20" data-alt="Abstract blue network connections and cloud data visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6V_jSGrXuHjVJvA_czfHwr5uPnaCU6-KKmmAYkpw-L8EfMKoELBXUHtc6Z-shG14WxeKS7IVx2MDNJDrQRBHXAvgwMchFypw2qlgxqWmlYZ9y9xnrcYS63V_hNMHhg7Qc9tZaq0iLk-cBdjN6lpoM7q7juse0pp2pTyY6_lRoJVH42OCQY1PFdJMEVB458GUlq5cGtymmZMgjmh7FKbJx7iFYtfb4yfrkYsiqxaGotmDtSvMUIu3Pzgelz9fO4twQ3iXCprj4Cd0"/>
 <div class="absolute inset-0 bg-gradient-to-t from-[#101922] via-[#101922]/80 to-transparent"></div>

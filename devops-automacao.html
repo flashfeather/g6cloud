@@ -41,44 +41,42 @@
 <body class="font-body bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark antialiased">
   <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
 <!-- Header: Minimal, Left-aligned links, No Logo -->
-<header class="w-full bg-white dark:bg-[#1a2632] border-b border-[#f0f2f4] dark:border-[#2a3844] sticky top-0 z-50">
-<div class="px-4 md:px-10 py-4 max-w-[1200px] mx-auto flex items-center justify-between">
-        <div class="flex items-center justify-between py-4">
-          <a class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2" href="#">
+      <!-- ====== Header / Navegação ====== -->
+      <header class="fixed inset-x-0 top-0 z-30 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm shadow-md">
+        <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
+         <div class="flex items-center justify-between py-4">
+           <a class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2" href="index.html">
             <span class="material-symbols-outlined text-primary">cloud</span>
                 G6 Cloud
-          </a>
+             </a>
+           <!-- Navegação desktop -->
+           <nav class="hidden md:flex flex-1 justify-center items-center gap-6 ml-12">
+             <div class="flex items-center gap-8">
+               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="index.html#topo">Início</a>
+               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="index.html#servicos">Serviços</a>
+               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="index.html#sobre-nos">Sobre Nós</a>
+               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="index.html#contato">Contato</a>
+             </div>
+           </nav>
+
+           <!-- Ações -->
+           <div class="flex items-center gap-4 ml-auto">
+             <button
+               class="relative inline-flex items-center h-10 w-10 justify-center rounded-lg text-primary hover:bg-primary/10 transition-colors"
+               id="theme-toggle"
+               type="button"
+               aria-label="Alternar tema claro/escuro"
+             >
+               <span class="material-symbols-outlined dark:hidden">light_mode</span>
+               <span class="material-symbols-outlined hidden dark:inline">dark_mode</span>
+             </button>
+           </div>
+         </div>
         </div>
-<!-- Navigation Links Aligned Left -->
-            <nav class="hidden md:flex flex-1 justify-center items-center gap-6 ml-12">
-              <div class="flex items-center gap-8">
-<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="index.html">Início</a>
-<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="migracao-nuvem.html">Migração</a>
-<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="infraestrutura-cloud.html">Infraestrutura</a>
-<a class="text-primary text-sm font-bold leading-normal" href="#">DevOps</a>
-<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="suporte-monitoramento.html">Suporte e Monitoramento</a>
-<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="consultoria-finops.html">FinOps</a>
-              </div>
-            </nav>
-<!-- Optional Mobile Menu Icon for smaller screens (hidden on desktop per "form factor: desktop") -->
- <div class="flex items-center gap-4"></div>
-<button class="lg:hidden text-[#111418] dark:text-white">
-<span class="material-symbols-outlined">menu</span>
-</button>
-              <button
-                class="relative inline-flex items-center h-10 w-10 justify-center rounded-lg text-primary hover:bg-primary/10 transition-colors"
-                id="theme-toggle"
-                type="button"
-                aria-label="Alternar tema claro/escuro"
-              >
-                <span class="material-symbols-outlined dark:hidden">light_mode</span>
-                <span class="material-symbols-outlined hidden dark:inline">dark_mode</span>
-              </button>
-</div>
-</header>
+      </header>
 <!-- Hero Section -->
 <div class="flex flex-col">
-<div class="px-4 md:px-10 py-10 md:py-16 flex justify-center bg-white dark:bg-[#1a2632]">
+<div class="px-4 md:px-10 py-10 md:py-16 flex justify-center bg-white dark:bg-[#1a2632] pt-28">
 <div class="flex flex-col max-w-[1200px] w-full gap-10 lg:flex-row items-center">
 <!-- Hero Content -->
 <div class="flex flex-col gap-6 lg:w-1/2">
