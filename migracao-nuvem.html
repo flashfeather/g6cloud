@@ -63,14 +63,16 @@
                 G6 Cloud
              </a>
            <!-- Navegação desktop -->
-           <nav class="hidden md:flex flex-1 justify-center items-center gap-6 ml-12">
-             <div class="flex items-center gap-8">
-               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="index.html#topo">Início</a>
-               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="index.html#servicos">Serviços</a>
-               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="index.html#sobre-nos">Sobre Nós</a>
-               <a class="text-sm font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors" href="index.html#contato">Contato</a>
-             </div>
-           </nav>
+            <nav class="hidden md:flex flex-1 justify-center items-center gap-6 ml-12">
+              <div class="flex items-center gap-8">
+                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="index.html">Início</a>
+                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="migracao-nuvem.html">Migração</a>
+                <a class="text-primary text-sm font-bold leading-normal" href="#">Infraestrutura</a>
+                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="devops-automacao.html">DevOps</a>
+                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="suporte-monitoramento.html">Suporte e Monitoramento</a>
+                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="consultoria-finops.html">FinOps</a>
+              </div>
+            </nav>
 
            <!-- Ações -->
            <div class="flex items-center gap-4 ml-auto">
@@ -415,7 +417,6 @@
   </div>
 </div>
 
-<!-- Footer -->
       <!-- ====== Rodapé ====== -->
       <footer class="bg-background-light dark:bg-background-dark border-t border-border-light dark:border-border-dark py-12">
         <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
@@ -519,85 +520,95 @@
          </div>
         </div>
       </footer>
-</div>
+    </div>
+  </div>
 
-<script src="assets/js/theme.min.js" defer></script>
-<script src="assets/js/form.min.js" defer></script>
-<script>
-  function openContactModal() {
-    const modal = document.getElementById('contact-modal');
-    modal.classList.remove('hidden');
-    setTimeout(() => modal.classList.add('opacity-100'), 10);
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeContactModal() {
-    const modal = document.getElementById('contact-modal');
-    modal.classList.remove('opacity-100');
-    setTimeout(() => modal.classList.add('hidden'), 300);
-    document.body.style.overflow = 'auto';
-  }
-
-  // Fechar modal ao clicar fora
-  document.getElementById('contact-modal').addEventListener('click', function(e) {
-    if (e.target === this) {
-      closeContactModal();
-    }
-  });
-
-  // Fechar modal com ESC
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && !document.getElementById('contact-modal').classList.contains('hidden')) {
-      closeContactModal();
-    }
-  });
-
-  // Script para envio do formulário do modal
-  const modalForm = document.getElementById("contact-modal-form");
-  const modalStatusEl = document.getElementById("modal-contact-status");
-  const modalSubmitBtn = document.getElementById("modal-contact-submit");
-
-  modalForm?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(modalForm);
-    const name = (formData.get("name") || "").toString().trim();
-    const email = (formData.get("email") || "").toString().trim();
-    const phone = (formData.get("phone") || "").toString().trim();
-    const company = (formData.get("company") || "").toString().trim();
-    const message = (formData.get("message") || "").toString().trim();
-
-    if (!name || !email || !phone || !company || !message) {
-      modalStatusEl.textContent = "Por favor, preencha todos os campos.";
-      return;
+  <!-- ====== Scripts ====== -->
+  <script src="assets/js/theme.min.js" defer></script>
+  <script src="assets/js/form.min.js" defer></script>
+  <script>
+    function openContactModal() {
+      const modal = document.getElementById('contact-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.add('opacity-100'), 10);
+      document.body.style.overflow = 'hidden';
     }
 
-    const subject = `Lead-${name.replace(/\s+/g, "")}`;
-    formData.append("subject", subject);
+    function closeContactModal() {
+      const modal = document.getElementById('contact-modal');
+      modal.classList.remove('opacity-100');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+      document.body.style.overflow = 'auto';
+    }
 
-    modalSubmitBtn.disabled = true;
-    modalSubmitBtn.classList.add("opacity-60");
-    modalStatusEl.textContent = "Enviando...";
-
-    try {
-      const res = await fetch(modalForm.action, {
-        method: "POST",
-        body: formData
-      });
-      const data = await res.json();
-      modalStatusEl.textContent =
-        data.message || (data.success ? "Mensagem enviada." : "Erro ao enviar.");
-      if (data.success) {
-        modalForm.reset();
-        setTimeout(() => closeContactModal(), 2000);
+    // Fechar modal ao clicar fora
+    document.getElementById('contact-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeContactModal();
       }
-    } catch (err) {
-      console.error(err);
-      modalStatusEl.textContent = "Erro de conexão. Tente novamente mais tarde.";
-    } finally {
-      modalSubmitBtn.disabled = false;
-      modalSubmitBtn.classList.remove("opacity-60");
-    }
-  });
-</script>
-</body></html>
+    });
+
+    // Fechar modal com ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !document.getElementById('contact-modal').classList.contains('hidden')) {
+        closeContactModal();
+      }
+    });
+
+    // Script para envio do formulário do modal (MELHORADO)
+    const modalForm = document.getElementById("contact-modal-form");
+    const modalStatusEl = document.getElementById("modal-contact-status");
+    const modalSubmitBtn = document.getElementById("modal-contact-submit");
+
+    modalForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(modalForm);
+      const name = (formData.get("name") || "").toString().trim();
+      const company = (formData.get("company") || "").toString().trim();
+      const email = (formData.get("email") || "").toString().trim();
+      const phone = (formData.get("phone") || "").toString().trim();
+      const message = (formData.get("message") || "").toString().trim();
+
+      if (!name || !company || !email || !phone || !message) {
+        modalStatusEl.textContent = "❌ Por favor, preencha todos os campos obrigatórios.";
+        modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
+        return;
+      }
+
+      const subject = `Lead-${name.replace(/\s+/g, "")}`;
+      formData.append("subject", subject);
+
+      modalSubmitBtn.disabled = true;
+      modalSubmitBtn.classList.add("opacity-70", "cursor-not-allowed");
+      modalStatusEl.textContent = "📤 Enviando mensagem...";
+      modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-800";
+
+      try {
+        const res = await fetch(modalForm.action, {
+          method: "POST",
+          body: formData
+        });
+        const data = await res.json();
+        
+        if (data.success) {
+          modalStatusEl.textContent = "✅ Mensagem enviada com sucesso! Em breve entraremos em contato.";
+          modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800";
+          modalForm.reset();
+          setTimeout(() => closeContactModal(), 3000);
+        } else {
+          modalStatusEl.textContent = "❌ Erro ao enviar. Tente novamente.";
+          modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
+        }
+      } catch (err) {
+        console.error(err);
+        modalStatusEl.textContent = "❌ Erro de conexão. Verifique sua internet e tente novamente.";
+        modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
+      } finally {
+        modalSubmitBtn.disabled = false;
+        modalSubmitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+      }
+    });
+  </script>
+</body>
+</html>
