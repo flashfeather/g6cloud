@@ -3,23 +3,54 @@
 <html class="light" lang="pt-BR"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DevOps e Automação - G6 Cloud</title>
+<meta name="description" content="DevOps e Automação - G6 Cloud. Otimizamos seu ciclo de desenvolvimento e operações com práticas de automação e CI/CD." />
+<meta name="keywords" content="DevOps, automação, CI/CD, pipeline, desenvolvimento ágil, operações nuvem" />
+<meta name="author" content="G6 Cloud" />
+<meta name="robots" content="index, follow" />
+<meta name="language" content="pt-BR" />
+<meta property="og:title" content="DevOps e Automação - G6 Cloud" />
+<meta property="og:description" content="Otimizamos seu ciclo de desenvolvimento e operações com práticas de automação." />
+<meta property="og:image" content="assets/img/G6-Cloud.png.png" />
+<meta property="og:url" content="https://g6cloud.com.br/devops-automacao.html" />
+<meta name="twitter:card" content="summary_large_image" />  <link rel="canonical" href="https://g6cloud.com.br/devops-automacao.html" /><title>DevOps e Automação - G6 Cloud</title>
 <link rel="icon" href="assets/img/g6icone.png">
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "DevOps e Automação",
+  "provider": {
+    "@type": "Organization",
+    "name": "G6 Cloud",
+    "url": "https://g6cloud.com.br"
+  },
+  "description": "Otimizamos seu ciclo de desenvolvimento e operações com práticas de automação."
+}
+</script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#137fec",
-                        "background-light": "#f6f7f8",
-                        "background-dark": "#101922",
+                        primary: "#1A73E8",
+                        "primary-hover": "#1557B0",
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#0B1116",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#161B22",
+                        "input-bg-dark": "#161B22",
+                        "input-border-dark": "#30363D",
+                        "text-light": "#111418",
+                        "text-dark": "#F9FAFB",
+                        "subtle-light": "#6B7280",
+                        "subtle-dark": "#9CA3AF",
+                        "border-light": "#DBE0E6",
+                        "border-dark": "#2A3B4C"
                     },
                     fontFamily: {
                         "display": ["Inter", "sans-serif"]
@@ -54,7 +85,7 @@
               <div class="flex items-center gap-8">
                 <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="index.html">Início</a>
                 <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="migracao-nuvem.html">Migração</a>
-                <a class="text-primary text-sm font-bold leading-normal" href="#">Infraestrutura</a>
+                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="infraestrutura-cloud.html">Infraestrutura</a>
                 <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="devops-automacao.html">DevOps</a>
                 <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="suporte-monitoramento.html">Suporte e Monitoramento</a>
                 <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="consultoria-finops.html">FinOps</a>
@@ -271,8 +302,9 @@
 
 <!-- Modal de Contato -->
 <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-    <div class="p-6">
+  <div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl w-full max-w-2xl h-[95vh] max-h-[900px] flex flex-col">
+    <!-- Conteúdo do modal SEM overflow -->
+    <div class="flex-1 p-6 sm:p-8 flex flex-col overflow-y-auto">
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold text-[#111418] dark:text-white">Entre em contato</h2>
         <button onclick="closeContactModal()" class="text-gray-500 hover:text-[#111418] dark:text-gray-400 dark:hover:text-white">
@@ -369,7 +401,21 @@
     </div>
   </div>
 </div>
-
+      <section class="bg-[#101922] py-20">
+<div class="px-4 md:px-10 lg:px-40 flex justify-center">
+<div class="max-w-[960px] flex flex-col md:flex-row items-center justify-between gap-10 w-full">
+<div class="text-left max-w-lg">
+<h2 class="text-white text-3xl font-bold mb-4">Pronto para ter estabilidade total?</h2>
+<p class="text-gray-400 text-lg">Deixe a complexidade da nuvem com a gente e foque no seu core business.</p>
+</div>
+<div class="flex gap-4">
+<button onclick="openContactModal()" class="flex items-center justify-center rounded-xl h-14 px-10 bg-primary text-white text-lg font-bold leading-normal tracking-[0.015em] hover:bg-primary-hover transition-all duration-200 shadow-xl shadow-blue-900/50 hover:shadow-2xl hover:shadow-blue-900/70 w-full sm:w-auto">
+<span class="truncate">Entre em contato</span>
+</button>
+</div>
+</div>
+</div>
+</section>
       <!-- ====== Rodapé ====== -->
       <footer class="bg-background-light dark:bg-background-dark border-t border-border-light dark:border-border-dark py-12">
         <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
