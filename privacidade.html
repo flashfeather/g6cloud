@@ -14,8 +14,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "G6 Cloud",
+    "url": "https://g6cloud.com.br",
+    "logo": "https://g6cloud.com.br/assets/img/G6-Cloud.png.png",
+    "description": "Especialistas em migração, infraestrutura, DevOps, FinOps e serviços gerenciados em nuvem para pequenas e médias empresas.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+55-11-97659-6203",
+      "contactType": "customer service",
+      "email": "g6cloud@g6cloud.com.br"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/g6-cloud",
+      "https://www.instagram.com/g6cloud/"
+    ]
+  }
+  </script>
+
   <script>
-    if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+       window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
@@ -23,7 +48,7 @@
   </script>
 
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-  <script>
+<script>
     tailwind.config = {
       darkMode: "class",
       theme: {
@@ -47,6 +72,12 @@
           fontFamily: {
             display: ["Inter", "sans-serif"],
             body: ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            DEFAULT: "0.375rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
           }
         }
       }
@@ -58,8 +89,27 @@
       background-color: #1a1a1a;
       background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9));
     }
+
+
+    
+
+        .hero-bg {
+      background-image:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
+        url("assets/img/hero-bg-cloud.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
     html { scroll-behavior: smooth; }
+    
+    .will-change-transform {
+      will-change: transform;
+    }
+
   </style>
+
 </head>
 <body class="font-body bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark antialiased">
   <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
@@ -109,36 +159,66 @@
         <!-- ====== Conteúdo Legal ====== -->
         <section class="bg-background-light dark:bg-background-dark py-12 px-4 sm:px-8 md:px-16 lg:px-40">
           <div class="max-w-4xl mx-auto bg-surface-light dark:bg-surface-dark p-8 md:p-12 rounded-xl shadow-lg border border-border-light dark:border-border-dark">
-            <div class="prose prose-lg dark:prose-invert max-w-none prose-a:text-primary hover:prose-a:text-primary-hover">
+            <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:text-text-light dark:prose-headings:text-text-dark prose-p:text-subtle-light dark:prose-p:text-subtle-dark prose-strong:text-text-light dark:prose-strong:text-text-dark prose-li:text-subtle-light dark:prose-li:text-subtle-dark">
               
-              <p>A G6 Cloud valoriza a privacidade de seus clientes e parceiros. Esta Política de Privacidade descreve como coletamos, usamos e protegemos suas informações, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).</p>
+              <p>A G6 Cloud valoriza sua privacidade. Este documento detalha como coletamos, usamos e protegemos seus dados pessoais em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p>
 
-              <h3>1. Dados que Coletamos</h3>
-              <p>Para a prestação de serviços de consultoria e gestão de nuvem, podemos coletar os seguintes tipos de dados:</p>
-              <ul>
-                  <li><strong>Dados de Identificação:</strong> Nome, e-mail corporativo, telefone e cargo.</li>
-                  <li><strong>Dados Técnicos:</strong> Endereços IP, logs de acesso a servidores (quando sob nossa gestão) e credenciais de acesso (armazenadas em cofres de senhas criptografados).</li>
-                  <li><strong>Dados de Navegação:</strong> Cookies e métricas de uso do nosso site para melhoria de performance.</li>
-              </ul>
-
-              <h3>2. Finalidade do Tratamento</h3>
-              <p>Utilizamos seus dados estritamente para:</p>
-              <ul>
-                  <li>Executar contratos de prestação de serviços (SOW).</li>
-                  <li>Enviar relatórios técnicos, alertas de monitoramento e faturas.</li>
-                  <li>Cumprir obrigações legais e regulatórias.</li>
-              </ul>
-
-              <h3>3. Segurança da Informação</h3>
-              <p>A G6 Cloud adota práticas robustas de segurança, incluindo criptografia em trânsito e em repouso, autenticação multifator (MFA) para acesso a sistemas internos e controle rígido de permissões (Princípio do Menor Privilégio).</p>
-
-              <h3>4. Compartilhamento de Dados</h3>
-              <p>Não vendemos seus dados. O compartilhamento ocorre apenas com provedores de Nuvem (AWS, Azure, Google) estritamente para provisionamento de recursos em nome do cliente e autoridades judiciais, mediante requisição legal.</p>
-
-              <div class="bg-blue-50 dark:bg-primary/10 p-6 rounded-lg border-l-4 border-primary mt-8">
-                  <h4 class="mt-0 text-primary">Encarregado de Dados (DPO)</h4>
-                  <p class="mb-0 text-sm">Para exercer seus direitos de titular (acesso, correção ou exclusão de dados), entre em contato pelo e-mail: <strong>privacidade@g6cloud.com.br</strong></p>
+              <h3>1. Dados da Empresa e Encarregado (DPO)</h3>
+              <p>O controlador dos dados é a <strong>G6 Cloud Consultoria em Tecnologia Ltda</strong>.</p>
+              <div class="bg-blue-50 dark:bg-primary/10 p-4 rounded-lg border-l-4 border-primary my-4 not-prose">
+                  <h4 class="text-lg font-bold text-primary mb-2">Encarregado de Dados (DPO)</h4>
+                  <p class="text-sm text-subtle-light dark:text-subtle-dark mb-1">Para solicitações sobre seus dados, contate nosso DPO:</p>
+                  <p class="text-sm font-bold text-text-light dark:text-text-dark">E-mail: privacidade@g6cloud.com.br</p>
               </div>
+
+              <h3>2. Tipos de Dados Coletados</h3>
+              <ul>
+                <li><strong>Dados Pessoais:</strong> Nome completo, e-mail corporativo, telefone/WhatsApp e nome da empresa (coletados via formulário de contato).</li>
+                <li><strong>Dados Técnicos:</strong> Endereço IP, tipo de navegador, sistema operacional, logs de data/hora de acesso e cookies de performance.</li>
+                <li><strong>Dados Sensíveis:</strong> A G6 Cloud <strong>não</strong> coleta dados pessoais sensíveis (como origem racial, saúde, biometria) através deste site.</li>
+              </ul>
+
+              <h3>3. Formas de Coleta e Uso</h3>
+              <p>Os dados são coletados das seguintes formas:</p>
+              <ul>
+                <li><strong>Formulários:</strong> Preenchimento voluntário na seção "Contato" para solicitação de propostas.</li>
+                <li><strong>Cookies e Navegação:</strong> Coleta automática para análise de tráfego (Google Analytics) e segurança do site.</li>
+              </ul>
+              <p><strong>Finalidades e Bases Legais:</strong></p>
+              <ul>
+                <li>Execução de contrato ou procedimentos preliminares (responder sua cotação).</li>
+                <li>Legítimo interesse (segurança do site e melhoria dos serviços).</li>
+                <li>Cumprimento de obrigação legal (guarda de logs conforme Marco Civil da Internet).</li>
+              </ul>
+
+              <h3>4. Compartilhamento e Armazenamento</h3>
+              <p>Seus dados podem ser compartilhados com:</p>
+              <ul>
+                <li><strong>Provedores de Nuvem:</strong> AWS, Google Cloud ou Azure (para hospedagem segura dos nossos sistemas).</li>
+                <li><strong>Ferramentas de Gestão:</strong> CRMs e plataformas de e-mail marketing (ex: RD Station, HubSpot) para comunicação comercial.</li>
+              </ul>
+              <p><strong>Transferência Internacional:</strong> Como utilizamos serviços de nuvem globais, seus dados podem ser armazenados em servidores localizados nos EUA ou Europa, sempre sob cláusulas contratuais que garantam a conformidade com a LGPD.</p>
+              <p><strong>Retenção:</strong> Manteremos seus dados pelo tempo necessário para cumprir as finalidades descritas ou obrigações legais (ex: 5 anos para dados fiscais).</p>
+
+              <h3>5. Direitos dos Titulares</h3>
+              <p>Você tem o direito de solicitar a qualquer momento:</p>
+              <ul>
+                <li>Confirmação da existência de tratamento e acesso aos dados.</li>
+                <li>Correção de dados incompletos ou desatualizados.</li>
+                <li>Anonimização, bloqueio ou eliminação de dados desnecessários.</li>
+                <li>Revogação do consentimento.</li>
+              </ul>
+              <p>Para exercer esses direitos, envie um e-mail para <strong>privacidade@g6cloud.com.br</strong>. Responderemos em até 15 dias, conforme previsto em lei.</p>
+
+              <h3>6. Segurança e Incidentes</h3>
+              <p>Adotamos medidas técnicas e administrativas robustas, como criptografia (SSL/TLS), controle de acesso restrito e firewalls. Em caso de incidente de segurança relevante que possa acarretar risco, comunicaremos a você e à Autoridade Nacional de Proteção de Dados (ANPD) em prazo razoável.</p>
+
+              <h3>7. Disposições Gerais</h3>
+              <ul>
+                <li><strong>Cookies:</strong> Você pode gerenciar os cookies diretamente nas configurações do seu navegador.</li>
+                <li><strong>Atualizações:</strong> Esta política pode ser alterada a qualquer momento. A versão atualizada estará sempre disponível nesta página.</li>
+                <li><strong>Vigência:</strong> Esta política entra em vigor a partir de 01 de Janeiro de 2026.</li>
+              </ul>
 
             </div>
           </div>
@@ -174,59 +254,192 @@
         <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
            <div class="col-span-2 md:col-span-1 flex flex-col gap-4">
-             <a href="index.html" class="flex items-center gap-2">
+             <a href="#topo" class="flex items-center gap-2">
                <img src="assets/img/G6-Cloud.png.png" alt="Logo G6 Cloud" class="h-8 w-auto" width="32" height="32" />
                <span class="text-xl font-black text-text-light dark:text-text-dark">G6 Cloud</span>
              </a>
              <div class="flex flex-col gap-1">
                <p class="text-sm font-medium text-subtle-light dark:text-subtle-dark">Fale Conosco:</p>
                <a href="mailto:g6cloud@g6cloud.com.br" class="text-sm text-primary hover:underline">g6cloud@g6cloud.com.br</a>
+               <p class="text-sm text-subtle-light dark:text-subtle-dark">(11) 97659-6203</p>
+             </div>
+           </div>
+
+           <div class="flex flex-col gap-4">
+             <h4 class="text-base font-bold text-text-light dark:text-text-dark">Acesso Rápido</h4>
+             <div class="flex flex-col gap-2">
+               <a href="#topo" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Início</a>
+               <a href="#servicos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Serviços</a>
+               <a href="#sobre-nos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Sobre Nós</a>
+               <a href="#contato" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Contato</a>
              </div>
            </div>
 
            <div class="flex flex-col gap-4">
              <h4 class="text-base font-bold text-text-light dark:text-text-dark">Legal</h4>
              <div class="flex flex-col gap-2">
-               <a href="termos.html" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary">Termos de Serviço</a>
-               <a href="privacidade.html" class="text-sm text-primary font-bold">Política de Privacidade</a>
+               <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors" href="termos.html">Termos de Serviço</a>
+               <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors" href="privacidade.html">Política de Privacidade</a>
              </div>
            </div>
-           
-           <div class="col-span-2 text-right">
-             <p class="text-sm text-subtle-light dark:text-subtle-dark">© 2026 G6 Cloud.</p>
+
+           <div class="flex flex-col gap-4">
+             <h4 class="text-base font-bold text-text-light dark:text-text-dark">Siga-nos</h4>
+             <div class="flex items-center gap-3">
+<!-- WhatsApp -->
+<a
+  href="https://wa.me/5511976596203?text=Ol%C3%A1%20G6%20Cloud!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20servi%C3%A7os%20em%20nuvem."
+  class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
+         hover:bg-green-50 dark:hover:bg-green-900/30 hover:text-green-500 dark:hover:text-green-400
+         transition-all duration-200 hover:scale-110 hover:shadow-md"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="WhatsApp G6 Cloud"
+>
+  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.446l-.232-.139-3.578.874.249-3.471-.161-.233a9.87 9.87 0 01-1.446-5.038c0-5.428 4.411-9.838 9.845-9.838a9.861 9.861 0 015.04 1.444l.226.139.289-.287.289-.287.228.138c1.671 1.006 2.94 2.421 3.766 4.146.826 1.725.985 3.915.304 5.749-.297 1.006-.883 1.758-1.749 2.257-.689.435-1.446.724-2.247.853-.801.13-1.592.028-2.32-.23z"/>
+  </svg>
+</a>
+
+  <!-- LinkedIn -->
+  <a
+    href="https://www.linkedin.com/company/g6-cloud"
+    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
+           hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-[#0A66C2] dark:hover:text-[#5EA0FF]
+           transition-all duration-200 hover:scale-110 hover:shadow-md"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn G6 Cloud"
+  >
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.07 20.45H3.56V9h3.51v11.45zM5.31 7.43a2.04 2.04 0 1 1 0-4.08 2.04 2.04 0 0 1 0 4.08zm15.14 13.02h-3.51v-5.57c0-1.33-.03-3.04-1.86-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.43V9h3.37v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.25 2.37 4.25 5.46v6.28z"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a
+    href="https://www.instagram.com/g6cloud/"
+    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
+           hover:bg-pink-50 dark:hover:bg-pink-900/30 hover:text-[#E1306C] dark:hover:text-[#FF6FA5]
+           transition-all duration-200 hover:scale-110 hover:shadow-md"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram G6 Cloud"
+  >
+    <svg class="h-5 w-5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="M8 0C5.83 0 5.56.01 4.7.05 3.85.09 3.27.22 2.76.42a3.9 3.9 0 0 0-1.42.92A3.9 3.9 0 0 0 .42 2.76C.22 3.27.09 3.85.05 4.7.01 5.56 0 5.83 0 8c0 2.17.01 2.44.05 3.3.04.85.17 1.43.37 1.94.21.52.48.97.93 1.42.44.45.89.72 1.42.93.51.2 1.09.33 1.94.37.86.04 1.14.05 3.3.05s2.44-.01 3.3-.05c.85-.04 1.43-.17 1.94-.37a3.9 3.9 0 0 0 1.42-.93c.45-.45.72-.9.93-1.42.2-.51.33-1.09.37-1.94.04-.86.05-1.14.05-3.3s-.01-2.44-.05-3.3c-.04-.85-.17-1.43-.37-1.94a3.9 3.9 0 0 0-.93-1.42A3.9 3.9 0 0 0 13.24.42C12.73.22 12.15.09 11.3.05 10.44.01 10.17 0 8 0Zm-.72 1.44h.72c2.13 0 2.39.01 3.23.05.78.03 1.2.16 1.49.27.37.14.64.32.92.6.28.28.46.55.6.92.11.29.24.71.27 1.49.04.84.05 1.1.05 3.23s-.01 2.39-.05 3.23c-.03.78-.16 1.2-.27 1.49a2.5 2.5 0 0 1-.6.92c-.28.28-.55.46-.92.6-.29.11-.71.24-1.49.28-.84.03-1.1.04-3.23.04s-2.39-.01-3.23-.04c-.78-.04-1.2-.17-1.49-.28a2.5 2.5 0 0 1-.92-.6 2.5 2.5 0 0 1-.6-.92c-.11-.29-.24-.71-.28-1.49C1.45 10.39 1.44 10.13 1.44 8c0-2.13.01-2.39.04-3.23.04-.78.17-1.2.28-1.49.14-.37.32-.64.6-.92s.55-.46.92-.6c.29-.11.71-.24 1.49-.28.84-.03 1.1-.04 3.23-.04ZM8 3.89a4.11 4.11 0 1 0 0 8.22 4.11 4.11 0 0 0 0-8.22Zm0 1.44a2.67 2.67 0 1 1 0 5.34 2.67 2.67 0 0 1 0-5.34Zm4.28-1.56a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92Z"/>
+    </svg>
+  </a>
+
+  <!-- Site -->
+  <a
+    href="https://g6cloud.com.br"
+    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
+           hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary
+           transition-all duration-200 hover:scale-110 hover:shadow-md"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Site G6 Cloud"
+  >
+    <span class="material-symbols-outlined text-[20px]">public</span>
+  </a>
+</div>
            </div>
+         </div>
+
+         <div class="mt-12 pt-8 border-t border-border-light dark:border-border-dark text-center">
+           <p class="text-sm text-subtle-light dark:text-subtle-dark">© 2026 G6 Cloud. Todos os direitos reservados.</p>
          </div>
         </div>
       </footer>
     </div>
   </div>
 
+  <!-- ====== Scripts ====== -->
   <script src="assets/js/theme.min.js" defer></script>
+  <script src="assets/js/form.min.js" defer></script>
   <script>
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    themeToggleBtn.addEventListener('click', () => {
-        document.documentElement.classList.toggle('dark');
-        if (document.documentElement.classList.contains('dark')) {
-            localStorage.theme = 'dark';
-        } else {
-            localStorage.theme = 'light';
-        }
-    });
-
     function openContactModal() {
       const modal = document.getElementById('contact-modal');
       modal.classList.remove('hidden');
       setTimeout(() => modal.classList.add('opacity-100'), 10);
       document.body.style.overflow = 'hidden';
     }
+
     function closeContactModal() {
       const modal = document.getElementById('contact-modal');
       modal.classList.remove('opacity-100');
       setTimeout(() => modal.classList.add('hidden'), 300);
       document.body.style.overflow = 'auto';
     }
-    document.getElementById('contact-modal').addEventListener('click', function(e) { if (e.target === this) closeContactModal(); });
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeContactModal(); });
+
+    // Fechar modal ao clicar fora
+    document.getElementById('contact-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeContactModal();
+      }
+    });
+
+    // Fechar modal com ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !document.getElementById('contact-modal').classList.contains('hidden')) {
+        closeContactModal();
+      }
+    });
+
+    // Script para envio do formulário do modal (MELHORADO)
+    const modalForm = document.getElementById("contact-modal-form");
+    const modalStatusEl = document.getElementById("modal-contact-status");
+    const modalSubmitBtn = document.getElementById("modal-contact-submit");
+
+    modalForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(modalForm);
+      const name = (formData.get("name") || "").toString().trim();
+      const company = (formData.get("company") || "").toString().trim();
+      const email = (formData.get("email") || "").toString().trim();
+      const phone = (formData.get("phone") || "").toString().trim();
+      const message = (formData.get("message") || "").toString().trim();
+
+      if (!name || !company || !email || !phone || !message) {
+        modalStatusEl.textContent = "❌ Por favor, preencha todos os campos obrigatórios.";
+        modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
+        return;
+      }
+
+      const subject = `Lead-${name.replace(/\s+/g, "")}`;
+      formData.append("subject", subject);
+
+      modalSubmitBtn.disabled = true;
+      modalSubmitBtn.classList.add("opacity-70", "cursor-not-allowed");
+      modalStatusEl.textContent = "📤 Enviando mensagem...";
+      modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-800";
+
+      try {
+        const res = await fetch(modalForm.action, {
+          method: "POST",
+          body: formData
+        });
+        const data = await res.json();
+        
+        if (data.success) {
+          modalStatusEl.textContent = "✅ Mensagem enviada com sucesso! Em breve entraremos em contato.";
+          modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800";
+          modalForm.reset();
+          setTimeout(() => closeContactModal(), 3000);
+        } else {
+          modalStatusEl.textContent = "❌ Erro ao enviar. Tente novamente.";
+          modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
+        }
+      } catch (err) {
+        console.error(err);
+        modalStatusEl.textContent = "❌ Erro de conexão. Verifique sua internet e tente novamente.";
+        modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
+      } finally {
+        modalSubmitBtn.disabled = false;
+        modalSubmitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+      }
+    });
   </script>
-</body>
 </html>
