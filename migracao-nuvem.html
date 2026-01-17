@@ -1,565 +1,792 @@
 <!DOCTYPE html>
+<!--
+  ╔════════════════════════════════════════════════════════════════════════════╗
+  ║                                                                            ║
+  ║                    PÁGINA: MIGRAÇÃO PARA NUVEM - G6 CLOUD                   ║
+  ║                                                                            ║
+  ║  Descrição: Landing page do serviço de Migração para Nuvem, com foco em     ║
+  ║             captação de leads (CTA + Modal) e conteúdo de autoridade        ║
+  ║             (metodologia, benefícios e plataformas suportadas).             ║
+  ║                                                                            ║
+  ║  Estrutura:                                                                ║
+  ║    1. HEAD  - SEO (meta tags), OpenGraph, Twitter, Canonical e Schema      ║
+  ║    2. CSS   - Tailwind via CDN + configuração de tema e paleta custom       ║
+  ║    3. HEADER- Navegação fixa + botão de alternância de tema                ║
+  ║    4. MAIN  - Hero + Metodologia + Benefícios + Provedores + CTA           ║
+  ║    5. MODAL - Formulário de contato (reutilizado)                          ║
+  ║    6. FOOTER- Contato, links e redes sociais                               ║
+  ║    7. JS    - Tema + Modal + Envio de formulário assíncrono                ║
+  ║                                                                            ║
+  ║  Observação: O padrão de tema do projeto usa "darkMode: class" e alterna   ║
+  ║             adicionando/removendo a classe "dark" no HTML/BODY.            ║
+  ╚════════════════════════════════════════════════════════════════════════════╝
+-->
 
-<html class="light" lang="pt-BR"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="description" content="Migração para Nuvem - G6 Cloud. Especialistas em migração segura e eficiente para AWS, Azure e Google Cloud. Zero downtime e máxima performance." />
-<meta name="keywords" content="migração nuvem, cloud migration, AWS, Azure, Google Cloud, migração segura, infraestrutura cloud" />
-<meta name="author" content="G6 Cloud" />
-<meta name="robots" content="index, follow" />
-<meta name="language" content="pt-BR" />
-<meta property="og:title" content="Migração para Nuvem - G6 Cloud" />
-<meta property="og:description" content="Especialistas em migração segura e eficiente para AWS, Azure e Google Cloud." />
-<meta property="og:image" content="assets/img/G6-Cloud.png.png" />
-<meta property="og:url" content="https://g6cloud.com.br/migracao-nuvem.html" />
-<meta name="twitter:card" content="summary_large_image" />  <link rel="canonical" href="https://g6cloud.com.br/migracao-nuvem.html" /><title>Migração para Nuvem - G6 Cloud</title>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Google Fonts: Inter -->
-<link rel="icon" href="assets/img/g6icone.png">
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Migração para Nuvem",
-  "provider": {
-    "@type": "Organization",
-    "name": "G6 Cloud",
-    "url": "https://g6cloud.com.br"
-  },
-  "description": "Especialistas em migração segura e eficiente para AWS, Azure e Google Cloud."
-}
-</script><!-- Theme Configuration -->
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#1A73E8",
-                        "primary-hover": "#1557B0",
-                        "background-light": "#F3F4F6",
-                        "background-dark": "#0B1116",
-                        "surface-light": "#FFFFFF",
-                        "surface-dark": "#161B22",
-                        "input-bg-dark": "#161B22",
-                        "input-border-dark": "#30363D",
-                        "text-light": "#111418",
-                        "text-dark": "#F9FAFB",
-                        "subtle-light": "#6B7280",
-                        "subtle-dark": "#9CA3AF",
-                        "border-light": "#DBE0E6",
-                        "border-dark": "#2A3B4C"
-                    },
-                    fontFamily: {
-                        display: ["Inter", "sans-serif"],
-                        body: ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {
-                        DEFAULT: "0.375rem",
-                        lg: "0.5rem",
-                        xl: "0.75rem",
-                        full: "9999px"
-                    },
-                },
-            },
+<html class="light" lang="pt-BR">
+<head>
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 1: CONFIGURAÇÕES BÁSICAS DO DOCUMENTO ====== -->
+  <!-- ====================================================================== -->
+
+  <!-- Charset UTF-8: garante suporte a caracteres especiais (pt-BR) -->
+  <meta charset="utf-8"/>
+
+  <!-- Viewport: habilita layout responsivo em mobile -->
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 2: SEO (META TAGS) ====== -->
+  <!-- ====================================================================== -->
+
+  <!-- Description: resumo da página para motores de busca -->
+  <meta name="description" content="Migração para Nuvem - G6 Cloud. Especialistas em migração segura e eficiente para AWS, Azure e Google Cloud. Zero downtime e máxima performance." />
+
+  <!-- Keywords: termos relacionados ao serviço para reforço semântico -->
+  <meta name="keywords" content="migração nuvem, cloud migration, AWS, Azure, Google Cloud, migração segura, infraestrutura cloud" />
+
+  <!-- Author: identificação da empresa -->
+  <meta name="author" content="G6 Cloud" />
+
+  <!-- Robots: permite indexação e seguir links -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Language: idioma principal do conteúdo -->
+  <meta name="language" content="pt-BR" />
+
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 3: SOCIAL (OPEN GRAPH / TWITTER) ====== -->
+  <!-- ====================================================================== -->
+
+  <!-- OpenGraph: controla como a página aparece ao ser compartilhada -->
+  <meta property="og:title" content="Migração para Nuvem - G6 Cloud" />
+  <meta property="og:description" content="Especialistas em migração segura e eficiente para AWS, Azure e Google Cloud." />
+  <meta property="og:image" content="assets/img/G6-Cloud.png.png" />
+  <meta property="og:url" content="https://g6cloud.com.br/migracao-nuvem.html" />
+
+  <!-- Twitter Card: define preview no Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Canonical: evita conteúdo duplicado em SEO -->
+  <link rel="canonical" href="https://g6cloud.com.br/migracao-nuvem.html" />
+
+  <!-- Title: título da aba do navegador -->
+  <title>Migração para Nuvem - G6 Cloud</title>
+
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 4: DEPENDÊNCIAS (TAILWIND / FONTES / ÍCONES) ====== -->
+  <!-- ====================================================================== -->
+
+  <!-- Tailwind via CDN + plugins:
+       - forms: melhora estilo dos inputs
+       - container-queries: permite uso de @container e breakpoints por container -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Favicon: ícone da aba do navegador -->
+  <link rel="icon" href="assets/img/g6icone.png">
+
+  <!-- Preconnect: melhora performance carregando fontes do Google -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+
+  <!-- Fonte Inter: tipografia base do site -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+
+  <!-- Material Symbols: biblioteca de ícones do Google (há duplicação abaixo) -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 5: SCHEMA MARKUP (JSON-LD) ====== -->
+  <!-- ====================================================================== -->
+
+  <!-- Dados estruturados para SEO:
+       - Define o serviço “Migração para Nuvem” e a organização provedora -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Migração para Nuvem",
+    "provider": {
+      "@type": "Organization",
+      "name": "G6 Cloud",
+      "url": "https://g6cloud.com.br"
+    },
+    "description": "Especialistas em migração segura e eficiente para AWS, Azure e Google Cloud."
+  }
+  </script>
+
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 6: CONFIGURAÇÃO DO TAILWIND (TEMA / CORES / FONTES) ====== -->
+  <!-- ====================================================================== -->
+
+  <!-- Configuração do Tailwind:
+       - darkMode: "class" (ativa tema escuro via classe "dark")
+       - paleta semântica: primary, background, surface, text, border -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#1A73E8",
+            "primary-hover": "#1557B0",
+            "background-light": "#F3F4F6",
+            "background-dark": "#0B1116",
+            "surface-light": "#FFFFFF",
+            "surface-dark": "#161B22",
+            "input-bg-dark": "#161B22",
+            "input-border-dark": "#30363D",
+            "text-light": "#111418",
+            "text-dark": "#F9FAFB",
+            "subtle-light": "#6B7280",
+            "subtle-dark": "#9CA3AF",
+            "border-light": "#DBE0E6",
+            "border-dark": "#2A3B4C"
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+            body: ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            DEFAULT: "0.375rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          }
         }
-    </script>
-<style>
-        /* Base styles */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
+      }
+    }
+  </script>
+
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 7: CSS BASE ====== -->
+  <!-- ====================================================================== -->
+
+  <style>
+    /* Fonte padrão do documento (fallback caso Tailwind não aplique) */
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Configuração padrão dos ícones Material Symbols */
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
 </head>
+
 <body class="font-body bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark antialiased">
+  <!-- ====================================================================== -->
+  <!-- ====== CONTAINER PRINCIPAL ====== -->
+  <!-- ====================================================================== -->
+
   <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-<!-- Header: Minimal, Left-aligned links, No Logo -->
-      <!-- ====== Header / Navegação ====== -->
-      <header class="fixed inset-x-0 top-0 z-30 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm shadow-md">
-        <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
-         <div class="flex items-center justify-between py-4">
-           <a class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2" href="index.html">
+
+    <!-- ==================================================================== -->
+    <!-- ====== HEADER / NAVEGAÇÃO FIXA ====== -->
+    <!-- ==================================================================== -->
+
+    <!-- Observação: comentário original menciona "sem logo", mas aqui há logo/brand -->
+    <!-- Header fixo com blur e sombra para melhor leitura em scroll -->
+    <header class="fixed inset-x-0 top-0 z-30 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm shadow-md">
+      <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
+        <div class="flex items-center justify-between py-4">
+
+          <!-- Logo/Marca: link para Home -->
+          <a class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2" href="index.html">
             <span class="material-symbols-outlined text-primary">cloud</span>
-                G6 Cloud
-             </a>
-           <!-- Navegação desktop -->
-            <nav class="hidden md:flex flex-1 justify-center items-center gap-6 ml-12">
-              <div class="flex items-center gap-8">
-                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="index.html">Início</a>
-                <a class="text-sm font-bold leading-normal text-primary" href="#">Migração</a>
-                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="infraestrutura-cloud.html">Infraestrutura</a>
-                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="devops-automacao.html">DevOps</a>
-                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="suporte-monitoramento.html">Suporte e Monitoramento</a>
-                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="consultoria-finops.html">FinOps</a>
-              </div>
-            </nav>
+            G6 Cloud
+          </a>
 
-           <!-- Ações -->
-           <div class="flex items-center gap-4 ml-auto">
-             <button
-               class="relative inline-flex items-center h-10 w-10 justify-center rounded-lg text-primary hover:bg-primary/10 transition-colors"
-               id="theme-toggle"
-               type="button"
-               aria-label="Alternar tema claro/escuro"
-             >
-               <span class="material-symbols-outlined dark:hidden">light_mode</span>
-               <span class="material-symbols-outlined hidden dark:inline">dark_mode</span>
-             </button>
-           </div>
-         </div>
-        </div>
-      </header>
-<!-- Main Content Wrapper -->
-<main class="flex flex-col items-center w-full">
-<!-- Hero Section -->
-<section class="w-full max-w-7xl px-4 md:px-10 py-12 md:py-20 pt-28">
-<div class="@container">
-<div class="flex flex-col-reverse gap-8 @[864px]:flex-row items-center">
-<div class="flex flex-col gap-6 flex-1 text-left">
-<div class="flex flex-col gap-4">
-<span class="text-primary font-bold text-sm tracking-wide uppercase">Consultoria Cloud Especializada</span>
-<h1 class="text-[#111418] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl lg:text-6xl">
-                                    Migre sua infraestrutura com segurança e agilidade
-                                </h1>
-<h2 class="text-[#111418]/80 dark:text-white/80 text-lg font-normal leading-relaxed max-w-xl">
-                                    Especialistas em migração para AWS, Azure e Google Cloud. Levamos sua empresa para o próximo nível com zero dor de cabeça e máxima eficiência.
-                                </h2>
-</div>
-<div class="flex flex-wrap gap-4 pt-2">
-<button onclick="openContactModal()" class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary hover:bg-primary-dark transition-colors text-white text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/30">
-<span class="truncate">Entre em contato</span>
-</button>
-<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-transparent border border-[#dbe0e6] dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-[#111418] dark:text-white text-base font-medium leading-normal">
-<span class="truncate">Ver Casos de Sucesso</span>
-</button>
-</div>
-</div>
-<div class="w-full flex-1 rounded-2xl overflow-hidden shadow-2xl">
-<div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover" data-alt="Abstract visualization of cloud data migration with isometric servers and blue network lines" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDTMPFagF9CB3iDI0XaQDXnah3SjTaR-MAlrXutvH7pLqGUD5phxdKrHwO_2qbmqdEZ6hqmc_UxskI3goxAUXKa_Giy_YPfFnrLbCjlP-ogc6B3CEO01H5CRM-OlOuvbhQ5KgvOYVLkBa_3JRssmEPg5ui0gem03Vee9TK95TMM9WcFS3jt-s7XPRvXf19ZHc4M7vKSY7hJ8-rr0Q5MR_znzkBsRTJtUQhKrI8RDPSCAPFH-2-hkm9aaJXkxtH_ZMBgBocroQHBcK0");'>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Methodology Section Header -->
-<section class="w-full max-w-7xl px-4 md:px-10 pt-10 pb-4">
-<div class="text-center max-w-3xl mx-auto">
-<h2 class="text-[#111418] dark:text-white text-3xl font-bold leading-tight md:text-4xl tracking-tight">Nossa Metodologia de Migração</h2>
-<p class="text-text-secondary mt-4 text-lg">Processo estruturado para garantir integridade, segurança e performance desde o primeiro dia.</p>
-</div>
-</section>
-<!-- Process Grid (3 Steps) -->
-<section class="w-full max-w-7xl px-4 md:px-10 py-10">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Step 1 -->
-<div class="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-white dark:bg-gray-900 p-6 hover:shadow-lg transition-shadow duration-300">
-<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-3xl">content_paste_search</span>
-</div>
-<div class="flex flex-col gap-2">
-<h3 class="text-[#111418] dark:text-white text-xl font-bold leading-tight">1. Levantamento</h3>
-<p class="text-text-secondary dark:text-gray-400 text-base leading-relaxed">
-                                Realizamos um diagnóstico completo da sua infraestrutura atual (on-premise ou cloud), mapeando dependências, custos e requisitos de segurança.
-                            </p>
-</div>
-</div>
-<!-- Step 2 -->
-<div class="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-white dark:bg-gray-900 p-6 hover:shadow-lg transition-shadow duration-300">
-<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-3xl">architecture</span>
-</div>
-<div class="flex flex-col gap-2">
-<h3 class="text-[#111418] dark:text-white text-xl font-bold leading-tight">2. Planejamento</h3>
-<p class="text-text-secondary dark:text-gray-400 text-base leading-relaxed">
-                                Desenhamos a arquitetura ideal na nuvem de destino e criamos um roadmap de migração detalhado, com estratégias de rollback e minimização de downtime.
-                            </p>
-</div>
-</div>
-<!-- Step 3 -->
-<div class="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-white dark:bg-gray-900 p-6 hover:shadow-lg transition-shadow duration-300">
-<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-3xl">rocket_launch</span>
-</div>
-<div class="flex flex-col gap-2">
-<h3 class="text-[#111418] dark:text-white text-xl font-bold leading-tight">3. Execução</h3>
-<p class="text-text-secondary dark:text-gray-400 text-base leading-relaxed">
-                                Executamos a migração dos dados e aplicações seguindo as melhores práticas de DevOps, realizamos testes rigorosos e validamos o ambiente final.
-                            </p>
-</div>
-</div>
-</div>
-</section>
-<!-- Benefits/Why Us Section -->
-<section class="w-full bg-white dark:bg-gray-900 py-16">
-<div class="w-full max-w-7xl px-4 md:px-10 mx-auto">
-<div class="flex flex-col md:flex-row gap-12 items-center">
-<div class="flex-1 flex flex-col gap-6">
-<h2 class="text-[#111418] dark:text-white text-3xl font-bold leading-tight">Por que escolher a G6 Cloud?</h2>
-<p class="text-text-secondary dark:text-gray-400 text-lg">
-                                Entendemos que cada negócio é único. Nossa abordagem consultiva foca em resolver dores reais de infraestrutura para PMEs.
-                            </p>
-<ul class="flex flex-col gap-4 mt-2">
-<li class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
-<div>
-<strong class="block text-[#111418] dark:text-white">Redução de Custos</strong>
-<span class="text-text-secondary dark:text-gray-400 text-sm">Otimização de recursos (FinOps) para que você pague apenas pelo que usa.</span>
-</div>
-</li>
-<li class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
-<div>
-<strong class="block text-[#111418] dark:text-white">Escalabilidade Automática</strong>
-<span class="text-text-secondary dark:text-gray-400 text-sm">Infraestrutura que cresce conforme a demanda do seu negócio, sem desperdício.</span>
-</div>
-</li>
-<li class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
-<div>
-<strong class="block text-[#111418] dark:text-white">Segurança e Compliance</strong>
-<span class="text-text-secondary dark:text-gray-400 text-sm">Configurações seguindo padrões rígidos de segurança desde a fundação.</span>
-</div>
-</li>
-</ul>
-</div>
-<div class="flex-1 w-full">
-<div class="rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 p-8 h-full flex items-center justify-center">
-<!-- Abstract UI representation of cloud metrics -->
-<div class="relative w-full aspect-video bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 flex flex-col gap-3">
-<div class="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-2">
-<div class="h-3 w-24 bg-gray-200 dark:bg-gray-700 rounded"></div>
-<div class="h-3 w-8 bg-green-100 text-green-600 text-[10px] flex items-center justify-center rounded font-bold">ACTIVE</div>
-</div>
-<div class="flex gap-2 items-end h-24 mt-2 justify-between px-2">
-<div class="w-8 bg-primary/20 rounded-t h-[40%]"></div>
-<div class="w-8 bg-primary/40 rounded-t h-[60%]"></div>
-<div class="w-8 bg-primary/60 rounded-t h-[50%]"></div>
-<div class="w-8 bg-primary/80 rounded-t h-[80%]"></div>
-<div class="w-8 bg-primary rounded-t h-[65%]"></div>
-<div class="w-8 bg-primary rounded-t h-[90%]"></div>
-</div>
-<div class="flex gap-4 pt-2">
-<div class="h-2 w-full bg-gray-100 dark:bg-gray-800 rounded overflow-hidden">
-<div class="h-full w-[75%] bg-primary"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Supported Platforms -->
-<section class="py-16">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold leading-tight mb-4">Plataformas Suportadas</h2>
-        <p class="text-lg text-gray-600 mb-12">
-            Trabalhamos com os principais provedores de nuvem do mercado para oferecer a melhor solução agnóstica para sua empresa.
-        </p>
+          <!-- Navegação desktop (esconde no mobile) -->
+          <nav class="hidden md:flex flex-1 justify-center items-center gap-6 ml-12">
+            <div class="flex items-center gap-8">
+              <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="index.html">Início</a>
 
-        <div class="flex justify-between gap-6">
+              <!-- Link ativo da página: estilizado em primary + bold -->
+              <a class="text-sm font-bold leading-normal text-primary" href="#">Migração</a>
 
-            <div class="w-1/3 flex flex-col gap-4 pb-3 group">
-                <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
-                    <img 
-                        alt="AWS Logo" 
-                        class="max-w-[110px] max-h-[50px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300" 
-                        data-alt="Amazon Web Services logo" 
-                        src="assets/img/AWS_Logo.png.png"
-                    />
-                </div>
-                <div>
-                    <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">AWS</p>
-                    <p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Amazon Web Services</p>
-                </div>
+              <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="infraestrutura-cloud.html">Infraestrutura</a>
+              <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="devops-automacao.html">DevOps</a>
+              <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="suporte-monitoramento.html">Suporte e Monitoramento</a>
+              <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="consultoria-finops.html">FinOps</a>
             </div>
+          </nav>
 
-            <div class="w-1/3 flex flex-col gap-4 pb-3 group">
-                <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
-                    <img 
-                        alt="Microsoft Azure Logo" 
-                        class="max-w-[170px] max-h-[90px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300" 
-                        data-alt="Microsoft Azure logo" 
-                        src="assets/img/Microsoft_Azure-Logo.png.png"
-                    />
-                </div>
-                <div>
-                    <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Microsoft Azure</p>
-                    <p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Azure Cloud Solutions</p>
-                </div>
-            </div>
-
-            <div class="w-1/3 flex flex-col gap-4 pb-3 group">
-                <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
-                    <img 
-                        alt="Google Cloud Logo" 
-                        class="max-w-[170px] max-h-[90px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300" 
-                        data-alt="Google Cloud logo" 
-                        src="assets/img/Google-Cloud-Logo.png.png"
-                    />
-                </div>
-                <div>
-                    <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Google Cloud</p>
-                    <p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Google Cloud Platform</p>
-                </div>
-            </div>
+          <!-- Ações do header -->
+          <div class="flex items-center gap-4 ml-auto">
+            <!-- Botão de alternância de tema:
+                 - Ícone "light_mode" aparece no tema claro
+                 - Ícone "dark_mode" aparece no tema escuro -->
+            <button
+              class="relative inline-flex items-center h-10 w-10 justify-center rounded-lg text-primary hover:bg-primary/10 transition-colors"
+              id="theme-toggle"
+              type="button"
+              aria-label="Alternar tema claro/escuro"
+            >
+              <span class="material-symbols-outlined dark:hidden">light_mode</span>
+              <span class="material-symbols-outlined hidden dark:inline">dark_mode</span>
+            </button>
+          </div>
 
         </div>
-    </div>
-</section>
-<!-- CTA Section -->
-<section class="py-20 px-6 lg:px-40 bg-gray-50 dark:bg-[#0f172a] border-t border-gray-200 dark:border-slate-800 transition-colors duration-300">
-  <div class="max-w-4xl mx-auto rounded-3xl 
-              bg-white dark:bg-[#1e293b]
-              border border-slate-200 dark:border-slate-700/50 
-              p-10 lg:p-14 text-center flex flex-col items-center 
-              shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none">
-    
-    <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight">
-      Pronto para modernizar sua <br class="hidden md:block"> infraestrutura?
-    </h2>
-    
-    <p class="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-2xl leading-relaxed">
-      Agende uma conversa gratuita com nossos arquitetos e descubra como a <span class="font-semibold text-slate-900 dark:text-blue-400">G6 Cloud</span> pode transformar a tecnologia da sua empresa.
-    </p>
-
-    <button onclick="openContactModal()" 
-            class="group flex items-center justify-center gap-3 
-                   bg-[#1e3a8a] dark:bg-blue-600
-                   hover:bg-[#1e40af] dark:hover:bg-blue-500
-                   text-white font-bold py-4 px-10 rounded-xl 
-                   transition-all duration-300 shadow-lg shadow-blue-900/20 hover:shadow-blue-900/40 hover:-translate-y-0.5">
-      <span class="material-symbols-outlined text-[22px]">mail</span>
-      <span>Entre em contato agora</span>
-    </button>
-    
-  </div>
-</section>
-
-<!-- Modal de Contato -->
-<div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
-  <div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl w-full max-w-2xl h-[95vh] max-h-[900px] flex flex-col">
-    <!-- Conteúdo do modal SEM overflow -->
-    <div class="flex-1 p-6 sm:p-8 flex flex-col overflow-y-auto">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-[#111418] dark:text-white">Entre em contato</h2>
-        <button onclick="closeContactModal()" class="text-gray-500 hover:text-[#111418] dark:text-gray-400 dark:hover:text-white">
-          <span class="material-symbols-outlined text-2xl">close</span>
-        </button>
       </div>
-      <p class="text-gray-600 dark:text-gray-300 mb-6">
-        Vamos conversar sobre como podemos ajudar sua empresa a crescer com as melhores soluções em nuvem.
-      </p>
-      <form id="contact-modal-form" action="send_form.php" method="POST" class="space-y-6">
-        <div>
-          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-name">
-            Nome
-          </label>
-          <input
-            id="modal-name"
-            name="name"
-            class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
-            placeholder="Seu nome"
-            type="text"
-            required
-          />
+    </header>
+
+    <!-- ==================================================================== -->
+    <!-- ====== MAIN: CONTEÚDO DA PÁGINA ====== -->
+    <!-- ==================================================================== -->
+
+    <main class="flex flex-col items-center w-full">
+
+      <!-- ================================================================ -->
+      <!-- ====== HERO SECTION ====== -->
+      <!-- ================================================================ -->
+      <!-- pt-28: compensa o header fixo -->
+      <section class="w-full max-w-7xl px-4 md:px-10 py-12 md:py-20 pt-28">
+        <!-- Container queries: permite breakpoint baseado no container (não na viewport) -->
+        <div class="@container">
+          <div class="flex flex-col-reverse gap-8 @[864px]:flex-row items-center">
+
+            <!-- Coluna de texto -->
+            <div class="flex flex-col gap-6 flex-1 text-left">
+              <div class="flex flex-col gap-4">
+                <!-- Tagline -->
+                <span class="text-primary font-bold text-sm tracking-wide uppercase">Consultoria Cloud Especializada</span>
+
+                <!-- Headline principal -->
+                <h1 class="text-[#111418] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl lg:text-6xl">
+                  Migre sua infraestrutura com segurança e agilidade
+                </h1>
+
+                <!-- Subheadline: reforça benefícios e plataformas -->
+                <h2 class="text-[#111418]/80 dark:text-white/80 text-lg font-normal leading-relaxed max-w-xl">
+                  Especialistas em migração para AWS, Azure e Google Cloud. Levamos sua empresa para o próximo nível com zero dor de cabeça e máxima eficiência.
+                </h2>
+              </div>
+
+              <!-- CTAs do Hero -->
+              <div class="flex flex-wrap gap-4 pt-2">
+                <!-- CTA primário abre o modal -->
+                <button onclick="openContactModal()"
+                  class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary hover:bg-primary-dark transition-colors text-white text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/30">
+                  <span class="truncate">Entre em contato</span>
+                </button>
+
+                <!-- CTA secundário (ainda sem link/ação definida) -->
+                <button
+                  class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-transparent border border-[#dbe0e6] dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-[#111418] dark:text-white text-base font-medium leading-normal">
+                  <span class="truncate">Ver Casos de Sucesso</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Coluna de imagem -->
+            <div class="w-full flex-1 rounded-2xl overflow-hidden shadow-2xl">
+              <!-- Background image via CSS inline (não usa <img>) -->
+              <div
+                class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover"
+                data-alt="Abstract visualization of cloud data migration with isometric servers and blue network lines"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDTMPFagF9CB3iDI0XaQDXnah3SjTaR-MAlrXutvH7pLqGUD5phxdKrHwO_2qbmqdEZ6hqmc_UxskI3goxAUXKa_Giy_YPfFnrLbCjlP-ogc6B3CEO01H5CRM-OlOuvbhQ5KgvOYVLkBa_3JRssmEPg5ui0gem03Vee9TK95TMM9WcFS3jt-s7XPRvXf19ZHc4M7vKSY7hJ8-rr0Q5MR_znzkBsRTJtUQhKrI8RDPSCAPFH-2-hkm9aaJXkxtH_ZMBgBocroQHBcK0");'>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div>
-          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-email">
-            E-mail
-          </label>
-          <input
-            id="modal-email"
-            name="email"
-            class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
-            placeholder="seu.email@exemplo.com"
-            type="email"
-            required
-          />
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- ====== METODOLOGIA: CABEÇALHO ====== -->
+      <!-- ================================================================ -->
+      <section class="w-full max-w-7xl px-4 md:px-10 pt-10 pb-4">
+        <div class="text-center max-w-3xl mx-auto">
+          <h2 class="text-[#111418] dark:text-white text-3xl font-bold leading-tight md:text-4xl tracking-tight">
+            Nossa Metodologia de Migração
+          </h2>
+
+          <!-- Observação: classe text-text-secondary não está definida na config -->
+          <p class="text-text-secondary mt-4 text-lg">
+            Processo estruturado para garantir integridade, segurança e performance desde o primeiro dia.
+          </p>
         </div>
-        <div>
-          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-phone">
-            Telefone
-          </label>
-          <input
-            id="modal-phone"
-            name="phone"
-            class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
-            placeholder="(11) 99999-9999"
-            type="tel"
-            required
-          />
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- ====== METODOLOGIA: GRID DE 3 PASSOS ====== -->
+      <!-- ================================================================ -->
+      <section class="w-full max-w-7xl px-4 md:px-10 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- PASSO 1 -->
+          <div class="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-white dark:bg-gray-900 p-6 hover:shadow-lg transition-shadow duration-300">
+            <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-3xl">content_paste_search</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-[#111418] dark:text-white text-xl font-bold leading-tight">1. Levantamento</h3>
+              <p class="text-text-secondary dark:text-gray-400 text-base leading-relaxed">
+                Realizamos um diagnóstico completo da sua infraestrutura atual (on-premise ou cloud), mapeando dependências, custos e requisitos de segurança.
+              </p>
+            </div>
+          </div>
+
+          <!-- PASSO 2 -->
+          <div class="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-white dark:bg-gray-900 p-6 hover:shadow-lg transition-shadow duration-300">
+            <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-3xl">architecture</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-[#111418] dark:text-white text-xl font-bold leading-tight">2. Planejamento</h3>
+              <p class="text-text-secondary dark:text-gray-400 text-base leading-relaxed">
+                Desenhamos a arquitetura ideal na nuvem de destino e criamos um roadmap de migração detalhado, com estratégias de rollback e minimização de downtime.
+              </p>
+            </div>
+          </div>
+
+          <!-- PASSO 3 -->
+          <div class="flex flex-col gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-white dark:bg-gray-900 p-6 hover:shadow-lg transition-shadow duration-300">
+            <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-3xl">rocket_launch</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-[#111418] dark:text-white text-xl font-bold leading-tight">3. Execução</h3>
+              <p class="text-text-secondary dark:text-gray-400 text-base leading-relaxed">
+                Executamos a migração dos dados e aplicações seguindo as melhores práticas de DevOps, realizamos testes rigorosos e validamos o ambiente final.
+              </p>
+            </div>
+          </div>
+
         </div>
-        <div>
-          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-company">
-            Empresa
-          </label>
-          <input
-            id="modal-company"
-            name="company"
-            class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
-            placeholder="Nome da empresa"
-            type="text"
-            required
-          />
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- ====== BENEFÍCIOS / POR QUE NÓS ====== -->
+      <!-- ================================================================ -->
+      <section class="w-full bg-white dark:bg-gray-900 py-16">
+        <div class="w-full max-w-7xl px-4 md:px-10 mx-auto">
+          <div class="flex flex-col md:flex-row gap-12 items-center">
+
+            <!-- Texto + lista de benefícios -->
+            <div class="flex-1 flex flex-col gap-6">
+              <h2 class="text-[#111418] dark:text-white text-3xl font-bold leading-tight">
+                Por que escolher a G6 Cloud?
+              </h2>
+
+              <p class="text-text-secondary dark:text-gray-400 text-lg">
+                Entendemos que cada negócio é único. Nossa abordagem consultiva foca em resolver dores reais de infraestrutura para PMEs.
+              </p>
+
+              <!-- Lista com ícones -->
+              <ul class="flex flex-col gap-4 mt-2">
+                <li class="flex items-start gap-3">
+                  <span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+                  <div>
+                    <strong class="block text-[#111418] dark:text-white">Redução de Custos</strong>
+                    <span class="text-text-secondary dark:text-gray-400 text-sm">Otimização de recursos (FinOps) para que você pague apenas pelo que usa.</span>
+                  </div>
+                </li>
+
+                <li class="flex items-start gap-3">
+                  <span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+                  <div>
+                    <strong class="block text-[#111418] dark:text-white">Escalabilidade Automática</strong>
+                    <span class="text-text-secondary dark:text-gray-400 text-sm">Infraestrutura que cresce conforme a demanda do seu negócio, sem desperdício.</span>
+                  </div>
+                </li>
+
+                <li class="flex items-start gap-3">
+                  <span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+                  <div>
+                    <strong class="block text-[#111418] dark:text-white">Segurança e Compliance</strong>
+                    <span class="text-text-secondary dark:text-gray-400 text-sm">Configurações seguindo padrões rígidos de segurança desde a fundação.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Mock de "dashboard" para reforçar percepção de performance/observabilidade -->
+            <div class="flex-1 w-full">
+              <div class="rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 p-8 h-full flex items-center justify-center">
+
+                <!-- Representação visual abstrata (não é gráfico real) -->
+                <div class="relative w-full aspect-video bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 flex flex-col gap-3">
+                  <div class="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-2">
+                    <div class="h-3 w-24 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                    <div class="h-3 w-8 bg-green-100 text-green-600 text-[10px] flex items-center justify-center rounded font-bold">ACTIVE</div>
+                  </div>
+
+                  <!-- Barras simulando métricas -->
+                  <div class="flex gap-2 items-end h-24 mt-2 justify-between px-2">
+                    <div class="w-8 bg-primary/20 rounded-t h-[40%]"></div>
+                    <div class="w-8 bg-primary/40 rounded-t h-[60%]"></div>
+                    <div class="w-8 bg-primary/60 rounded-t h-[50%]"></div>
+                    <div class="w-8 bg-primary/80 rounded-t h-[80%]"></div>
+                    <div class="w-8 bg-primary rounded-t h-[65%]"></div>
+                    <div class="w-8 bg-primary rounded-t h-[90%]"></div>
+                  </div>
+
+                  <!-- Barra de progresso simulada -->
+                  <div class="flex gap-4 pt-2">
+                    <div class="h-2 w-full bg-gray-100 dark:bg-gray-800 rounded overflow-hidden">
+                      <div class="h-full w-[75%] bg-primary"></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div>
-          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-message">
-            Mensagem
-          </label>
-          <textarea
-            id="modal-message"
-            name="message"
-            rows="4"
-            class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200 resize-y"
-            placeholder="Descreva brevemente o que precisa — migração, suporte, otimização de custos, etc."
-            required
-          ></textarea>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- ====== PLATAFORMAS SUPORTADAS ====== -->
+      <!-- ================================================================ -->
+      <section class="py-16">
+        <div class="container mx-auto px-4">
+
+          <h2 class="text-3xl font-bold leading-tight mb-4">Plataformas Suportadas</h2>
+          <p class="text-lg text-gray-600 mb-12">
+            Trabalhamos com os principais provedores de nuvem do mercado para oferecer a melhor solução agnóstica para sua empresa.
+          </p>
+
+          <!-- Grid com 3 provedores -->
+          <div class="flex justify-between gap-6">
+
+            <!-- AWS -->
+            <div class="w-1/3 flex flex-col gap-4 pb-3 group">
+              <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
+                <img
+                  alt="AWS Logo"
+                  class="max-w-[110px] max-h-[50px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300"
+                  data-alt="Amazon Web Services logo"
+                  src="assets/img/AWS_Logo.png.png"
+                />
+              </div>
+              <div>
+                <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">AWS</p>
+                <p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Amazon Web Services</p>
+              </div>
+            </div>
+
+            <!-- AZURE -->
+            <div class="w-1/3 flex flex-col gap-4 pb-3 group">
+              <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
+                <img
+                  alt="Microsoft Azure Logo"
+                  class="max-w-[170px] max-h-[90px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300"
+                  data-alt="Microsoft Azure logo"
+                  src="assets/img/Microsoft_Azure-Logo.png.png"
+                />
+              </div>
+              <div>
+                <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Microsoft Azure</p>
+                <p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Azure Cloud Solutions</p>
+              </div>
+            </div>
+
+            <!-- GOOGLE CLOUD -->
+            <div class="w-1/3 flex flex-col gap-4 pb-3 group">
+              <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
+                <img
+                  alt="Google Cloud Logo"
+                  class="max-w-[170px] max-h-[90px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300"
+                  data-alt="Google Cloud logo"
+                  src="assets/img/Google-Cloud-Logo.png.png"
+                />
+              </div>
+              <div>
+                <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Google Cloud</p>
+                <p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Google Cloud Platform</p>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div id="modal-contact-status" class="text-center text-sm text-gray-600 dark:text-gray-300"></div>
-        <div class="flex gap-4">
-          <button
-            id="modal-contact-submit"
-            class="flex-1 justify-center rounded-lg bg-primary px-3 py-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors duration-200"
-            type="submit"
-          >
-            Enviar mensagem
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- ====== CTA FINAL (CHAMADA PARA AÇÃO) ====== -->
+      <!-- ================================================================ -->
+      <section class="py-20 px-6 lg:px-40 bg-gray-50 dark:bg-[#0f172a] border-t border-gray-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto rounded-3xl 
+                    bg-white dark:bg-[#1e293b]
+                    border border-slate-200 dark:border-slate-700/50 
+                    p-10 lg:p-14 text-center flex flex-col items-center 
+                    shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none">
+
+          <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight">
+            Pronto para modernizar sua <br class="hidden md:block"> infraestrutura?
+          </h2>
+
+          <p class="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-2xl leading-relaxed">
+            Agende uma conversa gratuita com nossos arquitetos e descubra como a <span class="font-semibold text-slate-900 dark:text-blue-400">G6 Cloud</span> pode transformar a tecnologia da sua empresa.
+          </p>
+
+          <!-- CTA abre modal -->
+          <button onclick="openContactModal()"
+                  class="group flex items-center justify-center gap-3 
+                         bg-[#1e3a8a] dark:bg-blue-600
+                         hover:bg-[#1e40af] dark:hover:bg-blue-500
+                         text-white font-bold py-4 px-10 rounded-xl 
+                         transition-all duration-300 shadow-lg shadow-blue-900/20 hover:shadow-blue-900/40 hover:-translate-y-0.5">
+            <span class="material-symbols-outlined text-[22px]">mail</span>
+            <span>Entre em contato agora</span>
           </button>
-          <button
-            onclick="closeContactModal()"
-            class="flex-1 justify-center rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-3 text-sm font-semibold leading-6 text-[#111418] dark:text-white shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
-            type="button"
-          >
-            Cancelar
-          </button>
+
         </div>
-      </form>
-    </div>
-  </div>
-</div>
-    
-    </div>
-  </div>
-</section>
-      <!-- ====== Rodapé ====== -->
-      <footer class="w-screen relative left-1/2 -translate-x-1/2 bg-background-light dark:bg-background-dark border-t border-border-light dark:border-border-dark py-12">
-        <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
-         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
-           <div class="col-span-2 md:col-span-1 flex flex-col gap-4">
-             <a href="#topo" class="flex items-center gap-2">
-               <img src="assets/img/G6-Cloud.png.png" alt="Logo G6 Cloud" class="h-8 w-auto" width="32" height="32" />
-               <span class="text-xl font-black text-text-light dark:text-text-dark">G6 Cloud</span>
-             </a>
-             <div class="flex flex-col gap-1">
-               <p class="text-sm font-medium text-subtle-light dark:text-subtle-dark">Fale Conosco:</p>
-               <a href="mailto:g6cloud@g6cloud.com.br" class="text-sm text-primary hover:underline">g6cloud@g6cloud.com.br</a>
-               <p class="text-sm text-subtle-light dark:text-subtle-dark">(11) 97659-6203</p>
-             </div>
-           </div>
+      </section>
 
-           <div class="flex flex-col gap-4">
-             <h4 class="text-base font-bold text-text-light dark:text-text-dark">Acesso Rápido</h4>
-             <div class="flex flex-col gap-2">
-               <a href="#topo" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Início</a>
-               <a href="#servicos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Serviços</a>
-               <a href="#sobre-nos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Sobre Nós</a>
-               <a href="#contato" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Contato</a>
-             </div>
-           </div>
+      <!-- ================================================================== -->
+      <!-- ====== MODAL DE CONTATO (REUTILIZADO) ====== -->
+      <!-- ================================================================== -->
 
-           <div class="flex flex-col gap-4">
-             <h4 class="text-base font-bold text-text-light dark:text-text-dark">Legal</h4>
-             <div class="flex flex-col gap-2">
-               <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors" href="termos.html">Termos de Serviço</a>
-               <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors" href="privacidade.html">Política de Privacidade</a>
-             </div>
-           </div>
+      <!-- Overlay escuro: hidden por padrão e com animação via opacity -->
+      <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl w-full max-w-2xl h-[95vh] max-h-[900px] flex flex-col">
 
-           <div class="flex flex-col gap-4">
-             <h4 class="text-base font-bold text-text-light dark:text-text-dark">Siga-nos</h4>
-             <div class="flex items-center gap-3">
-<!-- WhatsApp -->
-<a
-  href="https://wa.me/5511976596203?text=Ol%C3%A1%20G6%20Cloud!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20servi%C3%A7os%20em%20nuvem."
-  class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
-         hover:bg-green-50 dark:hover:bg-green-900/30 hover:text-green-500 dark:hover:text-green-400
-         transition-all duration-200 hover:scale-110 hover:shadow-md"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="WhatsApp G6 Cloud"
->
-  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.446l-.232-.139-3.578.874.249-3.471-.161-.233a9.87 9.87 0 01-1.446-5.038c0-5.428 4.411-9.838 9.845-9.838a9.861 9.861 0 015.04 1.444l.226.139.289-.287.289-.287.228.138c1.671 1.006 2.94 2.421 3.766 4.146.826 1.725.985 3.915.304 5.749-.297 1.006-.883 1.758-1.749 2.257-.689.435-1.446.724-2.247.853-.801.13-1.592.028-2.32-.23z"/>
-  </svg>
-</a>
+          <!-- Conteúdo rolável para telas menores -->
+          <div class="flex-1 p-6 sm:p-8 flex flex-col overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-2xl font-bold text-[#111418] dark:text-white">Entre em contato</h2>
 
-  <!-- LinkedIn -->
-  <a
-    href="https://www.linkedin.com/company/g6-cloud"
-    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
-           hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-[#0A66C2] dark:hover:text-[#5EA0FF]
-           transition-all duration-200 hover:scale-110 hover:shadow-md"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="LinkedIn G6 Cloud"
-  >
-    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.07 20.45H3.56V9h3.51v11.45zM5.31 7.43a2.04 2.04 0 1 1 0-4.08 2.04 2.04 0 0 1 0 4.08zm15.14 13.02h-3.51v-5.57c0-1.33-.03-3.04-1.86-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.43V9h3.37v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.25 2.37 4.25 5.46v6.28z"/>
-    </svg>
-  </a>
+              <!-- Botão fechar -->
+              <button onclick="closeContactModal()" class="text-gray-500 hover:text-[#111418] dark:text-gray-400 dark:hover:text-white">
+                <span class="material-symbols-outlined text-2xl">close</span>
+              </button>
+            </div>
 
-  <!-- Instagram -->
-  <a
-    href="https://www.instagram.com/g6cloud/"
-    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
-           hover:bg-pink-50 dark:hover:bg-pink-900/30 hover:text-[#E1306C] dark:hover:text-[#FF6FA5]
-           transition-all duration-200 hover:scale-110 hover:shadow-md"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Instagram G6 Cloud"
-  >
-    <svg class="h-5 w-5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-      <path d="M8 0C5.83 0 5.56.01 4.7.05 3.85.09 3.27.22 2.76.42a3.9 3.9 0 0 0-1.42.92A3.9 3.9 0 0 0 .42 2.76C.22 3.27.09 3.85.05 4.7.01 5.56 0 5.83 0 8c0 2.17.01 2.44.05 3.3.04.85.17 1.43.37 1.94.21.52.48.97.93 1.42.44.45.89.72 1.42.93.51.2 1.09.33 1.94.37.86.04 1.14.05 3.3.05s2.44-.01 3.3-.05c.85-.04 1.43-.17 1.94-.37a3.9 3.9 0 0 0 1.42-.93c.45-.45.72-.9.93-1.42.2-.51.33-1.09.37-1.94.04-.86.05-1.14.05-3.3s-.01-2.44-.05-3.3c-.04-.85-.17-1.43-.37-1.94a3.9 3.9 0 0 0-.93-1.42A3.9 3.9 0 0 0 13.24.42C12.73.22 12.15.09 11.3.05 10.44.01 10.17 0 8 0Zm-.72 1.44h.72c2.13 0 2.39.01 3.23.05.78.03 1.2.16 1.49.27.37.14.64.32.92.6.28.28.46.55.6.92.11.29.24.71.27 1.49.04.84.05 1.1.05 3.23s-.01 2.39-.05 3.23c-.03.78-.16 1.2-.27 1.49a2.5 2.5 0 0 1-.6.92c-.28.28-.55.46-.92.6-.29.11-.71.24-1.49.28-.84.03-1.1.04-3.23.04s-2.39-.01-3.23-.04c-.78-.04-1.2-.17-1.49-.28a2.5 2.5 0 0 1-.92-.6 2.5 2.5 0 0 1-.6-.92c-.11-.29-.24-.71-.28-1.49C1.45 10.39 1.44 10.13 1.44 8c0-2.13.01-2.39.04-3.23.04-.78.17-1.2.28-1.49.14-.37.32-.64.6-.92s.55-.46.92-.6c.29-.11.71-.24 1.49-.28.84-.03 1.1-.04 3.23-.04ZM8 3.89a4.11 4.11 0 1 0 0 8.22 4.11 4.11 0 0 0 0-8.22Zm0 1.44a2.67 2.67 0 1 1 0 5.34 2.67 2.67 0 0 1 0-5.34Zm4.28-1.56a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92Z"/>
-    </svg>
-  </a>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+              Vamos conversar sobre como podemos ajudar sua empresa a crescer com as melhores soluções em nuvem.
+            </p>
 
-  <!-- Site -->
-  <a
-    href="https://g6cloud.com.br"
-    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
-           hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary
-           transition-all duration-200 hover:scale-110 hover:shadow-md"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Site G6 Cloud"
-  >
-    <span class="material-symbols-outlined text-[20px]">public</span>
-  </a>
-</div>
-           </div>
-         </div>
+            <!-- Formulário: enviado para send_form.php via POST -->
+            <form id="contact-modal-form" action="send_form.php" method="POST" class="space-y-6">
 
-         <div class="mt-12 pt-8 border-t border-border-light dark:border-border-dark text-center">
-           <p class="text-sm text-subtle-light dark:text-subtle-dark">© 2026 G6 Cloud. Todos os direitos reservados.</p>
-         </div>
+              <!-- Campo: Nome -->
+              <div>
+                <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-name">Nome</label>
+                <input
+                  id="modal-name"
+                  name="name"
+                  class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+                  placeholder="Seu nome"
+                  type="text"
+                  required
+                />
+              </div>
+
+              <!-- Campo: E-mail -->
+              <div>
+                <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-email">E-mail</label>
+                <input
+                  id="modal-email"
+                  name="email"
+                  class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+                  placeholder="seu.email@exemplo.com"
+                  type="email"
+                  required
+                />
+              </div>
+
+              <!-- Campo: Telefone -->
+              <div>
+                <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-phone">Telefone</label>
+                <input
+                  id="modal-phone"
+                  name="phone"
+                  class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+                  placeholder="(11) 99999-9999"
+                  type="tel"
+                  required
+                />
+              </div>
+
+              <!-- Campo: Empresa -->
+              <div>
+                <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-company">Empresa</label>
+                <input
+                  id="modal-company"
+                  name="company"
+                  class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+                  placeholder="Nome da empresa"
+                  type="text"
+                  required
+                />
+              </div>
+
+              <!-- Campo: Mensagem -->
+              <div>
+                <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-message">Mensagem</label>
+                <textarea
+                  id="modal-message"
+                  name="message"
+                  rows="4"
+                  class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200 resize-y"
+                  placeholder="Descreva brevemente o que precisa — migração, suporte, otimização de custos, etc."
+                  required
+                ></textarea>
+              </div>
+
+              <!-- Área de feedback (sucesso/erro/carregando) -->
+              <div id="modal-contact-status" class="text-center text-sm text-gray-600 dark:text-gray-300"></div>
+
+              <!-- Botões de ação -->
+              <div class="flex gap-4">
+                <button
+                  id="modal-contact-submit"
+                  class="flex-1 justify-center rounded-lg bg-primary px-3 py-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors duration-200"
+                  type="submit"
+                >
+                  Enviar mensagem
+                </button>
+
+                <button
+                  onclick="closeContactModal()"
+                  class="flex-1 justify-center rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-3 text-sm font-semibold leading-6 text-[#111418] dark:text-white shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+                  type="button"
+                >
+                  Cancelar
+                </button>
+              </div>
+
+            </form>
+          </div>
         </div>
-      </footer>
-    </div>
+      </div>
+
+    </main>
+
+    <!-- ==================================================================== -->
+    <!-- ====== FOOTER (RODAPÉ) ====== -->
+    <!-- ==================================================================== -->
+    <!-- w-screen + translate: força rodapé ocupar a largura inteira mesmo dentro de containers -->
+    <footer class="w-screen relative left-1/2 -translate-x-1/2 bg-background-light dark:bg-background-dark border-t border-border-light dark:border-border-dark py-12">
+      <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+
+          <!-- Coluna 1: Logo + contato -->
+          <div class="col-span-2 md:col-span-1 flex flex-col gap-4">
+            <a href="#topo" class="flex items-center gap-2">
+              <img src="assets/img/G6-Cloud.png.png" alt="Logo G6 Cloud" class="h-8 w-auto" width="32" height="32" />
+              <span class="text-xl font-black text-text-light dark:text-text-dark">G6 Cloud</span>
+            </a>
+
+            <div class="flex flex-col gap-1">
+              <p class="text-sm font-medium text-subtle-light dark:text-subtle-dark">Fale Conosco:</p>
+              <a href="mailto:g6cloud@g6cloud.com.br" class="text-sm text-primary hover:underline">g6cloud@g6cloud.com.br</a>
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">(11) 97659-6203</p>
+            </div>
+          </div>
+
+          <!-- Coluna 2: Acesso rápido -->
+          <div class="flex flex-col gap-4">
+            <h4 class="text-base font-bold text-text-light dark:text-text-dark">Acesso Rápido</h4>
+            <div class="flex flex-col gap-2">
+              <a href="#topo" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Início</a>
+              <a href="#servicos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Serviços</a>
+              <a href="#sobre-nos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Sobre Nós</a>
+              <a href="#contato" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Contato</a>
+            </div>
+          </div>
+
+          <!-- Coluna 3: Links legais -->
+          <div class="flex flex-col gap-4">
+            <h4 class="text-base font-bold text-text-light dark:text-text-dark">Legal</h4>
+            <div class="flex flex-col gap-2">
+              <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors" href="termos.html">Termos de Serviço</a>
+              <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors" href="privacidade.html">Política de Privacidade</a>
+            </div>
+          </div>
+
+          <!-- Coluna 4: Redes sociais -->
+          <div class="flex flex-col gap-4">
+            <h4 class="text-base font-bold text-text-light dark:text-text-dark">Siga-nos</h4>
+
+            <div class="flex items-center gap-3">
+              <!-- WhatsApp -->
+              <a
+                href="https://wa.me/5511976596203?text=Ol%C3%A1%20G6%20Cloud!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20servi%C3%A7os%20em%20nuvem."
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
+                       hover:bg-green-50 dark:hover:bg-green-900/30 hover:text-green-500 dark:hover:text-green-400
+                       transition-all duration-200 hover:scale-110 hover:shadow-md"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp G6 Cloud"
+              >
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.446l-.232-.139-3.578.874.249-3.471-.161-.233a9.87 9.87 0 01-1.446-5.038c0-5.428 4.411-9.838 9.845-9.838a9.861 9.861 0 015.04 1.444l.226.139.289-.287.289-.287.228.138c1.671 1.006 2.94 2.421 3.766 4.146.826 1.725.985 3.915.304 5.749-.297 1.006-.883 1.758-1.749 2.257-.689.435-1.446.724-2.247.853-.801.13-1.592.028-2.32-.23z"/>
+                </svg>
+              </a>
+
+              <!-- LinkedIn -->
+              <a
+                href="https://www.linkedin.com/company/g6-cloud"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
+                       hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-[#0A66C2] dark:hover:text-[#5EA0FF]
+                       transition-all duration-200 hover:scale-110 hover:shadow-md"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn G6 Cloud"
+              >
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.07 20.45H3.56V9h3.51v11.45zM5.31 7.43a2.04 2.04 0 1 1 0-4.08 2.04 2.04 0 0 1 0 4.08zm15.14 13.02h-3.51v-5.57c0-1.33-.03-3.04-1.86-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.43V9h3.37v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.25 2.37 4.25 5.46v6.28z"/>
+                </svg>
+              </a>
+
+              <!-- Instagram -->
+              <a
+                href="https://www.instagram.com/g6cloud/"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
+                       hover:bg-pink-50 dark:hover:bg-pink-900/30 hover:text-[#E1306C] dark:hover:text-[#FF6FA5]
+                       transition-all duration-200 hover:scale-110 hover:shadow-md"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram G6 Cloud"
+              >
+                <svg class="h-5 w-5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M8 0C5.83 0 5.56.01 4.7.05 3.85.09 3.27.22 2.76.42a3.9 3.9 0 0 0-1.42.92A3.9 3.9 0 0 0 .42 2.76C.22 3.27.09 3.85.05 4.7.01 5.56 0 5.83 0 8c0 2.17.01 2.44.05 3.3.04.85.17 1.43.37 1.94.21.52.48.97.93 1.42.44.45.89.72 1.42.93.51.2 1.09.33 1.94.37.86.04 1.14.05 3.3.05s2.44-.01 3.3-.05c.85-.04 1.43-.17 1.94-.37a3.9 3.9 0 0 0 1.42-.93c.45-.45.72-.9.93-1.42.2-.51.33-1.09.37-1.94.04-.86.05-1.14.05-3.3s-.01-2.44-.05-3.3c-.04-.85-.17-1.43-.37-1.94a3.9 3.9 0 0 0-.93-1.42A3.9 3.9 0 0 0 13.24.42C12.73.22 12.15.09 11.3.05 10.44.01 10.17 0 8 0Zm-.72 1.44h.72c2.13 0 2.39.01 3.23.05.78.03 1.2.16 1.49.27.37.14.64.32.92.6.28.28.46.55.6.92.11.29.24.71.27 1.49.04.84.05 1.1.05 3.23s-.01 2.39-.05 3.23c-.03.78-.16 1.2-.27 1.49a2.5 2.5 0 0 1-.6.92c-.28.28-.55.46-.92.6-.29.11-.71.24-1.49.28-.84.03-1.1.04-3.23.04s-2.39-.01-3.23-.04c-.78-.04-1.2-.17-1.49-.28a2.5 2.5 0 0 1-.92-.6 2.5 2.5 0 0 1-.6-.92c-.11-.29-.24-.71-.28-1.49C1.45 10.39 1.44 10.13 1.44 8c0-2.13.01-2.39.04-3.23.04-.78.17-1.2.28-1.49.14-.37.32-.64.6-.92s.55-.46.92-.6c.29-.11.71-.24 1.49-.28.84-.03 1.1-.04 3.23-.04ZM8 3.89a4.11 4.11 0 1 0 0 8.22 4.11 4.11 0 0 0 0-8.22Zm0 1.44a2.67 2.67 0 1 1 0 5.34 2.67 2.67 0 0 1 0-5.34Zm4.28-1.56a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92Z"/>
+                </svg>
+              </a>
+
+              <!-- Site -->
+              <a
+                href="https://g6cloud.com.br"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
+                       hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary
+                       transition-all duration-200 hover:scale-110 hover:shadow-md"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Site G6 Cloud"
+              >
+                <span class="material-symbols-outlined text-[20px]">public</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Linha final com copyright -->
+        <div class="mt-12 pt-8 border-t border-border-light dark:border-border-dark text-center">
+          <p class="text-sm text-subtle-light dark:text-subtle-dark">© 2026 G6 Cloud. Todos os direitos reservados.</p>
+        </div>
+
+      </div>
+    </footer>
+
   </div>
 
-  <!-- ====== Scripts ====== -->
+  <!-- ====================================================================== -->
+  <!-- ====== SCRIPTS ====== -->
+  <!-- ====================================================================== -->
+
+  <!-- Scripts externos minificados (tema + formulários) -->
   <script src="assets/js/theme.min.js" defer></script>
   <script src="assets/js/form.min.js" defer></script>
+
   <script>
+    // ====== FUNÇÃO: Abrir Modal ======
+    // Exibe o overlay e anima opacidade (fade-in)
+    // Bloqueia scroll do body para evitar rolagem do fundo
     function openContactModal() {
       const modal = document.getElementById('contact-modal');
       modal.classList.remove('hidden');
@@ -567,6 +794,8 @@
       document.body.style.overflow = 'hidden';
     }
 
+    // ====== FUNÇÃO: Fechar Modal ======
+    // Remove opacidade para fade-out e oculta após a transição
     function closeContactModal() {
       const modal = document.getElementById('contact-modal');
       modal.classList.remove('opacity-100');
@@ -574,21 +803,24 @@
       document.body.style.overflow = 'auto';
     }
 
-    // Fechar modal ao clicar fora
+    // ====== EVENTO: Fechar ao clicar fora do conteúdo ======
     document.getElementById('contact-modal').addEventListener('click', function(e) {
       if (e.target === this) {
         closeContactModal();
       }
     });
 
-    // Fechar modal com ESC
+    // ====== EVENTO: Fechar com ESC (acessibilidade) ======
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && !document.getElementById('contact-modal').classList.contains('hidden')) {
         closeContactModal();
       }
     });
 
-    // Script para envio do formulário do modal (MELHORADO)
+    // ====== SCRIPT: Envio do formulário via Fetch (assíncrono) ======
+    // - Valida campos obrigatórios
+    // - Desabilita o botão durante envio
+    // - Exibe feedback (enviando/sucesso/erro)
     const modalForm = document.getElementById("contact-modal-form");
     const modalStatusEl = document.getElementById("modal-contact-status");
     const modalSubmitBtn = document.getElementById("modal-contact-submit");
@@ -596,6 +828,7 @@
     modalForm?.addEventListener("submit", async (e) => {
       e.preventDefault();
 
+      // Coleta de dados do formulário
       const formData = new FormData(modalForm);
       const name = (formData.get("name") || "").toString().trim();
       const company = (formData.get("company") || "").toString().trim();
@@ -603,41 +836,51 @@
       const phone = (formData.get("phone") || "").toString().trim();
       const message = (formData.get("message") || "").toString().trim();
 
+      // Validação: todos os campos são obrigatórios
       if (!name || !company || !email || !phone || !message) {
         modalStatusEl.textContent = "❌ Por favor, preencha todos os campos obrigatórios.";
         modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
         return;
       }
 
+      // Subject automático para facilitar identificação do lead no backend
       const subject = `Lead-${name.replace(/\s+/g, "")}`;
       formData.append("subject", subject);
 
+      // Estado: enviando (desabilita botão e mostra status)
       modalSubmitBtn.disabled = true;
       modalSubmitBtn.classList.add("opacity-70", "cursor-not-allowed");
       modalStatusEl.textContent = "📤 Enviando mensagem...";
       modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-800";
 
       try {
+        // Envio via fetch para o endpoint definido no action (send_form.php)
         const res = await fetch(modalForm.action, {
           method: "POST",
           body: formData
         });
+
+        // Espera resposta JSON do backend
         const data = await res.json();
-        
+
         if (data.success) {
+          // Sucesso: feedback + reset + fecha modal depois de 3s
           modalStatusEl.textContent = "✅ Mensagem enviada com sucesso! Em breve entraremos em contato.";
           modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800";
           modalForm.reset();
           setTimeout(() => closeContactModal(), 3000);
         } else {
+          // Erro retornado pelo servidor
           modalStatusEl.textContent = "❌ Erro ao enviar. Tente novamente.";
           modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
         }
       } catch (err) {
+        // Erro de rede (sem resposta do servidor)
         console.error(err);
         modalStatusEl.textContent = "❌ Erro de conexão. Verifique sua internet e tente novamente.";
         modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
       } finally {
+        // Reabilita botão ao final (sucesso/erro)
         modalSubmitBtn.disabled = false;
         modalSubmitBtn.classList.remove("opacity-70", "cursor-not-allowed");
       }
