@@ -158,19 +158,101 @@
     }
   </script>
 
+  <script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) {
+      menu.classList.toggle('hidden');
+    }
+  }
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("tech-carousel");
+  if (!container) return;
+
+  // Configura o "Olheiro" (Observer)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      // Se o card estiver mais de 60% visível na tela...
+      if (entry.isIntersecting) {
+        // ...adiciona a classe de ativo
+        entry.target.classList.add("is-active");
+      } else {
+        // ...senão, remove
+        entry.target.classList.remove("is-active");
+      }
+    });
+  }, {
+    root: container, // Onde ele vai rolar
+    threshold: 0.6   // 0.6 = 60% de visibilidade para ativar
+  });
+
+  // Manda o olheiro vigiar cada card
+  const cards = container.children;
+  Array.from(cards).forEach((card) => {
+    observer.observe(card);
+  });
+});
+</script>
+
+
+
+
   <!-- ====================================================================== -->
   <!-- ====== SEÇÃO 7: CSS BASE ====== -->
   <!-- ====================================================================== -->
 
-  <style>
-    /* Fonte padrão do documento (fallback caso Tailwind não aplique) */
+ <style>
+    /* 1. Fonte e Ícones (Mantidos) */
     body { font-family: 'Inter', sans-serif; }
-
-    /* Configuração padrão dos ícones Material Symbols */
+    
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
-  </style>
+
+    /* 2. Barra de Rolagem Invisível (Mantido) */
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* 3. EFEITO DE FOCO (SPOTLIGHT) - CORRIGIDO */
+    /* Aplica apenas no Mobile (<768px) */
+    @media (max-width: 768px) {
+        
+        /* Estado PADRÃO (Inativo/Cinza) */
+        /* Mira na div .group e na img dentro dela */
+        #tech-carousel .group img {
+            filter: grayscale(100%) !important;
+            opacity: 0.4 !important;
+            transform: scale(0.9);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Transição suave */
+        }
+        
+        /* Estado ATIVO (Aceso/Colorido) */
+        /* Quando o JS adiciona a classe .is-active */
+        #tech-carousel .group.is-active img {
+            filter: grayscale(0%) !important;
+            opacity: 1 !important;
+            transform: scale(1.1); /* Zoom de destaque */
+        }
+
+        /* Opcional: Efeito na caixa branca do card também */
+        #tech-carousel .group.is-active > div:first-child {
+            border-color: #3b82f6 !important; /* Borda azul */
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.15); /* Sombra azulada */
+        }
+    }
+
+    /* Desktop: Reseta tudo para o padrão (sem efeito de foco) */
+    @media (min-width: 769px) {
+        #tech-carousel .group img {
+            filter: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    }
+</style>
 </head>
 
 <body class="font-body bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark antialiased">
@@ -225,11 +307,27 @@
               <span class="material-symbols-outlined dark:hidden">light_mode</span>
               <span class="material-symbols-outlined hidden dark:inline">dark_mode</span>
             </button>
-          </div>
+              <!-- NOVO: Botão Menu Hambúrguer (Aparece só no Mobile 'md:hidden') -->
+        <button class="md:hidden text-gray-900 dark:text-white" onclick="toggleMenu()">
+           <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
 
+           </div>
+         </div>
         </div>
-      </div>
-    </header>
+
+          <!-- 4. GAVETA DO MENU MOBILE (Escondida por padrão) -->
+  <!-- Colocamos fora do 'flex' principal para não quebrar o layout -->
+  <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-[#1a202c] border-t dark:border-gray-700 shadow-lg flex-col p-4 md:hidden">
+      <a href="index.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Início</a>
+      <a href="migracao-nuvem.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Migração</a>
+      <a href="infraestrutura-cloud.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Infraestrutura</a>
+      <a href="devops-automacao.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">DevOps</a>
+      <a href="suporte-monitoramento.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Suporte e Monitoramento</a>
+      <a href="consultoria-finops.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">FinOps</a>
+      <!-- Adicione os outros links aqui -->
+  </div>
+      </header>
 
     <!-- ==================================================================== -->
     <!-- ====== MAIN: CONTEÚDO DA PÁGINA ====== -->
@@ -449,58 +547,82 @@
             Trabalhamos com os principais provedores de nuvem do mercado para oferecer a melhor solução agnóstica para sua empresa.
           </p>
 
-          <!-- Grid com 3 provedores -->
-          <div class="flex justify-between gap-6">
+<!-- CONTAINER LIVRE (SEM SNAP) -->
+<div id="tech-carousel" 
+     class="grid grid-flow-col auto-cols-[85%] sm:auto-cols-[45%] md:grid-cols-3 
+            gap-4 overflow-x-auto pb-8 px-4 w-full 
+            md:overflow-visible md:px-0 md:grid-flow-row hide-scrollbar"
+     style="-webkit-overflow-scrolling: touch;">
 
-            <!-- AWS -->
-            <div class="w-1/3 flex flex-col gap-4 pb-3 group">
-              <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
-                <img
-                  alt="AWS Logo"
-                  class="max-w-[110px] max-h-[50px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300"
-                  data-alt="Amazon Web Services logo"
-                  src="assets/img/AWS_Logo.png.png"
-                />
-              </div>
-              <div>
-                <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">AWS</p>
-                <p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Amazon Web Services</p>
-              </div>
-            </div>
 
-            <!-- AZURE -->
-            <div class="w-1/3 flex flex-col gap-4 pb-3 group">
-              <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
-                <img
-                  alt="Microsoft Azure Logo"
-                  class="max-w-[170px] max-h-[90px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300"
-                  data-alt="Microsoft Azure logo"
-                  src="assets/img/Microsoft_Azure-Logo.png.png"
-                />
-              </div>
-              <div>
-                <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Microsoft Azure</p>
-                <p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Azure Cloud Solutions</p>
-              </div>
-            </div>
+  <!-- 1. AWS -->
+  <!-- flex-none: Não encolhe -->
+  <!-- w-[85vw]: Largura de 85% da tela do celular (funciona em qualquer tamanho) -->
+  <!-- max-w-[320px]: Trava o tamanho máximo para tablets -->
+   <div class="group h-full">
+    <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+                rounded-xl aspect-[16/9] flex items-center justify-center p-6 md:p-8 
+                transition-transform group-hover:-translate-y-1">
+      <img alt="AWS" 
+           class="w-auto h-12 md:h-16 object-contain opacity-80 
+                  group-hover:opacity-100 grayscale group-hover:grayscale-0 
+                  transition-all duration-300" 
+           src="assets/img/AWS_Logo.png.png">
+    </div>
+       <div class="mt-4">
+      <p class="text-[#111418] dark:text-white font-bold text-base md:text-lg truncate">
+        AWS
+      </p>
+      <p class="text-gray-500 text-sm md:text-base whitespace-normal line-clamp-2">
+        Amazon Web Services
+      </p>
+    </div>
+  </div>
 
-            <!-- GOOGLE CLOUD -->
-            <div class="w-1/3 flex flex-col gap-4 pb-3 group">
-              <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl aspect-video flex items-center justify-center p-8 transition-transform group-hover:-translate-y-1">
-                <img
-                  alt="Google Cloud Logo"
-                  class="max-w-[170px] max-h-[90px] object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300"
-                  data-alt="Google Cloud logo"
-                  src="assets/img/Google-Cloud-Logo.png.png"
-                />
-              </div>
-              <div>
-                <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Google Cloud</p>
-                <p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">Google Cloud Platform</p>
-              </div>
-            </div>
+ <!-- 2. AZURE -->
+  <!-- CARD 2 -->
+  <div class="group h-full">
+    <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+                rounded-xl aspect-[16/9] flex items-center justify-center p-6 md:p-8 
+                transition-transform group-hover:-translate-y-1">
+      <img alt="Azure" 
+           class="w-auto h-12 md:h-16 object-contain opacity-80 
+                  group-hover:opacity-100 grayscale group-hover:grayscale-0 
+                  transition-all duration-300" 
+           src="assets/img/Microsoft_Azure-Logo.png.png">
+    </div>
+    <div class="mt-4">
+      <p class="text-[#111418] dark:text-white font-bold text-base md:text-lg truncate">
+        Microsoft Azure
+      </p>
+      <p class="text-gray-500 text-sm md:text-base whitespace-normal line-clamp-2">
+        Azure Cloud Solutions
+      </p>
+    </div>
+  </div>
 
-          </div>
+ <!-- 2. GCP -->
+<div class="group h-full">
+    <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+                rounded-xl aspect-[16/9] flex items-center justify-center p-6 md:p-8 
+                transition-transform group-hover:-translate-y-1">
+      <img alt="Google" 
+           class="w-auto h-12 md:h-16 object-contain opacity-80 
+                  group-hover:opacity-100 grayscale group-hover:grayscale-0 
+                  transition-all duration-300" 
+           src="assets/img/Google-Cloud-Logo.png.png">
+    </div>
+    <div class="mt-4">
+      <p class="text-[#111418] dark:text-white font-bold text-base md:text-lg truncate">
+        Google Cloud
+      </p>
+      <p class="text-gray-500 text-sm md:text-base whitespace-normal line-clamp-2">
+        Google Cloud Platform
+      </p>
+    </div>
+  </div>
+
+</div>
         </div>
       </section>
 

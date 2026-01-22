@@ -179,6 +179,30 @@
       scroll-behavior: smooth;
     }
   </style>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('navMenu');
+        // Alterna a classe 'active' que criamos no CSS
+        if (menu.style.display === 'flex') {
+            menu.style.display = 'none';
+        } else {
+            menu.style.display = 'flex';
+        }
+        
+        // Alternativa mais elegante (se usar a classe .active do CSS acima):
+        // menu.classList.toggle('active');
+    }
+</script>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    // Alterna a classe 'hidden' do Tailwind
+    menu.classList.toggle('hidden');
+  }
+</script>
+
 </head>
 
 <body class="font-body bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark antialiased">
@@ -192,7 +216,6 @@
       <header class="fixed inset-x-0 top-0 z-30 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm shadow-md">
         <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
          <div class="flex items-center justify-between py-4">
-           
            <!-- LOGO: Link para página inicial -->
            <a class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2" href="#">
              <span class="material-symbols-outlined text-primary">cloud</span>
@@ -212,6 +235,8 @@
               </div>
             </nav>
 
+
+
            <!-- AÇÕES DO HEADER: Botão de alternar tema -->
            <div class="flex items-center gap-4 ml-auto">
              <button
@@ -223,9 +248,27 @@
                <span class="material-symbols-outlined dark:hidden">light_mode</span>
                <span class="material-symbols-outlined hidden dark:inline">dark_mode</span>
              </button>
+
+              <!-- NOVO: Botão Menu Hambúrguer (Aparece só no Mobile 'md:hidden') -->
+        <button class="md:hidden text-gray-900 dark:text-white" onclick="toggleMenu()">
+           <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+
            </div>
          </div>
         </div>
+
+          <!-- 4. GAVETA DO MENU MOBILE (Escondida por padrão) -->
+  <!-- Colocamos fora do 'flex' principal para não quebrar o layout -->
+  <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-[#1a202c] border-t dark:border-gray-700 shadow-lg flex-col p-4 md:hidden">
+      <a href="index.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Início</a>
+      <a href="migracao-nuvem.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Migração</a>
+      <a href="infraestrutura-cloud.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Infraestrutura</a>
+      <a href="devops-automacao.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">DevOps</a>
+      <a href="suporte-monitoramento.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Suporte e Monitoramento</a>
+      <a href="consultoria-finops.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">FinOps</a>
+      <!-- Adicione os outros links aqui -->
+  </div>
       </header>
 
       <!-- ====== CONTEÚDO PRINCIPAL ====== -->

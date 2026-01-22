@@ -172,6 +172,14 @@
         });
     </script>
 
+    <script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    // Alterna a classe 'hidden' do Tailwind
+    menu.classList.toggle('hidden');
+  }
+</script>
+
     <!-- ====== ESTILOS CUSTOMIZADOS ====== -->
     <!-- CSS adicional para ajustes específicos não cobertos pelo Tailwind -->
     <style>
@@ -223,10 +231,26 @@
              >
                <span class="material-symbols-outlined dark:hidden">light_mode</span>
                <span class="material-symbols-outlined hidden dark:inline">dark_mode</span>
-             </button>
+              <!-- NOVO: Botão Menu Hambúrguer (Aparece só no Mobile 'md:hidden') -->
+        <button class="md:hidden text-gray-900 dark:text-white" onclick="toggleMenu()">
+           <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+
            </div>
          </div>
         </div>
+
+          <!-- 4. GAVETA DO MENU MOBILE (Escondida por padrão) -->
+  <!-- Colocamos fora do 'flex' principal para não quebrar o layout -->
+  <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-[#1a202c] border-t dark:border-gray-700 shadow-lg flex-col p-4 md:hidden">
+      <a href="index.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Início</a>
+      <a href="migracao-nuvem.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Migração</a>
+      <a href="infraestrutura-cloud.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Infraestrutura</a>
+      <a href="devops-automacao.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">DevOps</a>
+      <a href="suporte-monitoramento.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Suporte e Monitoramento</a>
+      <a href="consultoria-finops.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">FinOps</a>
+      <!-- Adicione os outros links aqui -->
+  </div>
       </header>
 
     <!-- ====== SEÇÃO 1: HERO ====== -->
