@@ -84,6 +84,20 @@
     }
     </script>
     
+    <!-- ====== CARREGAMENTO INICIAL DO TEMA ======
+    <!-- Previne flash de tema incorreto ao carregar a página -->
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+         window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    
     <!-- ====== TAILWIND CSS ====== -->
     <!-- Framework CSS utilitário com plugins para formulários e media queries -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>

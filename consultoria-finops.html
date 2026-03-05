@@ -84,6 +84,20 @@
     <!-- Fonte Inter: principal para todo o site -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
     
+    <!-- ====== CARREGAMENTO INICIAL DO TEMA ======
+    <!-- Previne flash de tema incorreto ao carregar a página -->
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+         window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    
     <!-- ====== TAILWIND CSS ====== -->
     <!-- Framework CSS utilitário com plugins -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>

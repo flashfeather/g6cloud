@@ -73,7 +73,24 @@
   <title>Migração para Nuvem - G6 Cloud</title>
 
   <!-- ====================================================================== -->
-  <!-- ====== SEÇÃO 4: DEPENDÊNCIAS (TAILWIND / FONTES / ÍCONES) ====== -->
+  <!-- ====== SEÇÃO 4: CARREGAMENTO INICIAL DO TEMA ====== -->
+  <!-- ====================================================================== -->
+
+  <!-- Previne flash de tema incorreto ao carregar a página -->
+  <script>
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+       window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  </script>
+
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 5: DEPENDÊNCIAS (TAILWIND / FONTES / ÍCONES) ====== -->
   <!-- ====================================================================== -->
 
   <!-- Tailwind via CDN + plugins:

@@ -94,8 +94,21 @@
   }
   </script>
 
-  <!-- ====================================================================== -->
-  <!-- ====== SEÇÃO 6: TAILWIND CSS (CDN) ====== -->
+  <!-- ====================================================================== -->  <!-- ====== CARREGAMENTO INICIAL DO TEMA ======
+  <!-- Previne flash de tema incorreto ao carregar a página -->
+  <script>
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+       window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  </script>
+
+  <!-- ======================================================================  <!-- ====== SEÇÃO 6: TAILWIND CSS (CDN) ====== -->
   <!-- ====================================================================== -->
 
   <!-- Tailwind CDN + plugins:
