@@ -138,7 +138,7 @@ h3{font-size:1.05rem;font-weight:700}
 /* ── LOGOS STRIP ── */
 .logos-strip{padding:28px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .logos-inner{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
-.logos-inner img{height:26px;width:auto;opacity:.45;filter:grayscale(1);transition:opacity .2s,filter .2s}
+.logos-inner img{height:40px;width:auto;opacity:.45;filter:grayscale(1);transition:opacity .2s,filter .2s}
 .logos-inner img:hover{opacity:.8;filter:grayscale(0)}
 
 /* ── SERVICES GRID (INDEX) ── */
