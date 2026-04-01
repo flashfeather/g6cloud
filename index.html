@@ -26,7 +26,7 @@
   <meta property="og:url" content="https://g6cloud.com.br" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://g6cloud.com.br/" />
-  <link rel="icon" href="assets/img/g6icone.png">
+  <link rel="icon" href="assets/img/g6_logo_png.png">
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,6 +85,7 @@
       --grid-color:   rgba(26,115,232,0.05);
       --nav-bg:       rgba(240,244,248,0.85);
       --logo-filter:  none;
+      --logo-blend:   normal;
       --logo-text-shadow: 0 1px 4px rgba(26,115,232,0.3), 0 0 14px rgba(26,115,232,0.18);
     }
 
@@ -104,7 +105,8 @@
       --red:          #ef4444;
       --grid-color:   rgba(59,130,246,0.04);
       --nav-bg:       rgba(8,12,20,0.85);
-      --logo-filter:  brightness(0) invert(1);
+      --logo-filter:  none;
+      --logo-blend:   normal;
       --logo-text-shadow: 0 0 12px rgba(59,130,246,0.75), 0 0 28px rgba(59,130,246,0.4), 0 2px 6px rgba(0,0,0,0.6);
     }
 
@@ -171,7 +173,7 @@
       flex-shrink: 0;
     }
 
-    .nav-logo img { height: 32px; width: auto; filter: var(--logo-filter); transition: filter 0.3s; }
+    .nav-logo img { height: 76px; width: auto; filter: var(--logo-filter); mix-blend-mode: var(--logo-blend); transition: filter 0.3s; }
 
    .nav-logo-text {
      font-family: 'Inter', sans-serif;
@@ -945,8 +947,8 @@ html.dark .stat-meta {
 
     .footer-brand { display: flex; flex-direction: column; gap: 16px; }
     .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .footer-logo img { height: 28px; width: auto; filter: var(--logo-filter); transition: filter 0.3s; }
-    .footer-logo span { font-family: 'inter', sans-serif; font-weight: 800; font-size: 1.6rem; color: var(--text); }
+    .footer-logo img { height: 76px; width: auto; filter: var(--logo-filter); transition: filter 0.3s; }
+    .footer-logo span { font-family: 'Inter', sans-serif; font-weight: 810; font-size: 26px; letter-spacing: -0.5px; color: var(--text); text-shadow: var(--logo-text-shadow); transition: text-shadow 0.3s, color 0.3s; }
 
     .footer-contact { display: flex; flex-direction: column; gap: 4px; }
     .footer-contact p { font-size: 0.8rem; color: var(--muted); }
@@ -1024,7 +1026,7 @@ html.dark .stat-meta {
   <header class="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <img src="assets/img/G6-Cloud.png.png" alt="Logo G6 Cloud" id="nav-logo-img">
+        <img src="assets/img/g6_logo_png.png" alt="Logo G6 Cloud" id="nav-logo-img">
         <span class="nav-logo-text">G6 Cloud</span>
       </a>
 
@@ -1403,7 +1405,7 @@ html.dark .stat-meta {
 
         <div class="footer-brand">
           <a href="index.html" class="footer-logo">
-            <img src="assets/img/G6-Cloud.png.png" alt="Logo G6 Cloud">
+            <img src="assets/img/g6_logo_png.png" alt="Logo G6 Cloud">
             <span>G6 Cloud</span>
           </a>
           <div class="footer-contact">

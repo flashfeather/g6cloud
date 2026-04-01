@@ -22,6 +22,7 @@
   --grid-color:  rgba(26,115,232,0.05);
   --nav-bg:      rgba(240,244,248,0.88);
   --logo-filter: none;
+  --logo-blend:  normal;
   --logo-text-shadow: 0 1px 4px rgba(26,115,232,0.3), 0 0 14px rgba(26,115,232,0.18);
 }
 html.dark {
@@ -40,7 +41,8 @@ html.dark {
   --red:         #ef4444;
   --grid-color:  rgba(59,130,246,0.04);
   --nav-bg:      rgba(8,12,20,0.88);
-  --logo-filter: brightness(0) invert(1);
+  --logo-filter: none;
+  --logo-blend:  normal;
   --logo-text-shadow: 0 0 12px rgba(59,130,246,0.75), 0 0 28px rgba(59,130,246,0.4), 0 2px 6px rgba(0,0,0,0.6);
 }
 
@@ -66,7 +68,7 @@ a{color:inherit}
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:background .3s}
 .nav-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-.nav-logo img{height:32px;width:auto;filter:var(--logo-filter);transition:filter .3s}
+.nav-logo img{height:76px;width:auto;filter:var(--logo-filter);mix-blend-mode:var(--logo-blend);transition:filter .3s}
 .nav-logo-text{font-family:'Inter',sans-serif;font-weight:810;font-size:26px;letter-spacing:-0.5px;color:var(--text);text-shadow:var(--logo-text-shadow);transition:text-shadow 0.3s,color 0.3s}
 .nav-links{display:flex;align-items:center;gap:28px;flex:1;justify-content:center}
 .nav-links a{font-size:.875rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s;white-space:nowrap}
@@ -290,8 +292,8 @@ footer{border-top:1px solid var(--border);padding:56px 0 32px}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
 .footer-brand{display:flex;flex-direction:column;gap:16px}
 .footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.footer-logo img{height:28px;width:auto;filter:var(--logo-filter);transition:filter .3s}
-.footer-logo span{font-family:'Inter',sans-serif;font-weight:800;font-size:1.1rem;color:var(--text)}
+.footer-logo img{height:76px;width:auto;filter:var(--logo-filter);transition:filter .3s}
+.footer-logo span{font-family:'Inter',sans-serif;font-weight:810;font-size:26px;letter-spacing:-0.5px;color:var(--text);text-shadow:var(--logo-text-shadow);transition:text-shadow 0.3s,color 0.3s}
 .footer-contact{display:flex;flex-direction:column;gap:4px}
 .footer-contact p{font-size:.8rem;color:var(--muted)}
 .footer-contact a{font-size:.8rem;color:var(--accent);text-decoration:none}
