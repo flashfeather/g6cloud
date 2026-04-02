@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<!--
+  ╔════════════════════════════════════════════════════════════════════════════╗
+  ║                                                                            ║
+  ║                 PÁGINA: INFRAESTRUTURA CLOUD - G6 CLOUD                     ║
+  ║                                                                            ║
+  ║  Descrição: Landing page do serviço de Infraestrutura Cloud, com foco em   ║
+  ║  arquitetura segura e escalável para PMEs, exibindo fundamentos (network,  ║
+  ║  security, IAM), deep dive de segurança, metodologia e CTA com modal.      ║
+  ║                                                                            ║
+  ║  Estrutura:                                                                ║
+  ║    1. HEAD  - SEO, OpenGraph, Canonical e Schema (JSON-LD)                 ║
+  ║    2. CSS   - Tailwind via CDN + tema (darkMode class) + tipografia Inter  ║
+  ║    3. HEADER- Navegação fixa + alternância de tema                         ║
+  ║    4. MAIN  - Hero + Trust Bar + Features + Deep Dive + Metodologia + CTA  ║
+  ║    5. MODAL - Formulário de contato reutilizado (fetch async)              ║
+  ║    6. FOOTER- Contato, links rápidos, legal e redes sociais                ║
+  ║    7. JS    - Modal + envio do formulário + scripts externos               ║
+  ║                                                                            ║
+  ║  Observação: O tema escuro funciona via classe "dark" no <html>/<body>.    ║
+  ╚════════════════════════════════════════════════════════════════════════════╝
+-->
+
+<html class="light" lang="pt-BR">
+<head>
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 1: CONFIGURAÇÕES BÁSICAS DO DOCUMENTO ====== -->
+  <!-- ====================================================================== -->
+
+  <!-- Charset UTF-8: suporte a caracteres pt-BR -->
+  <meta charset="utf-8"/>
+
+  <!-- Viewport: responsividade em dispositivos móveis -->
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 2: SEO (META TAGS) ====== -->
+  <!-- ====================================================================== -->
+
+  <meta name="description" content="Infraestrutura Cloud - G6 Cloud. Projetamos e gerenciamos infraestruturas robustas e escaláveis na nuvem para PMEs." />
+  <meta name="keywords" content="infraestrutura cloud, cloud infrastructure, AWS, Azure, Google Cloud, arquitetura nuvem, escalabilidade" />
+  <meta name="author" content="G6 Cloud" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="pt-BR" />
+
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 3: SOCIAL (OPEN GRAPH / TWITTER) ====== -->
+  <!-- ====================================================================== -->
+
+  <meta property="og:title" content="Infraestrutura Cloud - G6 Cloud" />
+  <meta property="og:description" content="Projetamos e gerenciamos infraestruturas robustas e escaláveis na nuvem." />
+  <meta property="og:image" content="assets/img/G6-Cloud.png.png" />
+  <meta property="og:url" content="https://g6cloud.com.br/infraestrutura-cloud.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Canonical: evita duplicidade de indexação -->
+  <link rel="canonical" href="https://g6cloud.com.br/infraestrutura-cloud.html" />
+
+  <!-- Title: título da aba -->
+  <title>Infraestrutura Cloud - G6 Cloud</title>
+
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 4: FONTES / ÍCONES / FAVICON ====== -->
+  <!-- ====================================================================== -->
+
+  <link rel="icon" href="assets/img/g6icone.png">
+
+  <!-- Preconnect para performance -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+
+  <!-- Fonte Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+
+  <!-- Material Symbols (há duplicação no seu HTML original) -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 5: SCHEMA MARKUP (JSON-LD) ====== -->
+  <!-- ====================================================================== -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Infraestrutura Cloud",
+    "provider": {
+      "@type": "Organization",
+      "name": "G6 Cloud",
+      "url": "https://g6cloud.com.br"
+    },
+    "description": "Projetamos e gerenciamos infraestruturas robustas e escaláveis na nuvem."
+  }
+  </script>
+
+  <!-- ====================================================================== -->  <!-- ====== CARREGAMENTO INICIAL DO TEMA ======
+  <!-- Previne flash de tema incorreto ao carregar a página -->
+  <script>
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+       window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  </script>
+
+  <!-- ======================================================================  <!-- ====== SEÇÃO 6: TAILWIND CSS (CDN) ====== -->
+  <!-- ====================================================================== -->
+
+  <!-- Tailwind CDN + plugins:
+       - forms: inputs mais consistentes
+       - container-queries: suporte a @container -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 7: CONFIG TAILWIND (TEMA / PALETA / FONTES) ====== -->
+  <!-- ====================================================================== -->
+
+  <!-- darkMode: "class" => tema escuro ativado com classe "dark" -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#1A73E8",
+            "primary-hover": "#1557B0",
+            "background-light": "#F3F4F6",
+            "background-dark": "#0B1116",
+            "surface-light": "#FFFFFF",
+            "surface-dark": "#161B22",
+            "input-bg-dark": "#161B22",
+            "input-border-dark": "#30363D",
+            "text-light": "#111418",
+            "text-dark": "#F9FAFB",
+            "subtle-light": "#6B7280",
+            "subtle-dark": "#9CA3AF",
+            "border-light": "#DBE0E6",
+            "border-dark": "#2A3B4C"
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"],
+            "sans": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          }
+        }
+      }
+    }
+  </script>
+
+    <script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    // Alterna a classe 'hidden' do Tailwind
+    menu.classList.toggle('hidden');
+  }
+</script>
+
+  <!-- ====================================================================== -->
+  <!-- ====== SEÇÃO 8: CSS BASE ====== -->
+  <!-- ====================================================================== -->
+
+  <style>
+    /* Fonte base do documento */
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+
+<body class="font-body bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark antialiased">
+  <!-- ====================================================================== -->
+  <!-- ====== CONTAINER PRINCIPAL ====== -->
+  <!-- ====================================================================== -->
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+
+    <!-- ==================================================================== -->
+    <!-- ====== HEADER / NAVEGAÇÃO FIXA ====== -->
+    <!-- ==================================================================== -->
+
+    <!-- Observação: comentário original diz "No Logo", mas há logo/brand -->
+    <header class="fixed inset-x-0 top-0 z-30 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm shadow-md">
+      <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
+        <div class="flex items-center justify-between py-4">
+
+          <!-- Logo / marca -->
+          <a class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2" href="index.html">
+            <span class="material-symbols-outlined text-primary">cloud</span>
+            G6 Cloud
+          </a>
+
+          <!-- Navegação desktop -->
+          <nav class="hidden md:flex flex-1 justify-center items-center gap-6 ml-12">
+            <div class="flex items-center gap-8">
+              <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="index.html">Início</a>
+              <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="migracao-nuvem.html">Migração</a>
+
+              <!-- Link atual destacado -->
+              <a class="text-sm font-bold leading-normal text-primary" href="#">Infraestrutura</a>
+
+              <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="devops-automacao.html">DevOps</a>
+              <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="suporte-monitoramento.html">Suporte e Monitoramento</a>
+              <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="consultoria-finops.html">FinOps</a>
+            </div>
+          </nav>
+
+          <!-- Ações do header -->
+          <div class="flex items-center gap-4 ml-auto">
+            <!-- Botão toggle tema:
+                 - ícone de sol no claro (dark:hidden)
+                 - ícone de lua no escuro (dark:inline) -->
+            <button
+              class="relative inline-flex items-center h-10 w-10 justify-center rounded-lg text-primary hover:bg-primary/10 transition-colors"
+              id="theme-toggle"
+              type="button"
+              aria-label="Alternar tema claro/escuro"
+            >
+              <span class="material-symbols-outlined dark:hidden">light_mode</span>
+              <span class="material-symbols-outlined hidden dark:inline">dark_mode</span>
+                          <!-- NOVO: Botão Menu Hambúrguer (Aparece só no Mobile 'md:hidden') -->
+        <button class="md:hidden text-gray-900 dark:text-white" onclick="toggleMenu()">
+           <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+
+           </div>
+         </div>
+        </div>
+
+          <!-- 4. GAVETA DO MENU MOBILE (Escondida por padrão) -->
+  <!-- Colocamos fora do 'flex' principal para não quebrar o layout -->
+  <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-[#1a202c] border-t dark:border-gray-700 shadow-lg flex-col p-4 md:hidden">
+      <a href="index.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Início</a>
+      <a href="migracao-nuvem.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Migração</a>
+      <a href="infraestrutura-cloud.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Infraestrutura</a>
+      <a href="devops-automacao.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">DevOps</a>
+      <a href="suporte-monitoramento.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Suporte e Monitoramento</a>
+      <a href="consultoria-finops.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">FinOps</a>
+      <!-- Adicione os outros links aqui -->
+  </div>
+      </header>
+
+    <!-- ==================================================================== -->
+    <!-- ====== MAIN: CONTEÚDO DA PÁGINA ====== -->
+    <!-- ==================================================================== -->
+
+    <main class="flex flex-col flex-1">
+
+      <!-- ================================================================ -->
+      <!-- ====== HERO SECTION (CABEÇALHO) ====== -->
+      <!-- ================================================================ -->
+      <!-- Fundo escuro com imagem de background + overlay gradient -->
+      <section class="relative flex flex-col items-center justify-center py-20 px-6 lg:px-40 bg-[#101922] pt-28">
+        <div class="absolute inset-0 z-0">
+
+          <!-- Imagem decorativa do hero (opacidade reduzida) -->
+          <img
+            alt="Abstract blue network connections and cloud data visualization"
+            class="h-full w-full object-cover opacity-20"
+            data-alt="Abstract blue network connections and cloud data visualization"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6V_jSGrXuHjVJvA_czfHwr5uPnaCU6-KKmmAYkpw-L8EfMKoELBXUHtc6Z-shG14WxeKS7IVx2MDNJDrQRBHXAvgwMchFypw2qlgxqWmlYZ9y9xnrcYS63V_hNMHhg7Qc9tZaq0iLk-cBdjN6lpoM7q7juse0pp2pTyY6_lRoJVH42OCQY1PFdJMEVB458GUlq5cGtymmZMgjmh7FKbJx7iFYtfb4yfrkYsiqxaGotmDtSvMUIu3Pzgelz9fO4twQ3iXCprj4Cd0"
+          />
+
+          <!-- Overlay gradient: melhora legibilidade do texto -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#101922] via-[#101922]/80 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-5xl flex flex-col gap-8 lg:gap-12 lg:flex-row items-center">
+          <div class="flex flex-col gap-6 flex-1">
+
+            <!-- Headline -->
+            <h1 class="text-4xl lg:text-6xl font-black leading-tight tracking-tight text-white">
+              Infraestrutura Cloud <span class="text-primary">Escalável e Segura</span>
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-lg text-gray-300 max-w-2xl leading-relaxed">
+              Potencialize seu negócio com arquiteturas resilientes focadas em segurança, otimização de custos e alta performance. Especialistas em migração e serviços gerenciados para PMEs.
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-wrap gap-4 pt-2">
+              <button onclick="openContactModal()"
+                class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
+                <span>Entre em contato</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </button>
+
+              <!-- CTA secundário (sem ação definida) -->
+              <button class="bg-[#1c2127] hover:bg-[#283039] border border-[#3b4754] text-white font-medium py-3 px-6 rounded-lg transition-all">
+                Ver Casos de Sucesso
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- ====== TRUST BAR / TECH STACK ====== -->
+      <!-- ================================================================ -->
+      <!-- Barra de "prova social" com tecnologias (texto estilizado como logo) -->
+      <div class="w-full border-y border-[#283039] bg-[#0d1218] py-8">
+        <div class="max-w-5xl mx-auto px-6 lg:px-40 flex flex-wrap justify-center lg:justify-between gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+          <span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">cloud</span> AWS</span>
+          <span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">grid_view</span> Azure</span>
+          <span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">deployed_code</span> Google Cloud</span>
+          <span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">layers</span> Terraform</span>
+          <span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">anchor</span> Kubernetes</span>
+        </div>
+      </div>
+
+      <!-- ================================================================ -->
+      <!-- ====== CORE FEATURES GRID ====== -->
+      <!-- ================================================================ -->
+      <section class="py-20 px-6 lg:px-40 bg-background-light dark:bg-background-dark">
+        <div class="max-w-5xl mx-auto flex flex-col gap-12">
+
+          <div class="flex flex-col gap-4">
+            <h2 class="text-[#111418] dark:text-white text-3xl font-bold leading-tight">Fundamentos de uma Cloud Robusta</h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl">
+              Nossa abordagem garante que sua infraestrutura esteja preparada para crescer com segurança desde o primeiro dia.
+            </p>
+          </div>
+
+          <!-- Cards: 4 pilares de infra -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Card 1 -->
+            <div class="group flex flex-col gap-4 rounded-xl border border-[#e5e7eb] dark:border-[#3b4754] bg-white dark:bg-[#1c2127] p-6 hover:border-primary/50 transition-colors">
+              <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined" style="font-size: 24px;">lan</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-[#111418] dark:text-white text-lg font-bold">VPC &amp; Networking</h3>
+                <p class="text-gray-600 dark:text-[#9dabb9] text-sm leading-relaxed">
+                  Configuração de redes isoladas, subnets públicas e privadas para máxima proteção dos seus dados.
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="group flex flex-col gap-4 rounded-xl border border-[#e5e7eb] dark:border-[#3b4754] bg-white dark:bg-[#1c2127] p-6 hover:border-primary/50 transition-colors">
+              <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined" style="font-size: 24px;">shield</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-[#111418] dark:text-white text-lg font-bold">Security Groups</h3>
+                <p class="text-gray-600 dark:text-[#9dabb9] text-sm leading-relaxed">
+                  Regras de firewall rigorosas para controle granular de tráfego de entrada e saída.
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="group flex flex-col gap-4 rounded-xl border border-[#e5e7eb] dark:border-[#3b4754] bg-white dark:bg-[#1c2127] p-6 hover:border-primary/50 transition-colors">
+              <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined" style="font-size: 24px;">vpn_key</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-[#111418] dark:text-white text-lg font-bold">Conectividade VPN</h3>
+                <p class="text-gray-600 dark:text-[#9dabb9] text-sm leading-relaxed">
+                  Túneis criptografados para acesso remoto seguro e conexões Site-to-Site estáveis.
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="group flex flex-col gap-4 rounded-xl border border-[#e5e7eb] dark:border-[#3b4754] bg-white dark:bg-[#1c2127] p-6 hover:border-primary/50 transition-colors">
+              <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined" style="font-size: 24px;">badge</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-[#111418] dark:text-white text-lg font-bold">IAM &amp; Governança</h3>
+                <p class="text-gray-600 dark:text-[#9dabb9] text-sm leading-relaxed">
+                  Gestão de identidades e políticas de acesso (Least Privilege) para evitar falhas de segurança.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- ====== FEATURE HIGHLIGHT / DEEP DIVE ====== -->
+      <!-- ================================================================ -->
+      <section class="py-16 px-6 lg:px-40 bg-[#f1f3f5] dark:bg-[#0d1218]">
+        <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+
+          <!-- Lado visual (diagrama abstrato) -->
+          <div class="order-2 lg:order-1">
+            <div class="bg-[#101922] rounded-2xl overflow-hidden shadow-2xl border border-[#283039] p-2">
+              <div class="rounded-xl overflow-hidden bg-[#1c2127] relative h-[300px] w-full"
+                   data-alt="Schematic representation of a secure cloud architecture layout"
+                   style="background-image: linear-gradient(135deg, rgba(19, 127, 236, 0.1) 0%, rgba(16, 25, 34, 1) 100%);">
+
+                <!-- Elementos decorativos: simulam diagrama de arquitetura -->
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 border border-dashed border-primary/30 rounded-lg flex items-center justify-center">
+                  <div class="absolute -top-3 left-4 bg-[#1c2127] px-2 text-xs text-primary font-mono">VPC PRIVATE</div>
+
+                  <div class="grid grid-cols-2 gap-4 w-full p-4">
+                    <div class="h-16 bg-[#111418] rounded border border-[#3b4754] flex items-center justify-center gap-2">
+                      <span class="material-symbols-outlined text-gray-500">dns</span>
+                      <span class="text-xs text-gray-400">DB Master</span>
+                    </div>
+
+                    <div class="h-16 bg-[#111418] rounded border border-[#3b4754] flex items-center justify-center gap-2">
+                      <span class="material-symbols-outlined text-gray-500">dns</span>
+                      <span class="text-xs text-gray-400">DB Slave</span>
+                    </div>
+
+                    <div class="col-span-2 h-16 bg-[#111418] rounded border border-[#3b4754] flex items-center justify-center gap-2">
+                      <span class="material-symbols-outlined text-primary">memory</span>
+                      <span class="text-xs text-gray-400">App Cluster</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lado texto -->
+          <div class="order-1 lg:order-2 flex flex-col gap-6">
+
+            <!-- Badge de destaque -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit">
+              <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              <span class="text-xs font-bold text-primary tracking-wide uppercase">Segurança por Design</span>
+            </div>
+
+            <h2 class="text-3xl lg:text-4xl font-black text-[#111418] dark:text-white leading-tight">
+              Proteção em Camadas para Dados Críticos
+            </h2>
+
+            <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
+              Não tratamos segurança como um "add-on". Ela é integrada na arquitetura. Utilizamos criptografia em repouso e em trânsito, rotação automática de chaves e monitoramento contínuo de conformidade.
+            </p>
+
+            <!-- Lista de benefícios -->
+            <ul class="flex flex-col gap-4 mt-4">
+
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-green-500 mt-0.5">check_circle</span>
+                <div>
+                  <strong class="block text-[#111418] dark:text-white">Criptografia Ponta a Ponta</strong>
+                  <span class="text-sm text-gray-500 dark:text-gray-400">Seus dados ilegíveis para terceiros não autorizados.</span>
+                </div>
+              </li>
+
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-green-500 mt-0.5">check_circle</span>
+                <div>
+                  <strong class="block text-[#111418] dark:text-white">Automação de Infraestrutura (IaC)</strong>
+                  <span class="text-sm text-gray-500 dark:text-gray-400">Ambientes replicáveis e sem erros manuais usando Terraform.</span>
+                </div>
+              </li>
+
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-green-500 mt-0.5">check_circle</span>
+                <div>
+                  <strong class="block text-[#111418] dark:text-white">Backup e Disaster Recovery</strong>
+                  <span class="text-sm text-gray-500 dark:text-gray-400">Planos de contingência testados para garantir continuidade.</span>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- ====== METODOLOGIA (COMO TRABALHAMOS) ====== -->
+      <!-- ================================================================ -->
+      <section class="py-20 px-6 lg:px-40 bg-background-light dark:bg-background-dark">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+          <h2 class="text-3xl font-bold text-[#111418] dark:text-white mb-4">Como trabalhamos</h2>
+          <p class="text-gray-600 dark:text-gray-400">Do diagnóstico à implementação, nosso processo é transparente e ágil.</p>
+        </div>
+
+        <div class="max-w-5xl mx-auto relative">
+
+          <!-- Linha conectora (apenas desktop) -->
+          <div class="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 dark:bg-[#283039] -translate-y-1/2 z-0"></div>
+
+          <!-- 3 etapas -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+
+            <div class="flex flex-col items-center text-center gap-4 bg-background-light dark:bg-background-dark p-4">
+              <div class="w-16 h-16 rounded-full bg-[#1c2127] border-4 border-background-light dark:border-background-dark shadow-lg flex items-center justify-center text-primary text-2xl font-bold">1</div>
+              <h3 class="text-xl font-bold text-[#111418] dark:text-white">Assessment</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Analisamos sua infraestrutura atual, identificando gargalos e vulnerabilidades.</p>
+            </div>
+
+            <div class="flex flex-col items-center text-center gap-4 bg-background-light dark:bg-background-dark p-4">
+              <div class="w-16 h-16 rounded-full bg-[#1c2127] border-4 border-background-light dark:border-background-dark shadow-lg flex items-center justify-center text-primary text-2xl font-bold">2</div>
+              <h3 class="text-xl font-bold text-[#111418] dark:text-white">Design &amp; Planejamento</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Desenhamos a arquitetura ideal considerando custos, segurança e escalabilidade.</p>
+            </div>
+
+            <div class="flex flex-col items-center text-center gap-4 bg-background-light dark:bg-background-dark p-4">
+              <div class="w-16 h-16 rounded-full bg-[#1c2127] border-4 border-background-light dark:border-background-dark shadow-lg flex items-center justify-center text-primary text-2xl font-bold">3</div>
+              <h3 class="text-xl font-bold text-[#111418] dark:text-white">Execução &amp; Gestão</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Implementação via IaC, testes de carga e monitoramento contínuo.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- ====== CTA FINAL ====== -->
+      <!-- ================================================================ -->
+      <section class="py-20 px-6 lg:px-40 bg-gray-50 dark:bg-[#0f172a] border-t border-gray-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto rounded-3xl 
+                    bg-white dark:bg-[#1e293b]
+                    border border-slate-200 dark:border-slate-700/50 
+                    p-10 lg:p-14 text-center flex flex-col items-center 
+                    shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none">
+
+          <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight">
+            Pronto para modernizar sua <br class="hidden md:block"> infraestrutura?
+          </h2>
+
+          <p class="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-2xl leading-relaxed">
+            Agende uma conversa gratuita com nossos arquitetos e descubra como a <span class="font-semibold text-slate-900 dark:text-blue-400">G6 Cloud</span> pode transformar a tecnologia da sua empresa.
+          </p>
+
+          <button onclick="openContactModal()"
+                  class="group flex items-center justify-center gap-3 
+                         bg-[#1e3a8a] dark:bg-blue-600
+                         hover:bg-[#1e40af] dark:hover:bg-blue-500
+                         text-white font-bold py-4 px-10 rounded-xl 
+                         transition-all duration-300 shadow-lg shadow-blue-900/20 hover:shadow-blue-900/40 hover:-translate-y-0.5">
+            <span class="material-symbols-outlined text-[22px]">mail</span>
+            <span>Entre em contato agora</span>
+          </button>
+
+        </div>
+      </section>
+
+      <!-- ================================================================== -->
+      <!-- ====== MODAL DE CONTATO (REUTILIZADO) ====== -->
+      <!-- ================================================================== -->
+      <!-- Mantido igual ao padrão para consistência entre páginas -->
+      <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl w-full max-w-2xl h-[95vh] max-h-[900px] flex flex-col">
+
+          <!-- Conteúdo rolável (para telas pequenas) -->
+          <div class="flex-1 p-6 sm:p-8 flex flex-col overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-2xl font-bold text-[#111418] dark:text-white">Entre em contato</h2>
+              <button onclick="closeContactModal()" class="text-gray-500 hover:text-[#111418] dark:text-gray-400 dark:hover:text-white">
+                <span class="material-symbols-outlined text-2xl">close</span>
+              </button>
+            </div>
+
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+              Vamos conversar sobre como podemos ajudar sua empresa a crescer com as melhores soluções em nuvem.
+            </p>
+
+            <form id="contact-modal-form" action="send_form.php" method="POST" class="space-y-6">
+              <!-- Nome -->
+              <div>
+                <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-name">Nome</label>
+                <input id="modal-name" name="name"
+                  class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+                  placeholder="Seu nome" type="text" required />
+              </div>
+
+              <!-- E-mail -->
+              <div>
+                <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-email">E-mail</label>
+                <input id="modal-email" name="email"
+                  class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+                  placeholder="seu.email@exemplo.com" type="email" required />
+              </div>
+
+              <!-- Telefone -->
+              <div>
+                <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-phone">Telefone</label>
+                <input id="modal-phone" name="phone"
+                  class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+                  placeholder="(11) 99999-9999" type="tel" required />
+              </div>
+
+              <!-- Empresa -->
+              <div>
+                <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-company">Empresa</label>
+                <input id="modal-company" name="company"
+                  class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+                  placeholder="Nome da empresa" type="text" required />
+              </div>
+
+              <!-- Mensagem -->
+              <div>
+                <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-message">Mensagem</label>
+                <textarea id="modal-message" name="message" rows="4"
+                  class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200 resize-y"
+                  placeholder="Descreva brevemente o que precisa — migração, suporte, otimização de custos, etc." required></textarea>
+              </div>
+
+              <!-- Status -->
+              <div id="modal-contact-status" class="text-center text-sm text-gray-600 dark:text-gray-300"></div>
+
+              <div class="flex gap-4">
+                <button id="modal-contact-submit"
+                  class="flex-1 justify-center rounded-lg bg-primary px-3 py-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors duration-200"
+                  type="submit">
+                  Enviar mensagem
+                </button>
+
+                <button onclick="closeContactModal()"
+                  class="flex-1 justify-center rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-3 text-sm font-semibold leading-6 text-[#111418] dark:text-white shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+                  type="button">
+                  Cancelar
+                </button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ==================================================================== -->
+    <!-- ====== RODAPÉ ====== -->
+    <!-- ==================================================================== -->
+    <footer class="bg-background-light dark:bg-background-dark border-t border-border-light dark:border-border-dark py-12">
+      <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          <!-- Coluna 1 -->
+          <div class="col-span-2 md:col-span-1 flex flex-col gap-4">
+            <a href="#topo" class="flex items-center gap-2">
+              <img src="assets/img/G6-Cloud.png.png" alt="Logo G6 Cloud" class="h-8 w-auto" width="32" height="32" />
+              <span class="text-xl font-black text-text-light dark:text-text-dark">G6 Cloud</span>
+            </a>
+
+            <div class="flex flex-col gap-1">
+              <p class="text-sm font-medium text-subtle-light dark:text-subtle-dark">Fale Conosco:</p>
+              <a href="mailto:g6cloud@g6cloud.com.br" class="text-sm text-primary hover:underline">g6cloud@g6cloud.com.br</a>
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">(11) 97659-6203</p>
+            </div>
+          </div>
+
+          <!-- Coluna 2 -->
+          <div class="flex flex-col gap-4">
+            <h4 class="text-base font-bold text-text-light dark:text-text-dark">Acesso Rápido</h4>
+            <div class="flex flex-col gap-2">
+              <a href="#topo" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Início</a>
+              <a href="#servicos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Serviços</a>
+              <a href="#sobre-nos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Sobre Nós</a>
+              <a href="#contato" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Contato</a>
+            </div>
+          </div>
+
+          <!-- Coluna 3 -->
+          <div class="flex flex-col gap-4">
+            <h4 class="text-base font-bold text-text-light dark:text-text-dark">Legal</h4>
+            <div class="flex flex-col gap-2">
+              <!-- Observação: no seu HTML original aqui está com href="#" -->
+              <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors" href="termos.html">Termos de Serviço</a>
+              <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors" href="privacidade.html">Política de Privacidade</a>
+            </div>
+          </div>
+
+          <!-- Coluna 4 -->
+          <div class="flex flex-col gap-4">
+            <h4 class="text-base font-bold text-text-light dark:text-text-dark">Siga-nos</h4>
+
+            <!-- Ícones sociais (SVG inline) -->
+            <div class="flex items-center gap-3">
+              <!-- WhatsApp / LinkedIn / Instagram / Site (mantidos) -->
+              <!-- ... (SVGs mantidos conforme original) ... -->
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-border-light dark:border-border-dark text-center">
+          <p class="text-sm text-subtle-light dark:text-subtle-dark">© 2026 G6 Cloud. Todos os direitos reservados.</p>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- ====== SCRIPTS ====== -->
+  <!-- ====================================================================== -->
+
+  <!-- Scripts externos minificados (tema + form) -->
+  <script src="assets/js/theme.min.js" defer></script>
+  <script src="assets/js/form.min.js" defer></script>
+
+  <script>
+    // ====== FUNÇÃO: Abrir Modal ======
+    function openContactModal() {
+      const modal = document.getElementById('contact-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.add('opacity-100'), 10);
+      document.body.style.overflow = 'hidden';
+    }
+
+    // ====== FUNÇÃO: Fechar Modal ======
+    function closeContactModal() {
+      const modal = document.getElementById('contact-modal');
+      modal.classList.remove('opacity-100');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+      document.body.style.overflow = 'auto';
+    }
+
+    // ====== EVENTO: Fechar ao clicar fora ======
+    document.getElementById('contact-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeContactModal();
+    });
+
+    // ====== EVENTO: Fechar com ESC ======
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !document.getElementById('contact-modal').classList.contains('hidden')) {
+        closeContactModal();
+      }
+    });
+
+    // ====== SCRIPT: Envio do formulário via Fetch ======
+    // - Valida campos obrigatórios
+    // - Feedback visual (enviando/sucesso/erro)
+    const modalForm = document.getElementById("contact-modal-form");
+    const modalStatusEl = document.getElementById("modal-contact-status");
+    const modalSubmitBtn = document.getElementById("modal-contact-submit");
+
+    modalForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(modalForm);
+      const name = (formData.get("name") || "").toString().trim();
+      const company = (formData.get("company") || "").toString().trim();
+      const email = (formData.get("email") || "").toString().trim();
+      const phone = (formData.get("phone") || "").toString().trim();
+      const message = (formData.get("message") || "").toString().trim();
+
+      if (!name || !company || !email || !phone || !message) {
+        modalStatusEl.textContent = "❌ Por favor, preencha todos os campos obrigatórios.";
+        modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
+        return;
+      }
+
+      // Subject automático (lead)
+      const subject = `Lead-${name.replace(/\s+/g, "")}`;
+      formData.append("subject", subject);
+
+      // Estado enviando
+      modalSubmitBtn.disabled = true;
+      modalSubmitBtn.classList.add("opacity-70", "cursor-not-allowed");
+      modalStatusEl.textContent = "📤 Enviando mensagem...";
+      modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-800";
+
+      try {
+        const res = await fetch(modalForm.action, { method: "POST", body: formData });
+        const data = await res.json();
+
+        if (data.success) {
+          modalStatusEl.textContent = "✅ Mensagem enviada com sucesso! Em breve entraremos em contato.";
+          modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800";
+          modalForm.reset();
+          setTimeout(() => closeContactModal(), 3000);
+        } else {
+          modalStatusEl.textContent = "❌ Erro ao enviar. Tente novamente.";
+          modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
+        }
+      } catch (err) {
+        console.error(err);
+        modalStatusEl.textContent = "❌ Erro de conexão. Verifique sua internet e tente novamente.";
+        modalStatusEl.className = "text-center text-sm font-medium py-3 sm:py-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800";
+      } finally {
+        modalSubmitBtn.disabled = false;
+        modalSubmitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<!--
+  ╔════════════════════════════════════════════════════════════════════════════╗
+  ║                                                                            ║
+  ║                   PÁGINA: SUPORTE E MONITORAMENTO                          ║
+  ║                   Serviço de Monitoramento Proativo 24/7                   ║
+  ║                                                                            ║
+  ║  Descrição: Página que apresenta serviços de suporte, monitoramento        ║
+  ║             e gestão de infraestrutura em nuvem. Inclui planos de          ║
+  ║             preços e modal de contato interativo.                          ║
+  ║                                                                            ║
+  ╚════════════════════════════════════════════════════════════════════════════╝
+-->
+<html class="light" lang="pt-BR">
+<head>
+    <!-- ====== CONFIGURAÇÕES BÁSICAS DO DOCUMENTO ====== -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <!-- ====== META TAGS - SEO e RESPONSIVIDADE ====== -->
+    <!-- Otimização para motores de busca -->
+    <meta name="description" content="Suporte e Monitoramento - G6 Cloud. Monitoramos e gerenciamos seu ambiente na nuvem para garantir performance e segurança." />
+    <meta name="keywords" content="suporte nuvem, monitoramento cloud, performance, segurança, gerenciamento infraestrutura" />
+    <meta name="author" content="G6 Cloud" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="pt-BR" />
+    
+    <!-- Meta Tags para Redes Sociais (OpenGraph) -->
+    <meta property="og:title" content="Suporte e Monitoramento - G6 Cloud" />
+    <meta property="og:description" content="Monitoramos e gerenciamos seu ambiente na nuvem para garantir performance e segurança." />
+    <meta property="og:image" content="assets/img/G6-Cloud.png.png" />
+    <meta property="og:url" content="https://g6cloud.com.br/suporte-monitoramento.html" />
+    
+    <!-- Meta Tag para Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Link Canônico - evita duplicação em motores de busca -->
+    <link rel="canonical" href="https://g6cloud.com.br/suporte-monitoramento.html" />
+    
+    <!-- ====== TITULO E FAVICON ====== -->
+    <title>Suporte e Monitoramento - G6 Cloud</title>
+    <link rel="icon" href="assets/img/g6icone.png">
+    <!-- ====== ÍCONES DO MATERIAL DESIGN ====== -->
+    <!-- Fonte de ícones modernos e responsivos -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- ====== SCHEMA MARKUP - DADOS ESTRUTURADOS PARA SEO ====== -->
+    <!-- Markup JSON-LD para melhorar indexação em motores de busca -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Suporte e Monitoramento",
+      "provider": {
+        "@type": "Organization",
+        "name": "G6 Cloud",
+        "url": "https://g6cloud.com.br"
+      },
+      "description": "Monitoramos e gerenciamos seu ambiente na nuvem para garantir performance e segurança."
+    }
+    </script>
+    
+    <!-- ====== FONTES GOOGLE - OTIMIZAÇÃO DE CARREGAMENTO ====== -->
+    <!-- Preconexão aos servidores de fontes para carregamento mais rápido -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    
+    <!-- Fonte Inter: principal fonte do projeto (weights: 400, 500, 700, 900) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+    
+    <!-- Ícones Material Design -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- ====== CARREGAMENTO INICIAL DO TEMA ======
+    <!-- Previne flash de tema incorreto ao carregar a página -->
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+         window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    
+    <!-- ====== TAILWIND CSS - FRAMEWORK DE ESTILOS ====== -->
+    <!-- Framework CSS utilitário com plugins para formulários e media queries -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- ====== CONFIGURAÇÃO DO TAILWIND - TEMAS E CORES ====== -->
+    <!-- Define paleta de cores customizadas, modo escuro e outras configurações -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            // Ativa modo escuro ao adicionar classe 'dark' no elemento <html>
+            darkMode: "class",
+            theme: {
+                extend: {
+                    // Cores customizadas da marca G6 Cloud
+                    colors: {
+                        primary: "#1A73E8",              // Azul principal (google-like)
+                        "primary-hover": "#1557B0",     // Azul para hover
+                        "background-light": "#F3F4F6",  // Fundo claro
+                        "background-dark": "#0B1116",   // Fundo escuro
+                        "surface-light": "#FFFFFF",     // Superfícies claras
+                        "surface-dark": "#161B22",      // Superfícies escuras
+                        "input-bg-dark": "#161B22",     // Fundo de inputs em tema escuro
+                        "input-border-dark": "#30363D", // Borda de inputs em tema escuro
+                        "text-light": "#111418",        // Texto em tema claro
+                        "text-dark": "#F9FAFB",         // Texto em tema escuro
+                        "subtle-light": "#6B7280",      // Textos secundários claro
+                        "subtle-dark": "#9CA3AF",       // Textos secundários escuro
+                        "border-light": "#DBE0E6",      // Bordas em tema claro
+                        "border-dark": "#2A3B4C"        // Bordas em tema escuro
+                    },
+                    // Família de fontes customizada
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    // Raios de borda customizados
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+
+    <!-- ====== SCRIPT: SISTEMA DE TEMAS (LIGHT/DARK MODE) ====== -->
+    <!-- Gerencia alternância entre modo claro e escuro com persistência no LocalStorage -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            // ====== FUNÇÃO: Aplicar Tema ======
+            // Adiciona ou remove classe 'dark' do body e html para ativar CSS escuro
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    body.classList.add('dark');
+                    document.documentElement.classList.add('dark'); 
+                } else {
+                    body.classList.remove('dark');
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+
+            // ====== FUNÇÃO: Carregar Tema Salvo ======
+            // Carrega tema do LocalStorage ou detecta preferência do sistema operacional
+            function loadTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+                if (savedTheme) {
+                    applyTheme(savedTheme);
+                } else if (prefersDark) {
+                    applyTheme('dark');
+                } else {
+                    applyTheme('light'); // Padrão: tema claro
+                }
+            }
+
+            // ====== EVENT LISTENER: Clique no Botão de Alternância ======
+            // Alterna entre modo claro e escuro ao clicar no ícone
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const isDark = body.classList.contains('dark');
+
+                    if (isDark) {
+                        applyTheme('light');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        applyTheme('dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                });
+            }
+
+            // ====== Inicializar: Carrega o tema ao abrir a página ======
+            loadTheme();
+        });
+    </script>
+
+  <script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    // Alterna a classe 'hidden' do Tailwind
+    menu.classList.toggle('hidden');
+  }
+</script>
+
+    <!-- ====== ESTILOS CUSTOMIZADOS - CSS ====== -->
+    <!-- Estilos adicionais não cobertos pelo Tailwind -->
+    <style>
+        /* Define a família de fonte padrão para todo o documento */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Configurações padrão dos ícones Material Design */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    
+</head>
+<body class="font-body bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark antialiased">
+  <!-- ====== CONTAINER PRINCIPAL ====== -->
+  <!-- Contém toda a estrutura da página (header, main, footer) com flexbox -->
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    <!-- ====== HEADER / NAVEGAÇÃO ====== -->
+    <!-- Barra de navegação fixa no topo com logo, menu e botão de tema -->
+      <header class="fixed inset-x-0 top-0 z-30 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm shadow-md">
+        <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
+         <div class="flex items-center justify-between py-4">
+           <!-- LOGO E MARCA -->
+           <a class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2" href="index.html">
+            <span class="material-symbols-outlined text-primary">cloud</span>
+                G6 Cloud
+             </a>
+           
+           <!-- NAVEGAÇÃO DESKTOP - Links para principais páginas -->
+            <nav class="hidden md:flex flex-1 justify-center items-center gap-6 ml-12">
+              <div class="flex items-center gap-8">
+                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="index.html">Início</a>
+                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="migracao-nuvem.html">Migração</a>
+                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="infraestrutura-cloud.html">Infraestrutura</a>
+                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="devops-automacao.html">DevOps</a>
+                <!-- Link atual (página) destacado em cor primária -->
+                <a class="text-sm font-bold leading-normal text-primary" href="#">Suporte e Monitoramento</a>
+                <a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="consultoria-finops.html">FinOps</a>
+              </div>
+            </nav>
+
+           <!-- AÇÕES DO HEADER -->
+           <div class="flex items-center gap-4 ml-auto">
+             <!-- BOTÃO: Alternador de Tema (Light/Dark Mode) -->
+             <button
+               class="relative inline-flex items-center h-10 w-10 justify-center rounded-lg text-primary hover:bg-primary/10 transition-colors"
+               id="theme-toggle"
+               type="button"
+               aria-label="Alternar tema claro/escuro"
+             >
+               <!-- Ícone de luz (modo claro) -->
+               <span class="material-symbols-outlined dark:hidden">light_mode</span>
+               <!-- Ícone de lua (modo escuro) - escondido até ativar modo escuro -->
+               <span class="material-symbols-outlined hidden dark:inline">dark_mode</span>
+                                                    <!-- NOVO: Botão Menu Hambúrguer (Aparece só no Mobile 'md:hidden') -->
+        <button class="md:hidden text-gray-900 dark:text-white" onclick="toggleMenu()">
+           <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+
+           </div>
+         </div>
+        </div>
+
+          <!-- 4. GAVETA DO MENU MOBILE (Escondida por padrão) -->
+  <!-- Colocamos fora do 'flex' principal para não quebrar o layout -->
+  <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-[#1a202c] border-t dark:border-gray-700 shadow-lg flex-col p-4 md:hidden">
+      <a href="index.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Início</a>
+      <a href="migracao-nuvem.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Migração</a>
+      <a href="infraestrutura-cloud.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Infraestrutura</a>
+      <a href="devops-automacao.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">DevOps</a>
+      <a href="suporte-monitoramento.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">Suporte e Monitoramento</a>
+      <a href="consultoria-finops.html" class="block py-3 text-gray-800 dark:text-white hover:text-primary">FinOps</a>
+      <!-- Adicione os outros links aqui -->
+  </div>
+      </header>
+<main class="flex-grow">
+    <!-- ====== SEÇÃO 1: HERO BANNER ====== -->
+    <!-- Banner principal com imagem de fundo, título grande e botões de ação -->
+    <!-- Indica status de uptime (100%) e apresenta o serviço -->
+    <section class="layout-container flex flex-col">
+        <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-8">
+            <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                <div class="@container">
+                    <div class="@[480px]:p-0">
+                        <!-- Hero com background image, gradient overlay e conteúdo -->
+                        <div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-start justify-end px-6 pb-12 pt-40 md:px-12 md:pb-16 shadow-xl pt-28" data-alt="Abstract blue digital network connection background representing cloud infrastructure and uptime" style='background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBtIgDdJzHI0f7y1ELqPf0Yecqk49cFmsh1CynOvA7N43-OnRcvdLZD1GmNuPOssz5e-qvAtiDIZa1QvFB9JCxya3LWosfel6jarKV01ECWUSjCKAmddXrfU_fz_azx4wJ1kZIrK7d7Ab6t-EB0gXqSVE6prnbHkd0ih7RiEiQgFaE1Qp57Rb0DXftkLSqQPIg6RviMHXlozmvHZXdDX5RAcfaBgkMyLfXJsER-A8nYwd7kh9q00qUTJurU2gCTFUdTucymvmDI5c");'>
+                            <!-- Conteúdo do Hero -->
+                            <div class="flex flex-col gap-4 text-left max-w-2xl">
+                                <!-- Badge de status - 100% operacional -->
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 backdrop-blur-md w-fit">
+                                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                                    <span class="text-white text-xs font-bold tracking-wide uppercase">Sistema Operacional 100%</span>
+                                </div>
+                                
+                                <!-- Titulo principal do Hero -->
+                                <h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl lg:text-6xl drop-shadow-sm">
+                                    Sua infraestrutura sempre online. Você sempre tranquilo.
+                                </h1>
+                                
+                                <!-- Subtítulo descritivo -->
+                                <h2 class="text-gray-200 text-base font-normal leading-relaxed md:text-lg max-w-xl">
+                                    Monitoramento proativo e suporte especializado para garantir a disponibilidade do seu negócio na nuvem. Foque no crescimento, nós cuidamos da estabilidade.
+                                </h2>
+                            </div>
+                            
+                            <!-- Botões de ação principal -->
+                            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-4">
+                                <!-- CTA Principal: Entre em contato -->
+                                <button onclick="openContactModal()" class="flex items-center justify-center rounded-lg h-12 px-8 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors shadow-lg shadow-blue-900/50 w-full sm:w-auto">
+                                    <span class="truncate">Entre em contato</span>
+                                </button>
+                                
+                                <!-- CTA Secundária: Ver Planos (scroll smooth) -->
+                                <button
+                                  type="button"
+                                  onclick="document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' });"
+                                  class="flex items-center justify-center rounded-lg h-12 px-8 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-base font-bold leading-normal hover:bg-white/20 transition-colors w-full sm:w-auto">
+                                  <span class="truncate">Ver Planos</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ====== SEÇÃO 2: SERVIÇOS DE SUPORTE ====== -->
+    <!-- Apresenta 4 pilares principais do suporte com ícones e descrições -->
+    <section class="layout-container flex flex-col bg-white dark:bg-gray-800 py-12 md:py-20">
+        <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center">
+            <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                <div class="flex flex-col gap-12 @container">
+                    <!-- Cabeçalho da seção -->
+                    <div class="flex flex-col gap-4 text-center md:text-left">
+                        <span class="text-primary font-bold tracking-wider uppercase text-sm">O que inclui nosso Suporte?</span>
+                        <h2 class="text-[#111418] dark:text-white text-3xl font-black leading-tight tracking-[-0.02em] md:text-4xl max-w-[720px]">
+                            Monitoramento Proativo e Inteligente
+                        </h2>
+                        <p class="text-[#617589] dark:text-gray-400 text-lg font-normal leading-normal max-w-[720px]">
+                            Nossa equipe vigia sua infraestrutura 24/7 para identificar anomalias antes que elas afetem seus usuários, garantindo máxima performance.
+                        </p>
+                    </div>
+                    
+                    <!-- Grid de 4 cards com serviços -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- CARD 1: Alertas em Tempo Real -->
+                        <div class="flex flex-1 gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-background-light dark:bg-gray-900 p-6 flex-col hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-3xl">notifications_active</span>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h3 class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Alertas em Tempo Real</h3>
+                                <p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-relaxed">Notificações imediatas sobre picos de uso, latência ou falhas potenciais diretamente no seu canal preferido.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- CARD 2: Resolução Rápida -->
+                        <div class="flex flex-1 gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-background-light dark:bg-gray-900 p-6 flex-col hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-3xl">bolt</span>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h3 class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Resolução Rápida</h3>
+                                <p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-relaxed">Equipe técnica pronta para intervir assim que um alerta crítico é disparado, minimizando downtime.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- CARD 3: Ajustes Contínuos -->
+                        <div class="flex flex-1 gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-background-light dark:bg-gray-900 p-6 flex-col hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-3xl">tune</span>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h3 class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Ajustes Contínuos</h3>
+                                <p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-relaxed">Otimização constante da infraestrutura para performance e redução de custos operacionais (FinOps).</p>
+                            </div>
+                        </div>
+                        
+                        <!-- CARD 4: Relatórios Mensais -->
+                        <div class="flex flex-1 gap-4 rounded-xl border border-[#dbe0e6] dark:border-gray-700 bg-background-light dark:bg-gray-900 p-6 flex-col hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-3xl">description</span>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h3 class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Relatórios Mensais</h3>
+                                <p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-relaxed">Visão completa e transparente da saúde do seu ambiente, incidentes resolvidos e recomendações.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SEÇÃO 3: FLUXO DE SUPORTE (Timeline) ====== -->
+    <!-- Apresenta visualmente o ciclo de 5 etapas de atendimento ao cliente -->
+    <section class="layout-container flex flex-col py-12 md:py-20 bg-background-light dark:bg-background-dark">
+        <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center">
+            <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                <!-- Título da seção -->
+                <div class="mb-10 px-4">
+                    <h2 class="text-[#111418] dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em]">Como funciona nosso ciclo de suporte</h2>
+                </div>
+                
+                <!-- Timeline vertical com 5 etapas -->
+                <div class="grid grid-cols-[40px_1fr] gap-x-4 px-4">
+                    <!-- ETAPA 1: Detecção Automática -->
+                    <div class="flex flex-col items-center gap-1 pt-1">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white z-10">
+                            <span class="material-symbols-outlined text-xl">radar</span>
+                        </div>
+                        <div class="w-[2px] bg-[#dbe0e6] dark:bg-gray-700 h-full grow min-h-[60px]"></div>
+                    </div>
+                    <div class="flex flex-1 flex-col py-2 pb-10">
+                        <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Detecção Automática</p>
+                        <p class="text-[#617589] dark:text-gray-400 text-base font-normal leading-normal">Nossos agentes de software monitoram milhares de métricas a cada segundo.</p>
+                    </div>
+                    
+                    <!-- ETAPA 2: Análise de Risco -->
+                    <div class="flex flex-col items-center gap-1">
+                        <div class="w-[2px] bg-[#dbe0e6] dark:bg-gray-700 h-2"></div>
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-primary text-primary z-10">
+                            <span class="material-symbols-outlined text-xl">search</span>
+                        </div>
+                        <div class="w-[2px] bg-[#dbe0e6] dark:bg-gray-700 h-full grow min-h-[60px]"></div>
+                    </div>
+                    <div class="flex flex-1 flex-col py-2 pb-10">
+                        <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Análise de Risco</p>
+                        <p class="text-[#617589] dark:text-gray-400 text-base font-normal leading-normal">Inteligência artificial classifica o incidente e notifica os especialistas corretos.</p>
+                    </div>
+                    
+                    <!-- ETAPA 3: Intervenção Técnica -->
+                    <div class="flex flex-col items-center gap-1">
+                        <div class="w-[2px] bg-[#dbe0e6] dark:bg-gray-700 h-2"></div>
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-primary text-primary z-10">
+                            <span class="material-symbols-outlined text-xl">build</span>
+                        </div>
+                        <div class="w-[2px] bg-[#dbe0e6] dark:bg-gray-700 h-full grow min-h-[60px]"></div>
+                    </div>
+                    <div class="flex flex-1 flex-col py-2 pb-10">
+                        <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Intervenção Técnica</p>
+                        <p class="text-[#617589] dark:text-gray-400 text-base font-normal leading-normal">Nossos engenheiros aplicam correções ou workarounds para restabelecer o serviço.</p>
+                    </div>
+                    
+                    <!-- ETAPA 4: Otimização Preventiva (última etapa) -->
+                    <div class="flex flex-col items-center gap-1">
+                        <div class="w-[2px] bg-[#dbe0e6] dark:bg-gray-700 h-2"></div>
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-primary text-primary z-10">
+                            <span class="material-symbols-outlined text-xl">trending_up</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col py-2">
+                        <p class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Otimização Preventiva</p>
+                        <p class="text-[#617589] dark:text-gray-400 text-base font-normal leading-normal">Análise post-mortem para garantir que o problema não se repita.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SEÇÃO 4: PLANOS E PREÇOS ====== -->
+    <!-- Mostra 3 planos de serviço com diferentes níveis de suporte -->
+    <!-- O plano "Business" é destacado como popular -->
+<section id="planos" class="layout-container flex flex-col py-16 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700">
+  <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center">
+    <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+      <!-- Cabeçalho dos planos -->
+      <div class="text-center mb-12">
+      <h2 class="text-3xl font-black text-[#111418] dark:text-white mb-4">Escolha a Tranquilidade</h2>
+      <p class="text-[#617589] dark:text-gray-400 max-w-xl mx-auto">Nossos planos recorrentes são desenhados para escalar com o seu negócio. Sem surpresas na fatura.</p>
+      </div>
+      
+        <!-- Grid de 3 planos -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- ====== PLANO 1: START ====== -->
+<!-- Plano básico para ambientes em desenvolvimento -->
+<div class="flex flex-col rounded-2xl border border-gray-200 dark:border-gray-700 p-8 hover:border-primary/50 transition-colors">
+<h3 class="text-xl font-bold text-[#111418] dark:text-white">Start</h3>
+<p class="text-sm text-gray-500 mt-2 mb-6">Para ambientes em desenvolvimento.</p>
+<!-- Preço em formato: R$ X.XXX/mês -->
+<div class="text-3xl font-black text-[#111418] dark:text-white mb-6">R$ 2.500<span class="text-sm font-normal text-gray-500">/mês</span></div>
+<!-- Lista de features inclusos no plano -->
+<ul class="flex flex-col gap-3 mb-8 text-sm text-[#617589] dark:text-gray-300">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Monitoramento Básico</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Alertas por Email</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Atendimento 8x5</li>
+</ul>
+
+</div>
+
+<!-- ====== PLANO 2: BUSINESS (POPULAR) ====== -->
+<!-- Plano recomendado para empresas em crescimento - COM DESTAQUE -->
+<div class="flex flex-col rounded-2xl border-2 border-primary bg-primary/5 p-8 relative transform md:-translate-y-4">
+<!-- Badge "POPULAR" no canto superior direito -->
+<div class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">POPULAR</div>
+<h3 class="text-xl font-bold text-[#111418] dark:text-white text-primary">Business</h3>
+<p class="text-sm text-gray-500 mt-2 mb-6">Para empresas em crescimento.</p>
+<!-- Preço do plano Business -->
+<div class="text-3xl font-black text-[#111418] dark:text-white mb-6">R$ 5.000<span class="text-sm font-normal text-gray-500">/mês</span></div>
+<!-- Features inclusos - com styling diferenciado -->
+<ul class="flex flex-col gap-3 mb-8 text-sm text-[#111418] dark:text-gray-200 font-medium">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span> Monitoramento Avançado</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span> Alertas WhatsApp/Slack</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span> Atendimento 24/7</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">check_circle</span> 2h de Consultoria Mensal</li>
+</ul>
+
+</div>
+
+<!-- ====== PLANO 3: ENTERPRISE ====== -->
+<!-- Plano customizado para missão crítica e alta escala -->
+<div class="flex flex-col rounded-2xl border border-gray-200 dark:border-gray-700 p-8 hover:border-primary/50 transition-colors">
+<h3 class="text-xl font-bold text-[#111418] dark:text-white">Enterprise</h3>
+<p class="text-sm text-gray-500 mt-2 mb-6">Missão crítica e alta escala.</p>
+<!-- Preço customizado (requer consulta) -->
+<div class="text-3xl font-black text-[#111418] dark:text-white mb-6">Sob Consulta</div>
+<!-- Features premium do plano Enterprise -->
+<ul class="flex flex-col gap-3 mb-8 text-sm text-[#617589] dark:text-gray-300">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Monitoramento Customizado</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Gerente de Conta Dedicado</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-500 text-lg">check</span> SLA Garantido (99.9%)</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Auditoria de Segurança</li>
+</ul>
+
+</div>
+        </div>
+    </div>
+  </div>
+</section>
+
+    <!-- ====== SEÇÃO 5: CTA (CALL TO ACTION) ====== -->
+    <!-- Seção de chamada para ação final com caixa destacada -->
+    <!-- Encoraja o usuário a agendar uma conversa gratuita -->
+<section class="py-20 px-6 lg:px-40 bg-gray-50 dark:bg-[#0f172a] border-t border-gray-200 dark:border-slate-800 transition-colors duration-300">
+  <!-- Card central com box shadow e styling especial -->
+  <div class="max-w-4xl mx-auto rounded-3xl 
+              bg-white dark:bg-[#1e293b]
+              border border-slate-200 dark:border-slate-700/50 
+              p-10 lg:p-14 text-center flex flex-col items-center 
+              shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none">
+    
+    <!-- Título principal da CTA -->
+    <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight">
+      Pronto para modernizar sua <br class="hidden md:block"> infraestrutura?
+    </h2>
+    
+    <!-- Subtítulo descritivo -->
+    <p class="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-2xl leading-relaxed">
+      Agende uma conversa gratuita com nossos arquitetos e descubra como a <span class="font-semibold text-slate-900 dark:text-blue-400">G6 Cloud</span> pode transformar a tecnologia da sua empresa.
+    </p>
+
+    <!-- Botão CTA principal: abre modal de contato -->
+    <button onclick="openContactModal()" 
+            class="group flex items-center justify-center gap-3 
+                   bg-[#1e3a8a] dark:bg-blue-600
+                   hover:bg-[#1e40af] dark:hover:bg-blue-500
+                   text-white font-bold py-4 px-10 rounded-xl 
+                   transition-all duration-300 shadow-lg shadow-blue-900/20 hover:shadow-blue-900/40 hover:-translate-y-0.5">
+      <span class="material-symbols-outlined text-[22px]">mail</span>
+      <span>Entre em contato agora</span>
+    </button>
+    
+  </div>
+</section>
+</section>
+
+<!-- ====== MODAL: FORMULÁRIO DE CONTATO ====== -->
+<!-- Janela popup sobreposta que aparece ao clicar em "Entre em contato" -->
+<!-- Contém formulário com campos: nome, email, telefone, empresa, mensagem -->
+<div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+  <!-- Container do modal -->
+  <div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl w-full max-w-2xl h-[95vh] max-h-[900px] flex flex-col">
+    <!-- Conteúdo do modal com scroll interno para resposividade -->
+    <div class="flex-1 p-6 sm:p-8 flex flex-col overflow-y-auto">
+      <!-- Cabeçalho do modal com título e botão fechar -->
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-[#111418] dark:text-white">Entre em contato</h2>
+        <!-- Botão X para fechar o modal -->
+        <button onclick="closeContactModal()" class="text-gray-500 hover:text-[#111418] dark:text-gray-400 dark:hover:text-white">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+      
+      <!-- Texto descritivo do modal -->
+      <p class="text-gray-600 dark:text-gray-300 mb-6">
+        Vamos conversar sobre como podemos ajudar sua empresa a crescer com as melhores soluções em nuvem.
+      </p>
+      
+      <!-- ====== FORMULÁRIO DE CONTATO ====== -->
+      <!-- Envia dados para send_form.php via POST -->
+      <form id="contact-modal-form" action="send_form.php" method="POST" class="space-y-6">
+        <!-- CAMPO: Nome -->
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-name">
+            Nome
+          </label>
+          <input
+            id="modal-name"
+            name="name"
+            class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+            placeholder="Seu nome"
+            type="text"
+            required
+          />
+        </div>
+        
+        <!-- CAMPO: Email -->
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-email">
+            E-mail
+          </label>
+          <input
+            id="modal-email"
+            name="email"
+            class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+            placeholder="seu.email@exemplo.com"
+            type="email"
+            required
+          />
+        </div>
+        
+        <!-- CAMPO: Telefone -->
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-phone">
+            Telefone
+          </label>
+          <input
+            id="modal-phone"
+            name="phone"
+            class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+            placeholder="(11) 99999-9999"
+            type="tel"
+            required
+          />
+        </div>
+        
+        <!-- CAMPO: Empresa -->
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-company">
+            Empresa
+          </label>
+          <input
+            id="modal-company"
+            name="company"
+            class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200"
+            placeholder="Nome da empresa"
+            type="text"
+            required
+          />
+        </div>
+        
+        <!-- CAMPO: Mensagem (textarea) -->
+        <div>
+          <label class="block text-sm font-bold text-[#111418] dark:text-white mb-2" for="modal-message">
+            Mensagem
+          </label>
+          <textarea
+            id="modal-message"
+            name="message"
+            rows="4"
+            class="block w-full rounded-md border border-gray-300 dark:border-gray-600 py-3 px-4 text-[#111418] dark:text-white shadow-sm placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary bg-white dark:bg-gray-700 sm:text-sm transition-colors duration-200 resize-y"
+            placeholder="Descreva brevemente o que precisa — migração, suporte, otimização de custos, etc."
+            required
+          ></textarea>
+        </div>
+        
+        <!-- Status de envio (mensagens de sucesso/erro) -->
+        <div id="modal-contact-status" class="text-center text-sm text-gray-600 dark:text-gray-300"></div>
+        
+        <!-- Botões de ação do formulário -->
+        <div class="flex gap-4">
+          <!-- Botão: Enviar Mensagem -->
+          <button
+            id="modal-contact-submit"
+            class="flex-1 justify-center rounded-lg bg-primary px-3 py-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors duration-200"
+            type="submit"
+          >
+            Enviar mensagem
+          </button>
+          
+          <!-- Botão: Cancelar (fecha o modal) -->
+          <button
+            onclick="closeContactModal()"
+            class="flex-1 justify-center rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-3 text-sm font-semibold leading-6 text-[#111418] dark:text-white shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+            type="button"
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+      <!-- ====== RODAPÉ (FOOTER) ====== -->
+      <!-- Contém navegação secundária, informações de contato e redes sociais -->
+      <footer class="bg-background-light dark:bg-background-dark border-t border-border-light dark:border-border-dark py-12">
+        <div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
+         <!-- Grid de 4 colunas com diferentes seções do footer -->
+         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+           <!-- COLUNA 1: Logo e Informações de Contato -->
+           <div class="col-span-2 md:col-span-1 flex flex-col gap-4">
+             <!-- Logo com ícone -->
+             <a href="#topo" class="flex items-center gap-2">
+               <img src="assets/img/G6-Cloud.png.png" alt="Logo G6 Cloud" class="h-8 w-auto" width="32" height="32" />
+               <span class="text-xl font-black text-text-light dark:text-text-dark">G6 Cloud</span>
+             </a>
+             <!-- Informações de contato -->
+             <div class="flex flex-col gap-1">
+               <p class="text-sm font-medium text-subtle-light dark:text-subtle-dark">Fale Conosco:</p>
+               <a href="mailto:g6cloud@g6cloud.com.br" class="text-sm text-primary hover:underline">g6cloud@g6cloud.com.br</a>
+               <p class="text-sm text-subtle-light dark:text-subtle-dark">(11) 97659-6203</p>
+             </div>
+           </div>
+
+           <!-- COLUNA 2: Acesso Rápido (Links de Navegação) -->
+           <div class="flex flex-col gap-4">
+             <h4 class="text-base font-bold text-text-light dark:text-text-dark">Acesso Rápido</h4>
+             <div class="flex flex-col gap-2">
+               <a href="#topo" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Início</a>
+               <a href="#servicos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Serviços</a>
+               <a href="#sobre-nos" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Sobre Nós</a>
+               <a href="#contato" class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors">Contato</a>
+             </div>
+           </div>
+
+           <!-- COLUNA 3: Links Legais (Termos e Privacidade) -->
+           <div class="flex flex-col gap-4">
+             <h4 class="text-base font-bold text-text-light dark:text-text-dark">Legal</h4>
+             <div class="flex flex-col gap-2">
+              <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors" href="termos.html">Termos de Serviço</a>
+              <a class="text-sm text-subtle-light dark:text-subtle-dark hover:text-primary transition-colors" href="privacidade.html">Política de Privacidade</a>
+             </div>
+           </div>
+
+           <!-- COLUNA 4: Redes Sociais -->
+           <div class="flex flex-col gap-4">
+             <h4 class="text-base font-bold text-text-light dark:text-text-dark">Siga-nos</h4>
+             <!-- Grid de ícones de redes sociais -->
+             <div class="flex items-center gap-3">
+<!-- ====== REDE SOCIAL: WhatsApp ====== -->
+<a
+  href="https://wa.me/5511976596203?text=Ol%C3%A1%20G6%20Cloud!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20servi%C3%A7os%20em%20nuvem."
+  class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
+         hover:bg-green-50 dark:hover:bg-green-900/30 hover:text-green-500 dark:hover:text-green-400
+         transition-all duration-200 hover:scale-110 hover:shadow-md"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="WhatsApp G6 Cloud"
+>
+  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.446l-.232-.139-3.578.874.249-3.471-.161-.233a9.87 9.87 0 01-1.446-5.038c0-5.428 4.411-9.838 9.845-9.838a9.861 9.861 0 015.04 1.444l.226.139.289-.287.289-.287.228.138c1.671 1.006 2.94 2.421 3.766 4.146.826 1.725.985 3.915.304 5.749-.297 1.006-.883 1.758-1.749 2.257-.689.435-1.446.724-2.247.853-.801.13-1.592.028-2.32-.23z"/>
+  </svg>
+</a>
+
+  <!-- ====== REDE SOCIAL: LinkedIn ====== -->
+  <a
+    href="https://www.linkedin.com/company/g6-cloud"
+    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
+           hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-[#0A66C2] dark:hover:text-[#5EA0FF]
+           transition-all duration-200 hover:scale-110 hover:shadow-md"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn G6 Cloud"
+  >
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.07 20.45H3.56V9h3.51v11.45zM5.31 7.43a2.04 2.04 0 1 1 0-4.08 2.04 2.04 0 0 1 0 4.08zm15.14 13.02h-3.51v-5.57c0-1.33-.03-3.04-1.86-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.43V9h3.37v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.25 2.37 4.25 5.46v6.28z"/>
+    </svg>
+  </a>
+
+  <!-- ====== REDE SOCIAL: Instagram ====== -->
+  <a
+    href="https://www.instagram.com/g6cloud/"
+    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
+           hover:bg-pink-50 dark:hover:bg-pink-900/30 hover:text-[#E1306C] dark:hover:text-[#FF6FA5]
+           transition-all duration-200 hover:scale-110 hover:shadow-md"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram G6 Cloud"
+  >
+    <svg class="h-5 w-5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="M8 0C5.83 0 5.56.01 4.7.05 3.85.09 3.27.22 2.76.42a3.9 3.9 0 0 0-1.42.92A3.9 3.9 0 0 0 .42 2.76C.22 3.27.09 3.85.05 4.7.01 5.56 0 5.83 0 8c0 2.17.01 2.44.05 3.3.04.85.17 1.43.37 1.94.21.52.48.97.93 1.42.44.45.89.72 1.42.93.51.2 1.09.33 1.94.37.86.04 1.14.05 3.3.05s2.44-.01 3.3-.05c.85-.04 1.43-.17 1.94-.37a3.9 3.9 0 0 0 1.42-.93c.45-.45.72-.9.93-1.42.2-.51.33-1.09.37-1.94.04-.86.05-1.14.05-3.3s-.01-2.44-.05-3.3c-.04-.85-.17-1.43-.37-1.94a3.9 3.9 0 0 0-.93-1.42A3.9 3.9 0 0 0 13.24.42C12.73.22 12.15.09 11.3.05 10.44.01 10.17 0 8 0Zm-.72 1.44h.72c2.13 0 2.39.01 3.23.05.78.03 1.2.16 1.49.27.37.14.64.32.92.6.28.28.46.55.6.92.11.29.24.71.27 1.49.04.84.05 1.1.05 3.23s-.01 2.39-.05 3.23c-.03.78-.16 1.2-.27 1.49a2.5 2.5 0 0 1-.6.92c-.28.28-.55.46-.92.6-.29.11-.71.24-1.49.28-.84.03-1.1.04-3.23.04s-2.39-.01-3.23-.04c-.78-.04-1.2-.17-1.49-.28a2.5 2.5 0 0 1-.92-.6 2.5 2.5 0 0 1-.6-.92c-.11-.29-.24-.71-.28-1.49C1.45 10.39 1.44 10.13 1.44 8c0-2.13.01-2.39.04-3.23.04-.78.17-1.2.28-1.49.14-.37.32-.64.6-.92s.55-.46.92-.6c.29-.11.71-.24 1.49-.28.84-.03 1.1-.04 3.23-.04ZM8 3.89a4.11 4.11 0 1 0 0 8.22 4.11 4.11 0 0 0 0-8.22Zm0 1.44a2.67 2.67 0 1 1 0 5.34 2.67 2.67 0 0 1 0-5.34Zm4.28-1.56a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92Z"/>
+    </svg>
+  </a>
+
+  <!-- ====== REDE SOCIAL: Site Oficial ====== -->
+  <a
+    href="https://g6cloud.com.br"
+    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-gray-500 dark:text-gray-400
+           hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary
+           transition-all duration-200 hover:scale-110 hover:shadow-md"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Site G6 Cloud"
+  >
+    <span class="material-symbols-outlined text-[20px]">public</span>
+  </a>
+</div>
+           </div>
+         </div>
+
+         <!-- Divisor e Créditos -->
+         <div class="mt-12 pt-8 border-t border-border-light dark:border-border-dark text-center">
+           <p class="text-sm text-subtle-light dark:text-subtle-dark">© 2026 G6 Cloud. Todos os direitos reservados.</p>
+         </div>
+        </div>
+      </footer>
+</div>
+<script>
+    // ====== FUNÇÃO: Abrir Modal de Contato ======
+    // Exibe o modal com animação de fade-in
+    function openContactModal() {
+        const modal = document.getElementById('contact-modal');
+        modal.classList.remove('hidden');
+        // Aguarda um frame para iniciar animação de opacity
+        setTimeout(() => modal.classList.add('opacity-100'), 10);
+        // Impede scroll do body quando modal está aberto
+        document.body.style.overflow = 'hidden';
+    }
+
+    // ====== FUNÇÃO: Fechar Modal de Contato ======
+    // Fecha o modal com animação de fade-out
+    function closeContactModal() {
+        const modal = document.getElementById('contact-modal');
+        modal.classList.remove('opacity-100');
+        // Aguarda animação terminar antes de ocultar
+        setTimeout(() => modal.classList.add('hidden'), 300);
+        // Restaura scroll do body
+        document.body.style.overflow = 'auto';
+    }
+
+    // ====== EVENT LISTENER: Clique Fora do Modal ====== 
+    // Fecha o modal ao clicar fora da caixa de conteúdo
+    document.getElementById('contact-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeContactModal();
+        }
+    });
+
+    // ====== EVENT LISTENER: Tecla ESC ====== 
+    // Fecha o modal ao pressionar a tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !document.getElementById('contact-modal').classList.contains('hidden')) {
+            closeContactModal();
+        }
+    });
+
+    // ====== SCRIPT: Envio do Formulário Modal ====== 
+    // Valida, formata dados e envia para send_form.php
+    const modalForm = document.getElementById("contact-modal-form");
+    const modalStatusEl = document.getElementById("modal-contact-status");
+    const modalSubmitBtn = document.getElementById("modal-contact-submit");
+
+    modalForm?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Coleta dados do formulário
+        const formData = new FormData(modalForm);
+        const name = (formData.get("name") || "").toString().trim();
+        const company = (formData.get("company") || "").toString().trim();
+        const email = (formData.get("email") || "").toString().trim();
+        const phone = (formData.get("phone") || "").toString().trim();
+        const message = (formData.get("message") || "").toString().trim();
+
+        // ====== Validação: Verifica se todos os campos foram preenchidos ======
+        if (!name || !company || !email || !phone || !message) {
+            modalStatusEl.textContent = "Por favor, preencha todos os campos.";
+            return;
+        }
+
+        // Gera subject automático baseado no nome (formato: Lead-NomeSemEspacos)
+        const subject = `Lead-${name.replace(/\s+/g, "")}`;
+        formData.append("subject", subject);
+
+        // ====== Feedback Visual: Desabilita botão e mostra mensagem de carregamento ======
+        modalSubmitBtn.disabled = true;
+        modalSubmitBtn.classList.add("opacity-60");
+        modalStatusEl.textContent = "Enviando...";
+
+        try {
+            // ====== Requisição: Envia formulário para server ======
+            // Usa fetch API para envio assíncrono sem reload da página
+            const res = await fetch(modalForm.action, {
+                method: "POST",
+                body: formData
+            });
+            const data = await res.json();
+            
+            // ====== Resposta: Exibe mensagem de sucesso ou erro ======
+            modalStatusEl.textContent =
+                data.message || (data.success ? "Mensagem enviada." : "Erro ao enviar.");
+            
+            // Se envio bem-sucedido: limpa form e fecha modal após 2 segundos
+            if (data.success) {
+                modalForm.reset();
+                setTimeout(() => closeContactModal(), 2000);
+            }
+        } catch (err) {
+            console.error(err);
+            // Trata erro de conexão
+            modalStatusEl.textContent = "Erro de conexão. Tente novamente mais tarde.";
+        } finally {
+            // ====== Cleanup: Reabilita botão independente do resultado ======
+            modalSubmitBtn.disabled = false;
+            modalSubmitBtn.classList.remove("opacity-60");
+        }
+    });
+</script>
+</body>
+</html>
