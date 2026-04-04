@@ -134,9 +134,9 @@ h3{font-size:1.05rem;font-weight:700}
 .stat-card:hover::before{opacity:1}
 .stat-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px}
 .stat-value{font-family:'Inter',sans-serif;font-size:1.8rem;font-weight:800;color:var(--text)}
-.stat-value.green{color:var(--green)}
-.stat-value.orange{color:var(--orange)}
-.stat-value.blue{color:var(--accent2);font-size:1.2rem}
+.stat-value.green{color:var(--green);text-shadow:0 0 10px rgba(0,208,132,0.35)}
+.stat-value.orange{color:var(--orange);text-shadow:0 0 10px rgba(255,176,32,0.35)}
+.stat-value.blue{color:var(--accent2);font-size:1.2rem;text-shadow:0 0 10px rgba(0,194,255,0.3)}
 .stat-meta{font-size:.75rem;color:var(--muted);margin-top:4px}
 
 /* ── LOGOS STRIP ── */
