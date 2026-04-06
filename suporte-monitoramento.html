@@ -69,6 +69,21 @@
     
     <!-- Ícones Material Design -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- ====== CARREGAMENTO INICIAL DO TEMA ======
+    <!-- Previne flash de tema incorreto ao carregar a página -->
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+         window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    
     <!-- ====== TAILWIND CSS - FRAMEWORK DE ESTILOS ====== -->
     <!-- Framework CSS utilitário com plugins para formulários e media queries -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -307,7 +322,7 @@
             <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
                 <div class="flex flex-col gap-12 @container">
                     <!-- Cabeçalho da seção -->
-                    <div class="flex flex-col gap-4 text-center md:text-left">
+                    <div class="flex flex-col gap-4 text-center">
                         <span class="text-primary font-bold tracking-wider uppercase text-sm">O que inclui nosso Suporte?</span>
                         <h2 class="text-[#111418] dark:text-white text-3xl font-black leading-tight tracking-[-0.02em] md:text-4xl max-w-[720px]">
                             Monitoramento Proativo e Inteligente
@@ -507,7 +522,7 @@
     <!-- ====== SEÇÃO 5: CTA (CALL TO ACTION) ====== -->
     <!-- Seção de chamada para ação final com caixa destacada -->
     <!-- Encoraja o usuário a agendar uma conversa gratuita -->
-<section class="py-20 px-6 lg:px-40 bg-gray-50 dark:bg-[#0f172a] border-t border-gray-200 dark:border-slate-800 transition-colors duration-300">
+<section class="py-20 px-4 sm:px-6 lg:px-40 bg-gray-50 dark:bg-[#0f172a] border-t border-gray-200 dark:border-slate-800 transition-colors duration-300">
   <!-- Card central com box shadow e styling especial -->
   <div class="max-w-4xl mx-auto rounded-3xl 
               bg-white dark:bg-[#1e293b]

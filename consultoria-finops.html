@@ -84,6 +84,20 @@
     <!-- Fonte Inter: principal para todo o site -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
     
+    <!-- ====== CARREGAMENTO INICIAL DO TEMA ======
+    <!-- Previne flash de tema incorreto ao carregar a página -->
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+         window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    
     <!-- ====== TAILWIND CSS ====== -->
     <!-- Framework CSS utilitário com plugins -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -261,7 +275,7 @@
           <div class="flex flex-col gap-10 lg:flex-row lg:items-center">
             <!-- CONTEÚDO DO HERO: Texto e CTAs -->
             <div class="flex flex-col gap-6 lg:w-1/2">
-              <div class="flex flex-col gap-4 text-left">
+              <div class="flex flex-col gap-4 text-center sm:text-left">
                 <span class="text-primary font-bold tracking-wider text-sm uppercase">Otimização de Custos em Nuvem</span>
                 <h1 class="text-[#111418] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] lg:text-6xl">
                   Transforme Custo em Investimento Estratégico
@@ -272,7 +286,7 @@
               </div>
               
               <!-- BOTÕES DE AÇÃO PRINCIPAIS -->
-              <div class="flex gap-4 flex-col sm:flex-row">
+              <div class="flex gap-4 flex-col sm:flex-row items-center sm:items-start">
                 <button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20">
                   <span class="truncate">Agendar Diagnóstico Gratuito</span>
                 </button>
@@ -528,7 +542,7 @@
 
     <!-- ====== SEÇÃO 6: CTA FINAL ====== -->
     <!-- Chamada final para ação com card destacado -->
-    <section class="py-20 px-6 lg:px-40 bg-gray-50 dark:bg-[#0f172a] border-t border-gray-200 dark:border-slate-800 transition-colors duration-300">
+    <section class="py-20 px-4 sm:px-6 lg:px-40 bg-gray-50 dark:bg-[#0f172a] border-t border-gray-200 dark:border-slate-800 transition-colors duration-300">
       <div class="max-w-4xl mx-auto rounded-3xl 
                   bg-white dark:bg-[#1e293b]
                   border border-slate-200 dark:border-slate-700/50 

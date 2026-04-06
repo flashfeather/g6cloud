@@ -94,8 +94,21 @@
   }
   </script>
 
-  <!-- ====================================================================== -->
-  <!-- ====== SEÇÃO 6: TAILWIND CSS (CDN) ====== -->
+  <!-- ====================================================================== -->  <!-- ====== CARREGAMENTO INICIAL DO TEMA ======
+  <!-- Previne flash de tema incorreto ao carregar a página -->
+  <script>
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+       window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  </script>
+
+  <!-- ======================================================================  <!-- ====== SEÇÃO 6: TAILWIND CSS (CDN) ====== -->
   <!-- ====================================================================== -->
 
   <!-- Tailwind CDN + plugins:
@@ -243,7 +256,7 @@
       <!-- ====== HERO SECTION (CABEÇALHO) ====== -->
       <!-- ================================================================ -->
       <!-- Fundo escuro com imagem de background + overlay gradient -->
-      <section class="relative flex flex-col items-center justify-center py-20 px-6 lg:px-40 bg-[#101922] pt-28">
+      <section class="relative flex flex-col items-center justify-center py-20 px-4 sm:px-6 lg:px-40 bg-[#101922] pt-28">
         <div class="absolute inset-0 z-0">
 
           <!-- Imagem decorativa do hero (opacidade reduzida) -->
@@ -259,7 +272,7 @@
         </div>
 
         <div class="relative z-10 w-full max-w-5xl flex flex-col gap-8 lg:gap-12 lg:flex-row items-center">
-          <div class="flex flex-col gap-6 flex-1">
+          <div class="flex flex-col gap-6 flex-1 text-center lg:text-left">
 
             <!-- Headline -->
             <h1 class="text-4xl lg:text-6xl font-black leading-tight tracking-tight text-white">
@@ -272,7 +285,7 @@
             </p>
 
             <!-- CTAs -->
-            <div class="flex flex-wrap gap-4 pt-2">
+            <div class="flex flex-wrap gap-4 pt-2 justify-center lg:justify-start">
               <button onclick="openContactModal()"
                 class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
                 <span>Entre em contato</span>
@@ -294,7 +307,7 @@
       <!-- ================================================================ -->
       <!-- Barra de "prova social" com tecnologias (texto estilizado como logo) -->
       <div class="w-full border-y border-[#283039] bg-[#0d1218] py-8">
-        <div class="max-w-5xl mx-auto px-6 lg:px-40 flex flex-wrap justify-center lg:justify-between gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+        <div class="max-w-5xl mx-auto px-4 sm:px-8 flex flex-wrap justify-center lg:justify-between gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
           <span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">cloud</span> AWS</span>
           <span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">grid_view</span> Azure</span>
           <span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">deployed_code</span> Google Cloud</span>
@@ -306,10 +319,10 @@
       <!-- ================================================================ -->
       <!-- ====== CORE FEATURES GRID ====== -->
       <!-- ================================================================ -->
-      <section class="py-20 px-6 lg:px-40 bg-background-light dark:bg-background-dark">
+      <section class="py-20 px-4 sm:px-6 lg:px-40 bg-background-light dark:bg-background-dark">
         <div class="max-w-5xl mx-auto flex flex-col gap-12">
 
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 text-center lg:text-left">
             <h2 class="text-[#111418] dark:text-white text-3xl font-bold leading-tight">Fundamentos de uma Cloud Robusta</h2>
             <p class="text-gray-600 dark:text-gray-400 max-w-2xl">
               Nossa abordagem garante que sua infraestrutura esteja preparada para crescer com segurança desde o primeiro dia.
@@ -378,7 +391,7 @@
       <!-- ================================================================ -->
       <!-- ====== FEATURE HIGHLIGHT / DEEP DIVE ====== -->
       <!-- ================================================================ -->
-      <section class="py-16 px-6 lg:px-40 bg-[#f1f3f5] dark:bg-[#0d1218]">
+      <section class="py-16 px-4 sm:px-6 lg:px-40 bg-[#f1f3f5] dark:bg-[#0d1218]">
         <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
 
           <!-- Lado visual (diagrama abstrato) -->
@@ -415,7 +428,7 @@
           </div>
 
           <!-- Lado texto -->
-          <div class="order-1 lg:order-2 flex flex-col gap-6">
+          <div class="order-1 lg:order-2 flex flex-col gap-6 text-center lg:text-left">
 
             <!-- Badge de destaque -->
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit">
@@ -467,7 +480,7 @@
       <!-- ================================================================ -->
       <!-- ====== METODOLOGIA (COMO TRABALHAMOS) ====== -->
       <!-- ================================================================ -->
-      <section class="py-20 px-6 lg:px-40 bg-background-light dark:bg-background-dark">
+      <section class="py-20 px-4 sm:px-6 lg:px-40 bg-background-light dark:bg-background-dark">
         <div class="max-w-4xl mx-auto text-center mb-16">
           <h2 class="text-3xl font-bold text-[#111418] dark:text-white mb-4">Como trabalhamos</h2>
           <p class="text-gray-600 dark:text-gray-400">Do diagnóstico à implementação, nosso processo é transparente e ágil.</p>
@@ -506,7 +519,7 @@
       <!-- ================================================================ -->
       <!-- ====== CTA FINAL ====== -->
       <!-- ================================================================ -->
-      <section class="py-20 px-6 lg:px-40 bg-gray-50 dark:bg-[#0f172a] border-t border-gray-200 dark:border-slate-800 transition-colors duration-300">
+      <section class="py-20 px-4 sm:px-6 lg:px-40 bg-gray-50 dark:bg-[#0f172a] border-t border-gray-200 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-4xl mx-auto rounded-3xl 
                     bg-white dark:bg-[#1e293b]
                     border border-slate-200 dark:border-slate-700/50 
