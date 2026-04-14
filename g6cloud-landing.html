@@ -437,15 +437,7 @@ themeBtn.addEventListener('click', () => {
   localStorage.theme = isDark ? 'dark' : 'light';
 });
 
-/* ── ENVIO DO FORMULÁRIO VIA AMAZON SES ── */
-/*
-  Configure a URL abaixo com o endpoint do seu backend/Lambda que
-  recebe o POST e aciona o Amazon SES para enviar o lead.
-  Exemplo com AWS API Gateway + Lambda:
-    const SES_ENDPOINT = 'https://XXXXXXX.execute-api.sa-east-1.amazonaws.com/prod/lead';
-*/
-const SES_ENDPOINT = '/api/lead'; // ← altere para sua URL do API Gateway
-
+/* ── ENVIO DO FORMULÁRIO VIA send_form.php ── */
 const form     = document.getElementById('lp-form');
 const statusEl = document.getElementById('lp-status');
 const btnEl    = document.getElementById('btn-submit');
@@ -482,27 +474,28 @@ form.addEventListener('submit', async (e) => {
   showStatus('Enviando sua solicitação…', 'loading');
 
   try {
-    const res = await fetch(SES_ENDPOINT, {
+    const formData = new FormData();
+    formData.append('name',    nome);
+    formData.append('email',   email);
+    formData.append('phone',   'Não informado');
+    formData.append('company', empresa);
+    formData.append('subject', 'Diagnóstico FinOps — Landing Page');
+    formData.append('message', `Provedor: ${provedor}\nOrigem: landing-diagnostico\nData: ${new Date().toLocaleString('pt-BR')}`);
+
+    const res = await fetch('send_form.php', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        nome,
-        email,
-        empresa,
-        provedor,
-        origem: 'landing-diagnostico',
-        data:   new Date().toISOString()
-      })
+      body: formData
     });
 
-    if (res.ok) {
+    const data = await res.json();
+    if (res.ok && data.success) {
       hideStatus();
       form.classList.add('hidden');
       form.style.display = 'none';
       document.querySelector('.lp-form-header').style.display = 'none';
       success.classList.add('show');
     } else {
-      throw new Error('Resposta inesperada do servidor.');
+      throw new Error(data.message || 'Resposta inesperada do servidor.');
     }
   } catch (err) {
     showStatus(
