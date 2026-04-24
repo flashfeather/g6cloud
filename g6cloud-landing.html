@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<!--
+  ╔═══════════════════════════════════════════════════════════════════════════╗
+  ║                                                                           ║
+  ║              LANDING PAGE — DIAGNÓSTICO GRATUITO — G6 CLOUD               ║
+  ║         Página de captura de leads · sem menu · foco em conversão         ║
+  ║                                                                           ║
+  ╚═══════════════════════════════════════════════════════════════════════════╝
+-->
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diagnóstico Gratuito de Cloud — G6 Cloud</title>
+  <meta name="description" content="Descubra gratuitamente onde sua empresa está desperdiçando dinheiro na nuvem. Diagnóstico sem compromisso com especialistas G6 Cloud."/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="icon" href="assets/img/g6_logo_png.png">
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <!-- CSS compartilhado do site -->
+  <link rel="stylesheet" href="assets/css/g6cloud.css">
+  <!-- Tema: evita flash -->
+  <script>if(localStorage.theme==='light'){document.documentElement.classList.remove('dark')}else{document.documentElement.classList.add('dark')}</script>
+
+  <style>
+    /* ── LANDING: LAYOUT CENTRAL SEM MENU ── */
+    body { min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* Topo mínimo com logo e toggle de tema */
+    .lp-topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .lp-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .lp-logo img { height: 52px; width: auto; }
+    .lp-logo span {
+      font-family: 'Inter', sans-serif; font-weight: 810; font-size: 22px;
+      letter-spacing: -0.5px; color: var(--text);
+      text-shadow: var(--logo-text-shadow); transition: text-shadow .3s, color .3s;
+    }
+    .lp-topbar-actions { display: flex; align-items: center; gap: 10px; }
+    .lp-trust { font-size: .75rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .lp-trust span.material-symbols-outlined { font-size: 15px; color: var(--green); }
+
+    /* ── HERO DA LANDING ── */
+    .lp-hero {
+      padding: 120px 0 64px;
+      text-align: center;
+    }
+    .lp-hero-inner {
+      max-width: 740px;
+      margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center; gap: 24px;
+    }
+    .lp-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; }
+    .lp-hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .lp-hero-sub {
+      font-size: 1.05rem; color: var(--muted); font-weight: 300;
+      max-width: 580px; line-height: 1.75;
+    }
+    .lp-urgency {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.2);
+      color: var(--red); padding: 6px 16px; border-radius: 100px;
+      font-size: .78rem; font-weight: 600; letter-spacing: .04em;
+    }
+    html:not(.dark) .lp-urgency { background: rgba(220,38,38,.07); border-color: rgba(220,38,38,.2); }
+
+    /* ── BENEFÍCIOS ── */
+    .lp-benefits {
+      padding: 56px 0 48px;
+    }
+    .lp-benefits-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    .lp-benefit-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px 20px;
+      display: flex; flex-direction: column; gap: 12px;
+      text-align: center; align-items: center;
+      transition: all .3s; position: relative; overflow: hidden;
+    }
+    .lp-benefit-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0); transition: transform .3s;
+    }
+    .lp-benefit-card:hover { border-color: rgba(59,130,246,.35); transform: translateY(-4px); }
+    .lp-benefit-card:hover::after { transform: scaleX(1); }
+    .lp-benefit-icon {
+      width: 48px; height: 48px;
+      background: rgba(59,130,246,.1); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); flex-shrink: 0;
+    }
+    .lp-benefit-icon .material-symbols-outlined { font-size: 24px; }
+    .lp-benefit-card h3 { font-size: .95rem; font-weight: 700; margin: 0; }
+    .lp-benefit-card p { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── FORMULÁRIO ── */
+    .lp-form-section {
+      padding: 0 0 80px;
+    }
+    .lp-form-wrap {
+      max-width: 540px;
+      margin: 0 auto;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 24px; padding: 48px;
+      position: relative; overflow: hidden;
+    }
+    .lp-form-wrap::before {
+      content: ''; position: absolute; top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 480px; height: 240px;
+      background: radial-gradient(ellipse, var(--accent-glow), transparent 70%);
+      pointer-events: none; opacity: 0;
+    }
+    html.dark .lp-form-wrap::before { opacity: 1; }
+    .lp-form-header { text-align: center; margin-bottom: 32px; }
+    .lp-form-header h2 { font-size: 1.5rem; margin-bottom: 8px; }
+    .lp-form-header p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+    .lp-form { display: flex; flex-direction: column; gap: 16px; }
+    .lp-form .field label {
+      font-size: .82rem; color: var(--muted); font-weight: 500;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .lp-form .field label .material-symbols-outlined { font-size: 15px; }
+    .btn-lp-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; border: none;
+      padding: 16px; border-radius: 10px;
+      font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600;
+      cursor: pointer; transition: all .3s;
+      box-shadow: 0 4px 24px var(--accent-glow);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 4px;
+    }
+    .btn-lp-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--accent-glow); }
+    .btn-lp-submit:disabled { opacity: .65; cursor: not-allowed; transform: none; }
+    .lp-privacy {
+      font-size: .73rem; color: var(--muted); text-align: center;
+      display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 4px;
+    }
+    .lp-privacy .material-symbols-outlined { font-size: 13px; color: var(--green); }
+    .lp-status {
+      text-align: center; font-size: .85rem; font-weight: 500;
+      padding: 12px 16px; border-radius: 8px; display: none;
+    }
+    .lp-status.show { display: block; }
+    .lp-status.success { background: rgba(16,185,129,.1); color: var(--green); border: 1px solid rgba(16,185,129,.3); }
+    .lp-status.error   { background: rgba(239,68,68,.1);  color: var(--red);   border: 1px solid rgba(239,68,68,.3); }
+    .lp-status.loading { background: rgba(59,130,246,.1); color: var(--accent); border: 1px solid rgba(59,130,246,.3); }
+
+    /* ── SOCIAL PROOF ── */
+    .lp-proof {
+      display: flex; align-items: center; justify-content: center; gap: 28px;
+      flex-wrap: wrap; margin-top: 40px;
+    }
+    .lp-proof-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: .78rem; color: var(--muted);
+    }
+    .lp-proof-item .material-symbols-outlined { font-size: 16px; color: var(--green); }
+
+    /* ── FOOTER MÍNIMO ── */
+    .lp-footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 40px;
+      text-align: center;
+      margin-top: auto;
+    }
+    .lp-footer p { font-size: .75rem; color: var(--muted); }
+    .lp-footer a { color: var(--accent); text-decoration: none; }
+    .lp-footer a:hover { text-decoration: underline; }
+
+    /* ── SUCESSO PÓS-ENVIO ── */
+    .lp-success-screen {
+      display: none; flex-direction: column; align-items: center;
+      gap: 20px; text-align: center; padding: 16px 0;
+    }
+    .lp-success-screen.show { display: flex; }
+    .lp-success-icon {
+      width: 72px; height: 72px;
+      background: rgba(16,185,129,.12); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green);
+    }
+    .lp-success-icon .material-symbols-outlined { font-size: 36px; }
+    .lp-success-screen h3 { font-size: 1.3rem; font-weight: 700; }
+    .lp-success-screen p { font-size: .9rem; color: var(--muted); max-width: 380px; line-height: 1.7; }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 900px) {
+      .lp-benefits-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .lp-topbar { padding: 0 20px; }
+      .lp-trust { display: none; }
+      .lp-hero { padding: 96px 0 48px; }
+      .lp-benefits { padding: 40px 0 36px; }
+      .lp-benefits-grid { grid-template-columns: 1fr; }
+      .lp-form-wrap { padding: 32px 20px; }
+      .lp-footer { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ TOPBAR MÍNIMO ══ -->
+<header class="lp-topbar">
+  <a href="index.html" class="lp-logo" title="G6 Cloud — Página Inicial">
+    <img src="assets/img/g6_logo_png.png" alt="Logo G6 Cloud">
+    <span>G6 Cloud</span>
+  </a>
+  <div class="lp-topbar-actions">
+    <div class="lp-trust">
+      <span class="material-symbols-outlined">verified</span>
+      Diagnóstico 100% gratuito e sem compromisso
+    </div>
+    <button class="btn-theme" id="theme-toggle" title="Alternar tema">
+      <span class="material-symbols-outlined icon-light" style="font-size:18px">light_mode</span>
+      <span class="material-symbols-outlined icon-dark"  style="font-size:18px">dark_mode</span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ══ HERO ══ -->
+  <section class="lp-hero">
+    <div class="container">
+      <div class="lp-hero-inner">
+        <div class="lp-urgency fade-in">
+          <span class="material-symbols-outlined" style="font-size:14px">warning</span>
+          PMEs brasileiras desperdiçam em média 37% do orçamento cloud
+        </div>
+        <h1 class="fade-in fade-in-1">
+          Sua empresa está<br><em>pagando demais</em> na nuvem?
+        </h1>
+        <p class="lp-hero-sub fade-in fade-in-2">
+          Receba um diagnóstico gratuito e descubra exatamente onde está o desperdício —
+          instâncias ociosas, planos errados, recursos esquecidos — e quanto você pode economizar
+          ainda neste mês.
+        </p>
+        <div class="fade-in fade-in-3" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+          <div class="lp-proof-item">
+            <span class="material-symbols-outlined">check_circle</span>Sem compromisso de contratação
+          </div>
+          <div class="lp-proof-item">
+            <span class="material-symbols-outlined">check_circle</span>Resultado em até 48 horas
+          </div>
+          <div class="lp-proof-item">
+            <span class="material-symbols-outlined">check_circle</span>AWS · Azure · Google Cloud
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ BENEFÍCIOS ══ -->
+  <section class="lp-benefits">
+    <div class="container">
+      <div class="lp-benefits-grid">
+
+        <div class="lp-benefit-card fade-in">
+          <div class="lp-benefit-icon">
+            <span class="material-symbols-outlined">search</span>
+          </div>
+          <h3>Mapeamento de Desperdício</h3>
+          <p>Identificamos instâncias ociosas, snapshots esquecidos e serviços superdimensionados no seu ambiente.</p>
+        </div>
+
+        <div class="lp-benefit-card fade-in fade-in-1">
+          <div class="lp-benefit-icon">
+            <span class="material-symbols-outlined">savings</span>
+          </div>
+          <h3>Estimativa de Economia</h3>
+          <p>Entregamos um relatório com o potencial de redução de custos em reais — antes de qualquer contrato.</p>
+        </div>
+
+        <div class="lp-benefit-card fade-in fade-in-2">
+          <div class="lp-benefit-icon">
+            <span class="material-symbols-outlined">security</span>
+          </div>
+          <h3>Análise de Segurança</h3>
+          <p>Verificamos pontos de atenção de segurança e compliance que podem gerar custos ou riscos futuros.</p>
+        </div>
+
+        <div class="lp-benefit-card fade-in fade-in-3">
+          <div class="lp-benefit-icon">
+            <span class="material-symbols-outlined">route</span>
+          </div>
+          <h3>Plano de Ação Claro</h3>
+          <p>Você recebe um roadmap priorizado com os próximos passos para otimizar sua infraestrutura cloud.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FORMULÁRIO ══ -->
+  <section class="lp-form-section">
+    <div class="container">
+
+      <div class="lp-form-wrap fade-in">
+
+        <!-- Cabeçalho do formulário -->
+        <div class="lp-form-header">
+          <div class="hero-badge" style="margin:0 auto 16px;width:fit-content">
+            <span class="hero-badge-dot"></span>Gratuito · Sem compromisso
+          </div>
+          <h2>Quero meu diagnóstico gratuito</h2>
+          <p>Preencha os dados abaixo. Nossa equipe entra em contato em até 24 horas para agendar uma conversa de 30 minutos.</p>
+        </div>
+
+        <!-- Estado de sucesso pós-envio -->
+        <div class="lp-success-screen" id="success-screen">
+          <div class="lp-success-icon">
+            <span class="material-symbols-outlined">check_circle</span>
+          </div>
+          <h3>Solicitação recebida!</h3>
+          <p>Obrigado! Nossa equipe entrará em contato em até <strong>24 horas</strong> para agendar seu diagnóstico gratuito.</p>
+          <a href="index.html" class="btn-ghost" style="margin-top:8px">
+            <span class="material-symbols-outlined" style="font-size:16px">home</span>
+            Conhecer nossos serviços
+          </a>
+        </div>
+
+        <!-- Formulário -->
+        <form class="lp-form" id="lp-form" novalidate>
+
+          <div class="field">
+            <label for="nome">
+              <span class="material-symbols-outlined">person</span>
+              Seu nome completo <span style="color:var(--red)">*</span>
+            </label>
+            <input type="text" id="nome" name="nome" placeholder="João Silva" required autocomplete="name">
+          </div>
+
+          <div class="field">
+            <label for="email">
+              <span class="material-symbols-outlined">mail</span>
+              E-mail corporativo <span style="color:var(--red)">*</span>
+            </label>
+            <input type="email" id="email" name="email" placeholder="joao@suaempresa.com.br" required autocomplete="email">
+          </div>
+
+          <div class="field">
+            <label for="empresa">
+              <span class="material-symbols-outlined">business</span>
+              Nome da empresa <span style="color:var(--red)">*</span>
+            </label>
+            <input type="text" id="empresa" name="empresa" placeholder="Empresa Ltda" required autocomplete="organization">
+          </div>
+
+          <div class="field">
+            <label for="provedor">
+              <span class="material-symbols-outlined">cloud</span>
+              Provedor cloud atual
+            </label>
+            <select id="provedor" name="provedor">
+              <option value="">Selecione (opcional)</option>
+              <option value="aws">Amazon Web Services (AWS)</option>
+              <option value="azure">Microsoft Azure</option>
+              <option value="gcp">Google Cloud Platform</option>
+              <option value="multi">Multi-cloud</option>
+              <option value="outro">Outro / Não sei</option>
+            </select>
+          </div>
+
+          <div id="lp-status" class="lp-status"></div>
+
+          <button type="submit" class="btn-lp-submit" id="btn-submit">
+            <span class="material-symbols-outlined" style="font-size:20px">rocket_launch</span>
+            Quero meu diagnóstico gratuito
+          </button>
+
+          <p class="lp-privacy">
+            <span class="material-symbols-outlined">lock</span>
+            Seus dados estão seguros. Nunca compartilhamos com terceiros.
+          </p>
+
+        </form>
+
+      </div>
+
+      <!-- Prova social abaixo do form -->
+      <div class="lp-proof" style="margin-top:40px">
+        <div class="lp-proof-item">
+          <span class="material-symbols-outlined">groups</span>
+          +50 PMEs atendidas
+        </div>
+        <div class="lp-proof-item">
+          <span class="material-symbols-outlined">trending_down</span>
+          Média de 37% de redução de custos
+        </div>
+        <div class="lp-proof-item">
+          <span class="material-symbols-outlined">schedule</span>
+          Retorno em até 24 horas
+        </div>
+        <div class="lp-proof-item">
+          <span class="material-symbols-outlined">workspace_premium</span>
+          Certified AWS & Azure Partners
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ FOOTER MÍNIMO ══ -->
+<footer class="lp-footer">
+  <p>
+    &copy; 2025 G6 Cloud · <a href="index.html">g6cloud.com.br</a> ·
+    <a href="mailto:g6cloud@g6cloud.com.br">g6cloud@g6cloud.com.br</a> ·
+    <a href="tel:+5511976596203">(11) 97659-6203</a>
+  </p>
+</footer>
+
+<script>
+/* ── TEMA TOGGLE ── */
+const themeBtn = document.getElementById('theme-toggle');
+themeBtn.addEventListener('click', () => {
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.theme = isDark ? 'dark' : 'light';
+});
+
+/* ── ENVIO DO FORMULÁRIO VIA send_form.php ── */
+const form     = document.getElementById('lp-form');
+const statusEl = document.getElementById('lp-status');
+const btnEl    = document.getElementById('btn-submit');
+const success  = document.getElementById('success-screen');
+
+function showStatus(msg, type) {
+  statusEl.textContent = msg;
+  statusEl.className   = 'lp-status show ' + type;
+}
+function hideStatus() {
+  statusEl.className = 'lp-status';
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const nome    = document.getElementById('nome').value.trim();
+  const email   = document.getElementById('email').value.trim();
+  const empresa = document.getElementById('empresa').value.trim();
+  const provedor = document.getElementById('provedor').value;
+
+  /* Validação básica */
+  if (!nome || !email || !empresa) {
+    showStatus('Preencha todos os campos obrigatórios.', 'error');
+    return;
+  }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    showStatus('Informe um e-mail válido.', 'error');
+    return;
+  }
+
+  btnEl.disabled = true;
+  showStatus('Enviando sua solicitação…', 'loading');
+
+  try {
+    const formData = new FormData();
+    formData.append('name',    nome);
+    formData.append('email',   email);
+    formData.append('phone',   'Não informado');
+    formData.append('company', empresa);
+    formData.append('subject', 'Diagnóstico FinOps — Landing Page');
+    formData.append('message', `Provedor: ${provedor}\nOrigem: landing-diagnostico\nData: ${new Date().toLocaleString('pt-BR')}`);
+
+    const res = await fetch('send_form.php', {
+      method: 'POST',
+      body: formData
+    });
+
+    const data = await res.json();
+    if (res.ok && data.success) {
+      hideStatus();
+      form.classList.add('hidden');
+      form.style.display = 'none';
+      document.querySelector('.lp-form-header').style.display = 'none';
+      success.classList.add('show');
+    } else {
+      throw new Error(data.message || 'Resposta inesperada do servidor.');
+    }
+  } catch (err) {
+    showStatus(
+      'Ocorreu um erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp: (11) 97659-6203.',
+      'error'
+    );
+    btnEl.disabled = false;
+  }
+});
+</script>
+
+</body>
+</html>
