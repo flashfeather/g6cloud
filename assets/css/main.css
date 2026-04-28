@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos custom */
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.hero-bg {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
+    url("assets/img/hero-bg-cloud.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- ESTILO PADRÃO (DESKTOP) --- */
+/* Esconde o botão hambúrguer em telas grandes */
+.mobile-menu-btn {
+    display: none; 
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333; /* Ajuste para a cor do seu texto */
+}
+
+/* Menu horizontal padrão */
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+/* --- ESTILO MOBILE (MEDIA QUERY) --- */
+@media (max-width: 768px) {
+    /* Mostra o botão hambúrguer */
+    .mobile-menu-btn {
+        display: block;
+        margin-left: 15px; /* Espaço entre o sol e o menu */
+    }
+
+    /* Esconde o menu inicialmente e estiliza como "gaveta" */
+    .nav-links {
+        display: none; /* Escondido por padrão no mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Altura do seu cabeçalho */
+        right: 0;
+        background-color: #ffffff; /* Cor de fundo do menu */
+        width: 100%; /* Ocupa a largura toda ou coloque ex: 200px */
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        padding: 20px;
+        text-align: center;
+        z-index: 1000; /* Garante que fique acima do conteúdo */
+    }
+
+    /* Links com mais espaço para o dedo */
+    .nav-links a {
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+        display: block;
+    }
+
+    /* Classe que o JavaScript vai adicionar para mostrar o menu */
+    .nav-links.active {
+        display: flex;
+    }
+}
