@@ -856,6 +856,7 @@ html.dark .stat-meta {
       position: relative;
     }
     .sobre-img img { width: 100%; height: 400px; object-fit: cover; display: block; }
+    @media (max-width: 640px) { .sobre-img img { height: 220px; } }
     .sobre-img::before {
       content: '';
       position: absolute; inset: 0;
@@ -1031,16 +1032,57 @@ html.dark .stat-meta {
     }
 
     @media (max-width: 640px) {
-      .container { padding: 0 20px; }
-      .nav-inner { padding: 0 20px; }
-      .hero { padding: 110px 0 60px; }
-      .section { padding: 64px 0; }
+      /* Layout base */
+      .container { padding: 0 16px; }
+      .nav-inner { padding: 0 16px; }
+      .section { padding: 56px 0; }
+
+      /* Nav — esconde o botão CTA para não apertar ao lado do hamburger */
+      .btn-cta-nav { display: none; }
+      .nav-logo img { height: 48px; }
+      .nav-logo-text { font-size: 20px; }
+
+      /* Hero */
+      .hero { padding: 100px 0 52px; }
+      .hero-left h1 { font-size: 34px; letter-spacing: -1px; }
+      .hero-sub { font-size: 15px; }
+      /* Stat cards — volta para coluna para evitar overflow em telas < 420px */
+      .hero-stats { max-width: 100%; flex-direction: column; }
+      .stat-card { min-width: unset; flex: none; width: 100%; }
+      .stat-value.green, .stat-value.orange { font-size: 26px; }
+      .stat-value.blue { font-size: 16px; }
+
+      /* Logos */
+      .logos-strip { margin-top: 48px; }
+      .logos-inner { gap: 24px; flex-wrap: wrap; justify-content: center; }
+      .logos-inner img { height: 36px; }
+      .logos-inner img:nth-child(2),
+      .logos-inner img:nth-child(3) { height: 52px; }
+
+      /* Serviços */
       .services-grid { grid-template-columns: 1fr; }
-      .cta-box { padding: 36px 24px; flex-direction: column; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .modal { padding: 28px 20px; }
+
+      /* Calculadora */
+      .calc-box { padding: 24px 16px; }
+
+      /* CTA final */
+      .cta-box { padding: 32px 20px; flex-direction: column; text-align: center; }
+      .cta-actions { justify-content: center; width: 100%; }
+      .cta-actions .btn-primary,
+      .cta-actions .btn-ghost { width: 100%; justify-content: center; }
+
+      /* Modal */
+      .modal { padding: 24px 16px; }
       .form-row { grid-template-columns: 1fr; }
-      .calc-box { padding: 28px 20px; }
+
+      /* Rodapé */
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-logo img { height: 48px; }
+      .footer-logo span { font-size: 20px; }
+
+      /* Resultados da calculadora */
+      .r-value { font-size: 1.4rem; }
+      .r-value.blue { font-size: 1.1rem; }
     }
   </style>
 </head>

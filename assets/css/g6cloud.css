@@ -331,16 +331,57 @@ footer{border-top:1px solid var(--border);padding:56px 0 32px}
   .footer-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
-  .container{padding:0 20px}
-  .nav-inner{padding:0 20px}
-  .hero{padding:110px 0 60px}
-  .page-hero{padding:110px 0 56px}
-  .section{padding:64px 0}
+  /* Layout base */
+  .container{padding:0 16px}
+  .nav-inner{padding:0 16px}
+  .section{padding:56px 0}
+
+  /* Nav — oculta botão CTA para não apertar ao lado do hamburger */
+  .btn-cta-nav{display:none}
+  .nav-logo img{height:48px}
+  .nav-logo-text{font-size:20px}
+
+  /* Hero index */
+  .hero{padding:100px 0 52px}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn-primary,.hero-actions .btn-ghost{justify-content:center}
+
+  /* Hero páginas internas */
+  .page-hero{padding:100px 0 52px}
+  .page-hero h1{font-size:clamp(1.7rem,8vw,2.4rem)}
+  .page-hero-sub{font-size:.92rem}
+
+  /* Stat cards — volta para coluna para evitar overflow em telas < 420px */
+  .hero-stats,.page-hero-stats{flex-direction:column}
+  .stat-card{min-width:unset;flex:none;width:100%}
+  .stat-value{font-size:1.5rem}
+  .stat-value.blue{font-size:1rem}
+
+  /* Grids */
   .services-grid,.steps-grid{grid-template-columns:1fr}
-  .cta-box{padding:36px 24px;flex-direction:column}
-  .footer-grid{grid-template-columns:1fr}
-  .modal{padding:28px 20px}
-  .form-row{grid-template-columns:1fr}
-  .calc-box{padding:28px 20px}
   .providers-grid{grid-template-columns:1fr}
+  .plans-grid{grid-template-columns:1fr}
+
+  /* Sobre — imagem com altura adaptável */
+  .sobre-img img{height:220px}
+  .v-bar-row{grid-template-columns:80px 1fr 44px;font-size:.72rem}
+
+  /* CTA box */
+  .cta-box{padding:32px 20px;flex-direction:column;text-align:center}
+  .cta-actions{justify-content:center;width:100%}
+  .cta-actions .btn-primary,.cta-actions .btn-ghost{width:100%;justify-content:center}
+
+  /* Calculadora */
+  .calc-box{padding:24px 16px}
+  .r-value{font-size:1.4rem}
+  .r-value.blue{font-size:1.1rem}
+
+  /* Modal */
+  .modal{padding:24px 16px}
+  .form-row{grid-template-columns:1fr}
+
+  /* Rodapé */
+  .footer-grid{grid-template-columns:1fr}
+  .footer-logo img{height:48px}
+  .footer-logo span{font-size:20px}
 }
