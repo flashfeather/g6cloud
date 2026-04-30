@@ -1084,6 +1084,15 @@ html.dark .stat-meta {
       .r-value { font-size: 1.4rem; }
       .r-value.blue { font-size: 1.1rem; }
     }
+    /* Google Translate */
+    .goog-te-banner-frame,
+    .goog-te-banner-frame.skiptranslate,
+    #goog-gt-tt,
+    .goog-te-balloon-frame,
+    .goog-te-ftab-frame { display: none !important; }
+    body { top: 0px !important; margin-top: 0px !important; }
+    .goog-text-highlight { background: none !important; box-shadow: none !important; }
+    .btn-translate { min-width: 40px; padding: 0 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; }
   </style>
 </head>
 
@@ -1107,6 +1116,7 @@ html.dark .stat-meta {
       </nav>
 
       <div class="nav-actions">
+        <button class="btn-theme btn-translate" id="translate-toggle" onclick="g6Translate()" aria-label="Traduzir para Inglês" title="Translate to English"><span id="translate-label">EN</span></button>
         <button class="btn-theme" id="theme-toggle" aria-label="Alternar tema">
           <span class="material-symbols-outlined icon-light" style="font-size:20px">light_mode</span>
           <span class="material-symbols-outlined icon-dark" style="font-size:20px">dark_mode</span>
@@ -1636,5 +1646,6 @@ html.dark .stat-meta {
 
     calcular();
   </script>
+  <script src="assets/js/i18n.js"></script>
 </body>
 </html>

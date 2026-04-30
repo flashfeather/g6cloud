@@ -385,3 +385,13 @@ footer{border-top:1px solid var(--border);padding:56px 0 32px}
   .footer-logo img{height:48px}
   .footer-logo span{font-size:20px}
 }
+
+/* ── GOOGLE TRANSLATE ── */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-te-ftab-frame { display: none !important; }
+body { top: 0px !important; margin-top: 0px !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
+.btn-translate { min-width: 40px; padding: 0 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; }
