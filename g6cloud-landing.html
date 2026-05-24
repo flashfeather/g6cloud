@@ -360,6 +360,14 @@
           </div>
 
           <div class="field">
+            <label for="whatsapp">
+              <span class="material-symbols-outlined">phone</span>
+              WhatsApp <span style="color:var(--red)">*</span>
+            </label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required autocomplete="tel">
+          </div>
+
+          <div class="field">
             <label for="empresa">
               <span class="material-symbols-outlined">business</span>
               Nome da empresa <span style="color:var(--red)">*</span>
@@ -380,6 +388,32 @@
               <option value="multi">Multi-cloud</option>
               <option value="outro">Outro / Não sei</option>
             </select>
+          </div>
+
+          <div class="field">
+            <label for="dor_principal">
+              <span class="material-symbols-outlined">psychology</span>
+              Principal dor/necessidade
+            </label>
+            <select id="dor_principal" name="dor_principal">
+              <option value="">Selecione (opcional)</option>
+              <option value="Custos altos">Custos muito altos</option>
+              <option value="Migração">Migração para nuvem</option>
+              <option value="Infraestrutura">Infraestrutura cloud</option>
+              <option value="DevOps">DevOps & Automação</option>
+              <option value="Suporte">Suporte e Monitoramento</option>
+              <option value="FinOps">Consultoria de FinOps</option>
+              <option value="Segurança">Segurança cloud</option>
+              <option value="Outra">Outra</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="origem">
+              <span class="material-symbols-outlined">link</span>
+              Como nos conheceu?
+            </label>
+            <input type="text" id="origem" name="origem" placeholder="Ex: Google, LinkedIn, Indicação..." autocomplete="off">
           </div>
 
           <div id="lp-status" class="lp-status"></div>

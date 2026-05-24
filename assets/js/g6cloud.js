@@ -50,16 +50,14 @@ if (modalForm) {
     const fd = new FormData(modalForm);
     const name    = (fd.get('name') || '').trim();
     const email   = (fd.get('email') || '').trim();
-    const phone   = (fd.get('phone') || '').trim();
+    const whatsapp = (fd.get('whatsapp') || '').trim();
     const company = (fd.get('company') || '').trim();
-    const message = (fd.get('message') || '').trim();
 
-    if (!name || !email || !phone || !company || !message) {
+    if (!name || !email || !whatsapp || !company) {
       showStatus('❌ Por favor, preencha todos os campos obrigatórios.', 'error');
       return;
     }
 
-    fd.append('subject', `Lead-${name.replace(/\s+/g, '')}`);
     if (submitBtn) submitBtn.disabled = true;
     showStatus('📤 Enviando mensagem...', 'loading');
 

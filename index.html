@@ -1457,13 +1457,56 @@ html.dark .stat-meta {
 
         <div class="form-row">
           <div class="field">
-            <label for="modal-phone">Telefone/WhatsApp *</label>
-            <input type="tel" id="modal-phone" name="phone" placeholder="(11) 99999-9999" required>
+            <label for="modal-whatsapp">WhatsApp *</label>
+            <input type="tel" id="modal-whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required>
           </div>
           <div class="field">
             <label for="modal-company">Empresa *</label>
             <input type="text" id="modal-company" name="company" placeholder="Nome da empresa" required>
           </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="modal-provedor">Provedor principal</label>
+            <select id="modal-provedor" name="provedor">
+              <option value="">Selecione...</option>
+              <option value="AWS">Amazon Web Services (AWS)</option>
+              <option value="Azure">Microsoft Azure</option>
+              <option value="GCP">Google Cloud Platform (GCP)</option>
+              <option value="Multi-cloud">Multi-cloud</option>
+              <option value="Não utiliza">Não utiliza</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="modal-dor">Principal dor/necessidade</label>
+            <select id="modal-dor" name="dor_principal">
+              <option value="">Selecione...</option>
+              <option value="Migração">Migração para nuvem</option>
+              <option value="Infraestrutura">Infraestrutura cloud</option>
+              <option value="DevOps">DevOps & Automação</option>
+              <option value="Suporte">Suporte e Monitoramento</option>
+              <option value="FinOps">Consultoria de FinOps</option>
+              <option value="Segurança">Segurança cloud</option>
+              <option value="Outra">Outra</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="modal-origem">Origem</label>
+            <input type="text" id="modal-origem" name="origem" placeholder="Ex: Google, LinkedIn, Indicação...">
+          </div>
+          <div class="field">
+            <label for="modal-utm-source">utm_source</label>
+            <input type="text" id="modal-utm-source" name="utm_source" placeholder="Ex: google, facebook">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="modal-utm-campaign">utm_campaign</label>
+          <input type="text" id="modal-utm-campaign" name="utm_campaign" placeholder="Ex: summer-sale, product-launch">
         </div>
 
         <div class="field">
@@ -1577,15 +1620,14 @@ html.dark .stat-meta {
       const name = (formData.get('name') || '').trim();
       const company = (formData.get('company') || '').trim();
       const email = (formData.get('email') || '').trim();
-      const phone = (formData.get('phone') || '').trim();
+      const whatsapp = (formData.get('whatsapp') || '').trim();
       const message = (formData.get('message') || '').trim();
 
-      if (!name || !company || !email || !phone || !message) {
+      if (!name || !company || !email || !whatsapp) {
         showStatus('❌ Por favor, preencha todos os campos obrigatórios.', 'error');
         return;
       }
 
-      formData.append('subject', `Lead-${name.replace(/\s+/g, '')}`);
       submitBtn.disabled = true;
       showStatus('📤 Enviando mensagem...', 'loading');
 
