@@ -61,7 +61,7 @@ $payload = json_encode([
 // Enviar para o webhook via cURL
 $ch = curl_init($webhookUrl);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json'
+curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 
                                       'CF-Access-Client-Id: be7676b2dd4bc4618e55c8f15dccbc7f.access',
                                       'CF-Access-Client-Secret: 0c1d74a1462930be2e19e0da1e6a3fe4f8ac79c9503e34b59c55b2d9d99b1275']);
 curl_setopt($ch, CURLOPT_POST, true);
