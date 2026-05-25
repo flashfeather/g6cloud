@@ -74,15 +74,12 @@ $curlError = curl_error($ch);
 curl_close($ch);
 
 // Verificar se a requisição foi bem-sucedida
-if ($httpCode >= 200 && $httpCode < 300) {
-    echo json_encode([
-        'success' => true,
-        'message' => 'Mensagem enviada com sucesso, em breve entraremos em contato.'
-    ]);
-} else {
-    error_log("Webhook error: HTTP {$httpCode}, Response: {$response}, cURL Error: {$curlError}");
-    echo json_encode([
-        'success' => false,
-        'message' => 'Erro ao enviar dados. Tente novamente mais tarde.'
-    ]);
-}
+echo json_encode([
+    'success' => false,
+    'message' => 'Erro ao enviar os dados. Por favor, tente novamente mais tarde.',
+    'debug' => [
+        'http_code' => $httpCode,
+        'response' => $response,
+        'curl_error' => $curlError
+    ]
+]);
