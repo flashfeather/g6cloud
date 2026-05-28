@@ -9,9 +9,14 @@ $whatsapp       = trim($_POST['whatsapp'] ?? '');
 $company        = trim($_POST['company'] ?? '');
 $provedor       = trim($_POST['provedor'] ?? '');
 $dor_principal  = trim($_POST['dor_principal'] ?? '');
+$canal_origem   = trim($_POST['origem'] ?? '');
 $utm_source     = trim($_POST['utm_source'] ?? '');
 $utm_campaign   = trim($_POST['utm_campaign'] ?? '');
 $message        = trim($_POST['message'] ?? '');
+
+if ($utm_source === '' && $canal_origem !== '') {
+    $utm_source = $canal_origem;
+}
 
 // Validacao basica de campos obrigatorios
 if ($name === '' || $email === '' || $whatsapp === '' || $company === '') {
@@ -44,8 +49,8 @@ if (preg_match('/[\r\n]/', $name) || preg_match('/[\r\n]/', $email)) {
 $webhookUrl = 'https://automacao.g6cloud.com.br/webhook/g6cloud-lead-diagnostico';
 
 // Headers do Cloudflare Access. Configure preferencialmente por variaveis de ambiente.
-$cfAccessClientId = getenv('CF_ACCESS_CLIENT_ID') ?: 'SEU_CLIENT_ID_REAL.access';
-$cfAccessClientSecret = getenv('CF_ACCESS_CLIENT_SECRET') ?: 'SEU_CLIENT_SECRET_REAL';
+$cfAccessClientId = getenv('CF_ACCESS_CLIENT_ID') ?: 'be7676b2dd4bc4618e55c8f15dccbc7f.access';
+$cfAccessClientSecret = getenv('CF_ACCESS_CLIENT_SECRET') ?: '0c1d74a1462930be2e19e0da1e6a3fe4f8ac79c9503e34b59c55b2d9d99b1275';
 
 // Preparar dados para o webhook
 $payload = [
@@ -57,6 +62,7 @@ $payload = [
     'company'        => $company,
     'provedor'       => $provedor,
     'dor_principal'  => $dor_principal,
+    'canal_origem'   => $canal_origem,
     'utm_source'     => $utm_source,
     'utm_campaign'   => $utm_campaign,
     'message'        => $message,

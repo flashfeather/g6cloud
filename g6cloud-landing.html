@@ -413,7 +413,18 @@
               <span class="material-symbols-outlined">link</span>
               Como nos conheceu?
             </label>
-            <input type="text" id="origem" name="origem" placeholder="Ex: Google, LinkedIn, Indicação..." autocomplete="off">
+            <select id="origem" name="origem">
+              <option value="">Selecione...</option>
+              <option value="Google">Google</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Indicacao">Indicacao</option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Evento/Networking">Evento/Networking</option>
+              <option value="Cliente/Parceiro">Cliente/Parceiro</option>
+              <option value="Outro">Outro</option>
+            </select>
           </div>
 
           <div id="lp-status" class="lp-status"></div>
@@ -493,11 +504,14 @@ form.addEventListener('submit', async (e) => {
 
   const nome    = document.getElementById('nome').value.trim();
   const email   = document.getElementById('email').value.trim();
+  const whatsapp = document.getElementById('whatsapp').value.trim();
   const empresa = document.getElementById('empresa').value.trim();
   const provedor = document.getElementById('provedor').value;
+  const dorPrincipal = document.getElementById('dor_principal').value;
+  const origem = document.getElementById('origem').value;
 
   /* Validação básica */
-  if (!nome || !email || !empresa) {
+  if (!nome || !email || !whatsapp || !empresa) {
     showStatus('Preencha todos os campos obrigatórios.', 'error');
     return;
   }
@@ -514,10 +528,14 @@ form.addEventListener('submit', async (e) => {
     const formData = new FormData();
     formData.append('name',    nome);
     formData.append('email',   email);
-    formData.append('phone',   'Não informado');
     formData.append('company', empresa);
-    formData.append('subject', 'Diagnóstico FinOps — Landing Page');
-    formData.append('message', `Provedor: ${provedor}\nOrigem: landing-diagnostico\nData: ${new Date().toLocaleString('pt-BR')}`);
+    formData.append('whatsapp', whatsapp);
+    formData.append('provedor', provedor);
+    formData.append('dor_principal', dorPrincipal);
+    formData.append('origem', origem);
+    formData.append('utm_source', new URLSearchParams(window.location.search).get('utm_source') || origem);
+    formData.append('utm_campaign', new URLSearchParams(window.location.search).get('utm_campaign') || '');
+    formData.append('message', `Provedor: ${provedor}\nDor principal: ${dorPrincipal}\nOrigem informada: ${origem}\nOrigem: landing-diagnostico\nData: ${new Date().toLocaleString('pt-BR')}`);
 
     const res = await fetch('send_form.php', {
       method: 'POST',

@@ -1495,18 +1495,29 @@ html.dark .stat-meta {
 
         <div class="form-row">
           <div class="field">
-            <label for="modal-origem">Origem</label>
-            <input type="text" id="modal-origem" name="origem" placeholder="Ex: Google, LinkedIn, Indicação...">
+            <label for="modal-origem">Como nos conheceu?</label>
+            <select id="modal-origem" name="origem">
+              <option value="">Selecione...</option>
+              <option value="Google">Google</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Indicacao">Indicacao</option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Evento/Networking">Evento/Networking</option>
+              <option value="Cliente/Parceiro">Cliente/Parceiro</option>
+              <option value="Outro">Outro</option>
+            </select>
           </div>
           <div class="field">
-            <label for="modal-utm-source">utm_source</label>
-            <input type="text" id="modal-utm-source" name="utm_source" placeholder="Ex: google, facebook">
+            <label for="modal-utm-source">Canal de origem</label>
+            <input type="text" id="modal-utm-source" name="utm_source" placeholder="Ex: Google, Facebook, LinkedIn">
           </div>
         </div>
 
         <div class="field">
-          <label for="modal-utm-campaign">utm_campaign</label>
-          <input type="text" id="modal-utm-campaign" name="utm_campaign" placeholder="Ex: summer-sale, product-launch">
+          <label for="modal-utm-campaign">Campanha</label>
+          <input type="text" id="modal-utm-campaign" name="utm_campaign" placeholder="Ex: diagnostico-cloud, finops, migracao">
         </div>
 
         <div class="field">
