@@ -533,8 +533,6 @@ form.addEventListener('submit', async (e) => {
     formData.append('provedor', provedor);
     formData.append('dor_principal', dorPrincipal);
     formData.append('origem', origem);
-    formData.append('utm_source', new URLSearchParams(window.location.search).get('utm_source') || origem);
-    formData.append('utm_campaign', new URLSearchParams(window.location.search).get('utm_campaign') || '');
     formData.append('message', `Provedor: ${provedor}\nDor principal: ${dorPrincipal}\nOrigem informada: ${origem}\nOrigem: landing-diagnostico\nData: ${new Date().toLocaleString('pt-BR')}`);
 
     const res = await fetch('send_form.php', {
