@@ -494,7 +494,21 @@
     'Vigência e Alterações:': 'Validity and Changes:',
     'Estes termos podem ser atualizados a qualquer momento. Alterações significativas serão notificadas via e-mail ou aviso no site.': 'These terms may be updated at any time. Significant changes will be notified via email or site notice.',
     'Força Maior:': 'Force Majeure:',
-    'Nenhuma das partes será responsável por falhas decorrentes de casos fortuitos ou força maior (ex: desastres naturais, guerras, pandemias).': 'Neither party will be responsible for failures resulting from fortuitous events or force majeure (e.g.: natural disasters, wars, pandemics).'
+    'Nenhuma das partes será responsável por falhas decorrentes de casos fortuitos ou força maior (ex: desastres naturais, guerras, pandemias).': 'Neither party will be responsible for failures resulting from fortuitous events or force majeure (e.g.: natural disasters, wars, pandemics).',
+
+    /* FORM UPDATES */
+    'WhatsApp *': 'WhatsApp *',
+    'Pais': 'Country',
+    'País': 'Country',
+    'Como nos conheceu?': 'How did you hear about us?',
+    'Principal dor/necessidade': 'Main pain point/need',
+    'Selecione...': 'Select...',
+    'Indicacao': 'Referral',
+    'Evento/Networking': 'Event/Networking',
+    'Cliente/Parceiro': 'Client/Partner',
+    'Outra': 'Other',
+    'Informe um WhatsApp valido para o pais selecionado.': 'Enter a valid WhatsApp number for the selected country.',
+    'Informe um WhatsApp válido para o país selecionado.': 'Enter a valid WhatsApp number for the selected country.'
   };
 
   /* ── PLACEHOLDERS ── */
@@ -510,6 +524,16 @@
 
   /* ── ENGINE ── */
   var SKIP_TAGS = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, IFRAME: 1, OBJECT: 1 };
+  var normalizedEN = {};
+  var observerStarted = false;
+
+  function normalizeText(text) {
+    return String(text || '').replace(/\s+/g, ' ').trim();
+  }
+
+  Object.keys(EN).forEach(function (key) {
+    normalizedEN[normalizeText(key)] = EN[key];
+  });
 
   function walkTextNodes(node, fn) {
     if (node.nodeType === 3) {
@@ -524,9 +548,9 @@
   function applyEN() {
     walkTextNodes(document.body, function (node) {
       var orig = node.nodeValue;
-      var key = orig.trim();
-      if (key && EN[key] !== undefined) {
-        node.nodeValue = orig.replace(key, EN[key]);
+      var key = normalizeText(orig);
+      if (key && normalizedEN[key] !== undefined) {
+        node.nodeValue = orig.replace(orig.trim(), normalizedEN[key]);
       }
     });
 
@@ -538,8 +562,17 @@
 
     // lang attribute & button label
     document.documentElement.lang = 'en';
-    var label = document.getElementById('translate-label');
-    if (label) label.textContent = 'PT';
+    document.querySelectorAll('.translate-label, #translate-label').forEach(function (label) {
+      label.textContent = 'PT';
+    });
+  }
+
+  function startObserver() {
+    if (observerStarted || !window.MutationObserver) return;
+    observerStarted = true;
+    new MutationObserver(function () {
+      if (localStorage.getItem('g6lang') === 'en') applyEN();
+    }).observe(document.body, { childList: true, subtree: true });
   }
 
   /* ── API PÚBLICA ── */
@@ -555,12 +588,14 @@
 
   /* ── AUTO-APLICAR AO CARREGAR ── */
   function init() {
-    var label = document.getElementById('translate-label');
     if (localStorage.getItem('g6lang') === 'en') {
       applyEN();
-    } else if (label) {
-      label.textContent = 'EN';
+    } else {
+      document.querySelectorAll('.translate-label, #translate-label').forEach(function (label) {
+        label.textContent = 'EN';
+      });
     }
+    startObserver();
   }
 
   if (document.readyState === 'loading') {

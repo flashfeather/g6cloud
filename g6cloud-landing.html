@@ -135,6 +135,17 @@
       display: flex; align-items: center; gap: 6px;
     }
     .lp-form .field label .material-symbols-outlined { font-size: 15px; }
+    .phone-input-row {
+      display: grid;
+      grid-template-columns: minmax(96px, 118px) minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+    }
+    .phone-input-row select,
+    .phone-input-row input {
+      width: 100%;
+      min-width: 0;
+    }
     .btn-lp-submit {
       width: 100%;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
@@ -230,7 +241,6 @@
       <span class="material-symbols-outlined">verified</span>
       Diagnóstico 100% gratuito e sem compromisso
     </div>
-    <button class="btn-theme btn-translate" id="translate-toggle" onclick="g6Translate()" aria-label="Traduzir para Inglês" title="Translate to English"><span id="translate-label">EN</span></button>
     <button class="btn-theme" id="theme-toggle" title="Alternar tema">
       <span class="material-symbols-outlined icon-light" style="font-size:18px">light_mode</span>
       <span class="material-symbols-outlined icon-dark"  style="font-size:18px">dark_mode</span>
@@ -364,7 +374,23 @@
               <span class="material-symbols-outlined">phone</span>
               WhatsApp <span style="color:var(--red)">*</span>
             </label>
-            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required autocomplete="tel">
+            <div class="phone-input-row">
+              <select id="phone_country" name="phone_country" aria-label="Pais">
+                <option value="55">BR +55</option>
+                <option value="1">US +1</option>
+                <option value="351">PT +351</option>
+                <option value="34">ES +34</option>
+                <option value="44">UK +44</option>
+                <option value="49">DE +49</option>
+                <option value="33">FR +33</option>
+                <option value="39">IT +39</option>
+                <option value="52">MX +52</option>
+                <option value="54">AR +54</option>
+                <option value="56">CL +56</option>
+                <option value="57">CO +57</option>
+              </select>
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="11 91234-5678" inputmode="numeric" maxlength="16" required autocomplete="tel">
+            </div>
           </div>
 
           <div class="field">
@@ -490,6 +516,43 @@ const form     = document.getElementById('lp-form');
 const statusEl = document.getElementById('lp-status');
 const btnEl    = document.getElementById('btn-submit');
 const success  = document.getElementById('success-screen');
+const phoneCountryInput = document.getElementById('phone_country');
+const whatsappInput = document.getElementById('whatsapp');
+
+function formatWhatsapp(value, countryCode) {
+  const maxDigits = countryCode === '55' ? 11 : countryCode === '1' ? 10 : 15;
+  const digits = value.replace(/\D/g, '').slice(0, maxDigits);
+
+  if (countryCode === '55') {
+    const area = digits.slice(0, 2);
+    const first = digits.slice(2, 7);
+    const second = digits.slice(7, 11);
+    let formatted = area;
+    if (first) formatted += ` ${first}`;
+    if (second) formatted += `-${second}`;
+    return formatted;
+  }
+
+  if (countryCode === '1') {
+    const area = digits.slice(0, 3);
+    const first = digits.slice(3, 6);
+    const second = digits.slice(6, 10);
+    let formatted = area ? `(${area}` : '';
+    if (area.length === 3) formatted += ')';
+    if (first) formatted += ` ${first}`;
+    if (second) formatted += `-${second}`;
+    return formatted;
+  }
+
+  return digits.replace(/(\d{3})(?=\d)/g, '$1 ').trim();
+}
+
+whatsappInput.addEventListener('input', () => {
+  whatsappInput.value = formatWhatsapp(whatsappInput.value, phoneCountryInput.value);
+});
+phoneCountryInput.addEventListener('change', () => {
+  whatsappInput.value = formatWhatsapp(whatsappInput.value, phoneCountryInput.value);
+});
 
 function showStatus(msg, type) {
   statusEl.textContent = msg;
@@ -505,6 +568,7 @@ form.addEventListener('submit', async (e) => {
   const nome    = document.getElementById('nome').value.trim();
   const email   = document.getElementById('email').value.trim();
   const whatsapp = document.getElementById('whatsapp').value.trim();
+  const phoneCountry = document.getElementById('phone_country').value;
   const empresa = document.getElementById('empresa').value.trim();
   const provedor = document.getElementById('provedor').value;
   const dorPrincipal = document.getElementById('dor_principal').value;
@@ -513,6 +577,11 @@ form.addEventListener('submit', async (e) => {
   /* Validação básica */
   if (!nome || !email || !whatsapp || !empresa) {
     showStatus('Preencha todos os campos obrigatórios.', 'error');
+    return;
+  }
+  const whatsappDigits = whatsapp.replace(/\D/g, '');
+  if ((phoneCountry === '55' && whatsappDigits.length !== 11) || (phoneCountry === '1' && whatsappDigits.length !== 10) || (!['55', '1'].includes(phoneCountry) && (whatsappDigits.length < 6 || whatsappDigits.length > 15))) {
+    showStatus('Informe um WhatsApp valido para o pais selecionado.', 'error');
     return;
   }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -529,6 +598,7 @@ form.addEventListener('submit', async (e) => {
     formData.append('name',    nome);
     formData.append('email',   email);
     formData.append('company', empresa);
+    formData.append('phone_country', phoneCountry);
     formData.append('whatsapp', whatsapp);
     formData.append('provedor', provedor);
     formData.append('dor_principal', dorPrincipal);
@@ -559,6 +629,5 @@ form.addEventListener('submit', async (e) => {
   }
 });
 </script>
-<script src="assets/js/i18n.js"></script>
 </body>
 </html>

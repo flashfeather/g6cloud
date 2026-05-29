@@ -6,6 +6,14 @@ header('Content-Type: application/json; charset=utf-8');
 $name           = trim($_POST['name'] ?? '');
 $email          = trim($_POST['email'] ?? '');
 $whatsapp       = trim($_POST['whatsapp'] ?? '');
+$phoneCountry   = preg_replace('/\D/', '', trim($_POST['phone_country'] ?? '55'));
+if ($phoneCountry === '') {
+    $phoneCountry = '55';
+}
+$whatsappDigits = preg_replace('/\D/', '', $whatsapp);
+if (strpos($whatsappDigits, $phoneCountry) === 0 && strlen($whatsappDigits) > strlen($phoneCountry) + 5) {
+    $whatsappDigits = substr($whatsappDigits, strlen($phoneCountry));
+}
 $company        = trim($_POST['company'] ?? '');
 $provedor       = trim($_POST['provedor'] ?? '');
 $dor_principal  = trim($_POST['dor_principal'] ?? '');
@@ -25,6 +33,37 @@ if ($name === '' || $email === '' || $whatsapp === '' || $company === '') {
         'message' => 'Por favor, preencha todos os campos obrigatorios.'
     ]);
     exit;
+}
+
+$whatsappLength = strlen($whatsappDigits);
+$isInvalidBrazil = $phoneCountry === '55' && $whatsappLength !== 11;
+$isInvalidNorthAmerica = $phoneCountry === '1' && $whatsappLength !== 10;
+$isInvalidGeneric = !in_array($phoneCountry, ['55', '1'], true) && ($whatsappLength < 6 || $whatsappLength > 15);
+
+if ($isInvalidBrazil || $isInvalidNorthAmerica || $isInvalidGeneric) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Informe um WhatsApp valido para o pais selecionado.'
+    ]);
+    exit;
+}
+
+if ($phoneCountry === '55') {
+    $whatsapp = sprintf(
+        '+55 %s %s-%s',
+        substr($whatsappDigits, 0, 2),
+        substr($whatsappDigits, 2, 5),
+        substr($whatsappDigits, 7, 4)
+    );
+} elseif ($phoneCountry === '1') {
+    $whatsapp = sprintf(
+        '+1 (%s) %s-%s',
+        substr($whatsappDigits, 0, 3),
+        substr($whatsappDigits, 3, 3),
+        substr($whatsappDigits, 6, 4)
+    );
+} else {
+    $whatsapp = '+' . $phoneCountry . ' ' . $whatsappDigits;
 }
 
 // Validacao de email
@@ -58,6 +97,7 @@ $payload = [
     'origem'         => 'landing_page',
     'name'           => $name,
     'email'          => $email,
+    'phone_country'  => '+' . $phoneCountry,
     'whatsapp'       => $whatsapp,
     'company'        => $company,
     'provedor'       => $provedor,

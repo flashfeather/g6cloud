@@ -39,7 +39,6 @@
       <a href="consultoria-finops.html" class="active">FinOps</a>
     </nav>
     <div class="nav-actions">
-      <button class="btn-theme btn-translate" id="translate-toggle" onclick="g6Translate()" aria-label="Traduzir para Inglês" title="Translate to English"><span id="translate-label">EN</span></button>
       <button class="btn-theme" id="theme-toggle"><span class="material-symbols-outlined icon-light" style="font-size:20px">light_mode</span><span class="material-symbols-outlined icon-dark" style="font-size:20px">dark_mode</span></button>
       <button onclick="openModal()" class="btn-cta-nav">Falar com especialista</button>
       <button class="btn-hamburger" id="hamburger"><span class="material-symbols-outlined" style="font-size:22px">menu</span></button>
@@ -192,7 +191,7 @@
     <p class="modal-desc">Vamos conversar sobre como podemos ajudar sua empresa a crescer com as melhores soluções em nuvem.</p>
     <form class="modal-form" id="contact-modal-form" action="send_form.php" method="POST">
       <div class="form-row"><div class="field"><label>Nome completo *</label><input type="text" name="name" placeholder="João Silva" required></div><div class="field"><label>E-mail corporativo *</label><input type="email" name="email" placeholder="joao@empresa.com.br" required></div></div>
-      <div class="form-row"><div class="field"><label>WhatsApp *</label><input type="tel" name="whatsapp" placeholder="(11) 99999-9999" required></div><div class="field"><label>Empresa *</label><input type="text" name="company" placeholder="Nome da empresa" required></div></div>
+      <div class="form-row"><div class="field"><label>WhatsApp *</label><div style="display:grid;grid-template-columns:minmax(96px,118px) minmax(0,1fr);gap:8px"><select name="phone_country" aria-label="Pais"><option value="55">BR +55</option><option value="1">US +1</option><option value="351">PT +351</option><option value="34">ES +34</option><option value="44">UK +44</option><option value="49">DE +49</option><option value="33">FR +33</option><option value="39">IT +39</option><option value="52">MX +52</option><option value="54">AR +54</option><option value="56">CL +56</option><option value="57">CO +57</option></select><input type="tel" name="whatsapp" placeholder="11 91234-5678" inputmode="numeric" maxlength="16" oninput="this.value=this.value.replace(/\D/g, '')" required></div></div><div class="field"><label>Empresa *</label><input type="text" name="company" placeholder="Nome da empresa" required></div></div>
       <div class="form-row"><div class="field"><label>Provedor principal</label><select name="provedor"><option value="">Selecione...</option><option value="AWS">Amazon Web Services (AWS)</option><option value="Azure">Microsoft Azure</option><option value="GCP">Google Cloud Platform (GCP)</option><option value="Multi-cloud">Multi-cloud</option><option value="Não utiliza">Não utiliza</option></select></div><div class="field"><label>Principal dor/necessidade</label><select name="dor_principal"><option value="">Selecione...</option><option value="Migração">Migração para nuvem</option><option value="Infraestrutura">Infraestrutura cloud</option><option value="DevOps">DevOps & Automação</option><option value="Suporte">Suporte e Monitoramento</option><option value="FinOps">Consultoria de FinOps</option><option value="Segurança">Segurança cloud</option><option value="Outra">Outra</option></select></div></div>
       <div class="field"><label>Como nos conheceu?</label><select name="origem"><option value="">Selecione...</option><option value="Google">Google</option><option value="LinkedIn">LinkedIn</option><option value="Instagram">Instagram</option><option value="Facebook">Facebook</option><option value="Indicacao">Indicacao</option><option value="WhatsApp">WhatsApp</option><option value="Evento/Networking">Evento/Networking</option><option value="Cliente/Parceiro">Cliente/Parceiro</option><option value="Outro">Outro</option></select></div>
       <div class="field"><label>Qual é a sua necessidade? *</label><textarea name="message" rows="3" placeholder="Redução de custos, auditoria FinOps, otimização..." required></textarea></div>
@@ -216,6 +215,5 @@
 </footer>
 
 <script src="assets/js/g6cloud.js"></script>
-<script src="assets/js/i18n.js"></script>
 </body>
 </html>

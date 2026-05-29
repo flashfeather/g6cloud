@@ -798,6 +798,17 @@ html.dark .stat-meta {
       background-repeat: no-repeat; background-position: right 14px center;
       padding-right: 36px;
     }
+    .phone-input-row {
+      display: grid;
+      grid-template-columns: minmax(96px, 118px) minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+    }
+    .phone-input-row select,
+    .phone-input-row input {
+      width: 100%;
+      min-width: 0;
+    }
     .field select:focus, .field input:focus, .field textarea:focus { border-color: var(--accent); }
     .field textarea { resize: none; }
     .field input::placeholder, .field textarea::placeholder { color: rgba(148,163,184,0.5); }
@@ -1084,15 +1095,6 @@ html.dark .stat-meta {
       .r-value { font-size: 1.4rem; }
       .r-value.blue { font-size: 1.1rem; }
     }
-    /* Google Translate */
-    .goog-te-banner-frame,
-    .goog-te-banner-frame.skiptranslate,
-    #goog-gt-tt,
-    .goog-te-balloon-frame,
-    .goog-te-ftab-frame { display: none !important; }
-    body { top: 0px !important; margin-top: 0px !important; }
-    .goog-text-highlight { background: none !important; box-shadow: none !important; }
-    .btn-translate { min-width: 40px; padding: 0 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; }
   </style>
 </head>
 
@@ -1116,7 +1118,6 @@ html.dark .stat-meta {
       </nav>
 
       <div class="nav-actions">
-        <button class="btn-theme btn-translate" id="translate-toggle" onclick="g6Translate()" aria-label="Traduzir para Inglês" title="Translate to English"><span id="translate-label">EN</span></button>
         <button class="btn-theme" id="theme-toggle" aria-label="Alternar tema">
           <span class="material-symbols-outlined icon-light" style="font-size:20px">light_mode</span>
           <span class="material-symbols-outlined icon-dark" style="font-size:20px">dark_mode</span>
@@ -1458,7 +1459,23 @@ html.dark .stat-meta {
         <div class="form-row">
           <div class="field">
             <label for="modal-whatsapp">WhatsApp *</label>
-            <input type="tel" id="modal-whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required>
+            <div class="phone-input-row">
+              <select id="modal-phone-country" name="phone_country" aria-label="Pais">
+                <option value="55">BR +55</option>
+                <option value="1">US +1</option>
+                <option value="351">PT +351</option>
+                <option value="34">ES +34</option>
+                <option value="44">UK +44</option>
+                <option value="49">DE +49</option>
+                <option value="33">FR +33</option>
+                <option value="39">IT +39</option>
+                <option value="52">MX +52</option>
+                <option value="54">AR +54</option>
+                <option value="56">CL +56</option>
+                <option value="57">CO +57</option>
+              </select>
+              <input type="tel" id="modal-whatsapp" name="whatsapp" placeholder="11 91234-5678" inputmode="numeric" autocomplete="tel" maxlength="16" required>
+            </div>
           </div>
           <div class="field">
             <label for="modal-company">Empresa *</label>
@@ -1613,6 +1630,43 @@ html.dark .stat-meta {
     const modalForm = document.getElementById('contact-modal-form');
     const statusEl = document.getElementById('modal-status');
     const submitBtn = document.getElementById('modal-submit');
+    const phoneCountryInput = document.getElementById('modal-phone-country');
+    const whatsappInput = document.getElementById('modal-whatsapp');
+
+    function formatWhatsapp(value, countryCode) {
+      const maxDigits = countryCode === '55' ? 11 : countryCode === '1' ? 10 : 15;
+      const digits = value.replace(/\D/g, '').slice(0, maxDigits);
+
+      if (countryCode === '55') {
+        const area = digits.slice(0, 2);
+        const first = digits.slice(2, 7);
+        const second = digits.slice(7, 11);
+        let formatted = area;
+        if (first) formatted += ` ${first}`;
+        if (second) formatted += `-${second}`;
+        return formatted;
+      }
+
+      if (countryCode === '1') {
+        const area = digits.slice(0, 3);
+        const first = digits.slice(3, 6);
+        const second = digits.slice(6, 10);
+        let formatted = area ? `(${area}` : '';
+        if (area.length === 3) formatted += ')';
+        if (first) formatted += ` ${first}`;
+        if (second) formatted += `-${second}`;
+        return formatted;
+      }
+
+      return digits.replace(/(\d{3})(?=\d)/g, '$1 ').trim();
+    }
+
+    whatsappInput.addEventListener('input', () => {
+      whatsappInput.value = formatWhatsapp(whatsappInput.value, phoneCountryInput.value);
+    });
+    phoneCountryInput.addEventListener('change', () => {
+      whatsappInput.value = formatWhatsapp(whatsappInput.value, phoneCountryInput.value);
+    });
 
     modalForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -1622,9 +1676,16 @@ html.dark .stat-meta {
       const email = (formData.get('email') || '').trim();
       const whatsapp = (formData.get('whatsapp') || '').trim();
       const message = (formData.get('message') || '').trim();
+      const whatsappDigits = whatsapp.replace(/\D/g, '');
+      const phoneCountry = (formData.get('phone_country') || '').trim();
 
       if (!name || !company || !email || !whatsapp) {
         showStatus('❌ Por favor, preencha todos os campos obrigatórios.', 'error');
+        return;
+      }
+
+      if ((phoneCountry === '55' && whatsappDigits.length !== 11) || (phoneCountry === '1' && whatsappDigits.length !== 10) || (!['55', '1'].includes(phoneCountry) && (whatsappDigits.length < 6 || whatsappDigits.length > 15))) {
+        showStatus('Informe um WhatsApp valido para o pais selecionado.', 'error');
         return;
       }
 
@@ -1688,6 +1749,5 @@ html.dark .stat-meta {
 
     calcular();
   </script>
-  <script src="assets/js/i18n.js"></script>
 </body>
 </html>
