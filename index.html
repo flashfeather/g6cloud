@@ -877,6 +877,423 @@ html.dark .stat-meta {
     .sobre-text { display: flex; flex-direction: column; gap: 20px; }
     .sobre-text p { font-size: 1rem; color: var(--muted); line-height: 1.8; font-weight: 300; }
 
+  /* ══════════════════════════════════════════
+       QUEM SOMOS / CLIENTES
+    ══════════════════════════════════════════ */
+
+.clients-section {
+  padding: 96px 0;
+  position: relative;
+}
+
+.section-heading {
+  max-width: 760px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.section-heading h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0 auto;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(26, 115, 232, 0.10);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ===== Estrutura antiga do carrossel preservada para uso futuro =====
+.clients-carousel {
+  display: grid;
+  grid-template-columns: 56px 1fr 56px;
+  gap: 18px;
+  align-items: center;
+}
+
+.clients-viewport {
+  overflow: hidden;
+}
+
+.clients-track {
+  display: flex;
+  gap: 18px;
+  transition: transform .45s ease;
+  will-change: transform;
+}
+
+.client-card {
+  flex: 0 0 calc((100% - 72px) / 5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  cursor: pointer;
+}
+
+.client-card img {
+  max-height: 42px;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.9;
+  filter: grayscale(100%);
+  transition: filter .25s ease, opacity .25s ease, transform .25s ease;
+}
+
+.client-card.logo-lg img {
+  max-height: 56px;
+}
+
+.client-card.logo-xl img {
+  max-height: 68px;
+}
+
+.client-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+.client-card:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.clients-nav {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .25s ease;
+}
+
+.clients-nav:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .client-card {
+    flex: 0 0 calc((100% - 36px) / 3);
+  }
+}
+
+@media (max-width: 640px) {
+  .clients-carousel {
+    grid-template-columns: 44px 1fr 44px;
+    gap: 10px;
+  }
+
+  .clients-nav {
+    width: 44px;
+    height: 44px;
+  }
+
+  .client-card {
+    flex: 0 0 calc((100% - 18px) / 2);
+    min-height: 90px;
+    padding: 18px;
+  }
+
+  .client-card img {
+    max-height: 34px;
+  }
+}
+===== Fim da estrutura antiga do carrossel */
+
+.client-single-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.client-single {
+  width: 100%;
+  max-width: 340px;
+  min-height: 120px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  cursor: pointer;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.client-single:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+.client-single img {
+  max-width: 100%;
+  max-height: 56px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  opacity: 0.9;
+  filter: grayscale(100%);
+  transition: filter .25s ease, opacity .25s ease, transform .25s ease;
+}
+
+.client-single:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+/* ===== Material pronto para futuros clientes / cases ===== */
+.clients-notes {
+  max-width: 860px;
+  margin: 28px auto 0;
+  padding: 18px 20px;
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  background: var(--surface2);
+}
+
+.clients-notes h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.clients-notes p,
+.clients-notes li {
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+.clients-notes ul {
+  margin: 10px 0 0 18px;
+}
+
+/* ===== Pop-up de clientes ===== */
+.client-modal {
+  max-width: 860px;
+}
+
+.client-modal .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.client-modal .modal-header h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+}
+
+.client-modal .btn-close {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .2s ease;
+  position: relative;
+  top: 0;
+  right: 0;
+}
+
+.client-modal .btn-close:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: scale(1.04);
+}
+
+.client-modal .btn-close span {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.client-modal-content {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.client-modal-photo {
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.client-modal-photo img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+  display: block;
+}
+
+.client-modal-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.client-modal-info .modal-desc {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.client-modal-extra {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+}
+
+.client-modal-extra strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.client-modal-extra span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .clients-section {
+    padding: 72px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 32px;
+  }
+
+  .client-single {
+    max-width: 100%;
+    min-height: 100px;
+    padding: 18px;
+  }
+
+  .client-single img {
+    max-height: 42px;
+  }
+
+  .client-modal .modal-header {
+    align-items: flex-start;
+  }
+
+  .client-modal .modal-header h2 {
+    font-size: 2rem;
+  }
+
+  .client-modal-content {
+    grid-template-columns: 1fr;
+  }
+
+  .client-modal-photo {
+    min-height: 220px;
+    padding: 18px;
+  }
+
+  .client-modal-photo img {
+    max-height: 180px;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .35s ease, visibility .35s ease;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 760px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(24px) scale(.96);
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.modal-overlay.open .modal {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
     /* ══════════════════════════════════════════
        CTA FINAL
     ══════════════════════════════════════════ */
@@ -900,75 +1317,6 @@ html.dark .stat-meta {
     .cta-box h2 { margin-bottom: 12px; }
     .cta-box p { color: var(--muted); font-size: 1rem; max-width: 460px; }
     .cta-actions { display: flex; gap: 14px; flex-shrink: 0; flex-wrap: wrap; }
-
-    /* ══════════════════════════════════════════
-       MODAL DE CONTATO
-    ══════════════════════════════════════════ */
-    .modal-overlay {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(4px);
-      display: none; align-items: center; justify-content: center;
-      z-index: 200; padding: 20px;
-    }
-    .modal-overlay.open { display: flex; }
-
-    .modal {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      width: 100%; max-width: 640px;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 40px;
-      position: relative;
-    }
-
-    .modal-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    .modal-header h2 { font-size: 1.5rem; }
-
-    .btn-close {
-      width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 8px; cursor: pointer; color: var(--muted);
-      transition: all 0.2s; flex-shrink: 0;
-    }
-    .btn-close:hover { border-color: var(--red); color: var(--red); }
-
-    .modal-desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
-
-    .modal-form { display: flex; flex-direction: column; gap: 16px; }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
-    .btn-submit {
-      width: 100%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff; border: none;
-      padding: 14px; border-radius: 10px;
-      font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500;
-      cursor: pointer; transition: all 0.3s;
-      box-shadow: 0 4px 24px var(--accent-glow);
-      margin-top: 4px;
-    }
-    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--accent-glow); }
-    .btn-submit:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
-
-    .status-msg {
-      text-align: center; font-size: 0.85rem; font-weight: 500;
-      padding: 12px; border-radius: 8px; display: none;
-    }
-    .status-msg.show { display: block; }
-    .status-msg.success { background: rgba(16,185,129,0.1); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
-    .status-msg.error { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
-    .status-msg.loading { background: rgba(59,130,246,0.1); color: var(--accent); border: 1px solid rgba(59,130,246,0.3); }
-
-    .privacy-note { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 8px; }
-
     /* ══════════════════════════════════════════
        RODAPÉ
     ══════════════════════════════════════════ */
@@ -1406,7 +1754,86 @@ html.dark .stat-meta {
       </div>
     </section>
 
-    <div class="divider"></div>
+    
+
+    <!-- ══════════════ QUEM SOMOS / CLIENTES ══════════════ -->
+<section id="clientes" class="clients-section">
+  <div class="container">
+    <div class="section-heading">
+      
+      <h2>Prestamos serviços para estas empresas</h2>
+      <p>
+        Empresas de diferentes segmentos confiam na G6 Cloud para projetos de
+        infraestrutura, cloud, monitoramento, automação e suporte especializado.
+      </p>
+    </div>
+
+    <!--
+<div class="clients-carousel">
+      <button class="clients-nav prev" type="button" onclick="moveClients(-1)" aria-label="Clientes anteriores">
+        <span class="material-symbols-outlined">chevron_left</span>
+      </button>
+
+      <div class="clients-viewport">
+        <div class="clients-track" id="clients-track">
+          <button class="client-card" type="button" onclick="openClientModal('cliente1')">
+            <img src="assets/img/clientes/cliente-1.png" alt="Logo Cliente 1">
+          </button>
+
+          <button class="client-card" type="button" onclick="openClientModal('cliente2')">
+            <img src="assets/img/clientes/cliente-2.png" alt="Logo Cliente 2">
+          </button>
+
+          <button class="client-card" type="button" onclick="openClientModal('cliente3')">
+            <img src="assets/img/clientes/cliente-3.png" alt="Logo Cliente 3">
+          </button>
+
+          <button class="client-card logo-lg" type="button" onclick="openClientModal('cliente4')">
+            <img src="assets/img/clientes/cliente-4.png" alt="Logo Cliente 4">
+          </button>
+
+          <button class="client-card logo-lg" type="button" onclick="openClientModal('cliente5')">
+            <img src="assets/img/clientes/cliente-5.png" alt="Logo Cliente 5">
+          </button>
+
+          <button class="client-card logo-xl" type="button" onclick="openClientModal('cliente6')">
+            <img src="assets/img/clientes/cliente-6.png" alt="Logo Cliente 6">
+          </button>
+
+          <button class="client-card" type="button" onclick="openClientModal('cliente7')">
+            <img src="assets/img/clientes/cliente-7.png" alt="Logo Cliente 7">
+          </button>
+
+          <button class="client-card" type="button" onclick="openClientModal('cliente8')">
+            <img src="assets/img/clientes/cliente-8.png" alt="Logo Cliente 8">
+          </button>
+
+          <button class="client-card" type="button" onclick="openClientModal('cliente9')">
+            <img src="assets/img/clientes/cliente-9.png" alt="Logo Cliente 9">
+          </button>
+
+          <button class="client-card" type="button" onclick="openClientModal('cliente10')">
+            <img src="assets/img/clientes/cliente-10.png" alt="Logo Cliente 10">
+          </button>
+        </div>
+      </div>
+
+      <button class="clients-nav next" type="button" onclick="moveClients(1)" aria-label="Próximos clientes">
+        <span class="material-symbols-outlined">chevron_right</span>
+      </button>
+
+-->
+
+    <div class="client-single-wrap">
+      <button class="client-single" type="button" onclick="openClientModal('cliente6')">
+        <img src="assets/img/clientes/LGCNS.png" alt="LG CNS">
+      </button>
+    </div>
+    </div>
+  </div>
+</section>
+
+  <div class="divider"></div>
 
     <!-- ══════════════ CTA FINAL ══════════════ -->
     <section class="section">
@@ -1748,6 +2175,206 @@ html.dark .stat-meta {
     }
 
     calcular();
+
+/* ── POP UP ── */
+
+  const clientContent = {
+   
+    cliente6: {
+      title: "LG CNS",
+      image: "assets/img/clientes/LGCNS.png",
+      desc: "Apoiamos o cliente com soluções personalizadas em tecnologia, sustentação do ambiente e implementação de melhorias contínuas."
+    },
+
+  };
+
+  function openClientModal(clientKey) {
+    const modal = document.getElementById('client-modal');
+    const title = document.getElementById('client-modal-title');
+    const desc = document.getElementById('client-modal-desc');
+    const image = document.getElementById('client-modal-image');
+    const client = clientContent[clientKey];
+
+    if (!client) return;
+
+    title.textContent = client.title;
+    desc.textContent = client.desc;
+    image.src = client.image;
+    image.alt = client.title;
+
+    requestAnimationFrame(() => {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  function closeClientModal() {
+    const modal = document.getElementById('client-modal');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function handleClientModalClick(e) {
+    if (e.target === document.getElementById('client-modal')) {
+      closeClientModal();
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeClientModal();
+    }
+  });
+
+  /* ── ROLETAS CLIENTES ── */
+
+  const track = document.getElementById('clients-track');
+  const originalCards = Array.from(track.querySelectorAll('.client-card'));
+
+  let clientIndex = 0;
+  let isDragging = false;
+  let startX = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+
+  function getClientsPerView() {
+    if (window.innerWidth <= 640) return 2;
+    if (window.innerWidth <= 1024) return 3;
+    return 5;
+  }
+
+  function cloneClientsForLoop() {
+    track.innerHTML = '';
+    const before = originalCards.map(card => card.cloneNode(true));
+    const middle = originalCards.map(card => card.cloneNode(true));
+    const after = originalCards.map(card => card.cloneNode(true));
+
+    [...before, ...middle, ...after].forEach(card => track.appendChild(card));
+    clientIndex = originalCards.length;
+    updateClientsPosition(false);
+  }
+
+  function getStepSize() {
+    const firstCard = track.querySelector('.client-card');
+    const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+    return firstCard.offsetWidth + gap;
+  }
+
+  function updateClientsPosition(animated = true) {
+    const step = getStepSize();
+    track.style.transition = animated ? 'transform .45s ease' : 'none';
+    currentTranslate = -(clientIndex * step);
+    prevTranslate = currentTranslate;
+    track.style.transform = `translateX(${currentTranslate}px)`;
+  }
+
+  function normalizeInfiniteLoop() {
+    const total = originalCards.length;
+
+    if (clientIndex >= total * 2) {
+      clientIndex -= total;
+      updateClientsPosition(false);
+    }
+
+    if (clientIndex < total) {
+      clientIndex += total;
+      updateClientsPosition(false);
+    }
+  }
+
+  function moveClients(direction) {
+    const perView = getClientsPerView();
+    clientIndex += direction * perView;
+    updateClientsPosition(true);
+
+    track.addEventListener('transitionend', function handler() {
+      normalizeInfiniteLoop();
+      track.removeEventListener('transitionend', handler);
+    });
+  }
+
+  function getPositionX(event) {
+    return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+  }
+
+  function dragStart(event) {
+    isDragging = true;
+    startX = getPositionX(event);
+    track.classList.add('dragging');
+  }
+
+  function dragMove(event) {
+    if (!isDragging) return;
+    const currentX = getPositionX(event);
+    const delta = currentX - startX;
+    track.style.transform = `translateX(${prevTranslate + delta}px)`;
+  }
+
+  function dragEnd(event) {
+    if (!isDragging) return;
+    isDragging = false;
+    track.classList.remove('dragging');
+
+    const endX = event.type.includes('mouse') ? event.pageX : event.changedTouches[0].clientX;
+    const movedBy = endX - startX;
+    const threshold = 60;
+
+    if (movedBy < -threshold) {
+      moveClients(1);
+      return;
+    }
+
+    if (movedBy > threshold) {
+      moveClients(-1);
+      return;
+    }
+
+    updateClientsPosition(true);
+  }
+
+  cloneClientsForLoop();
+
+  track.addEventListener('mousedown', dragStart);
+  track.addEventListener('mousemove', dragMove);
+  track.addEventListener('mouseup', dragEnd);
+  track.addEventListener('mouseleave', dragEnd);
+
+  track.addEventListener('touchstart', dragStart, { passive: true });
+  track.addEventListener('touchmove', dragMove, { passive: true });
+  track.addEventListener('touchend', dragEnd);
+
+  window.addEventListener('resize', () => {
+    cloneClientsForLoop();
+  });
+
+
   </script>
+
+  <!-- MODAL CLIENTES -->
+<div class="modal-overlay" id="client-modal" onclick="handleClientModalClick(event)">
+  <div class="modal client-modal">
+    <div class="modal-header">
+      <h2 id="client-modal-title">Cliente</h2>
+      <button class="btn-close" type="button" onclick="closeClientModal()">
+        <span class="material-symbols-outlined" style="font-size:18px">close</span>
+      </button>
+    </div>
+
+    <div class="client-modal-content">
+      <div class="client-modal-photo">
+        <img id="client-modal-image" src="" alt="Foto do cliente">
+      </div>
+
+      <div class="client-modal-info">
+        <p class="modal-desc" id="client-modal-desc">
+          Texto descritivo do projeto realizado para este cliente.
+        </p>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
