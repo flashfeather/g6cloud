@@ -156,7 +156,7 @@
     'Preencha todos os campos obrigatórios.': 'Please fill in all required fields.',
     'Informe um e-mail válido.': 'Please enter a valid email.',
     'Enviando sua solicitação…': 'Sending your request…',
-    'Ocorreu um erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp: (11) 97659-6203.': 'An error occurred. Please try again or contact us via WhatsApp: +55 11 97659-6203.',
+    'Ocorreu um erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp: +55 11 96293-5308.': 'An error occurred. Please try again or contact us via WhatsApp: +55 11 96293-5308.',
 
     /* ── FINOPS PAGE ── */
     'FinOps · Redução de Custos': 'FinOps · Cost Reduction',
@@ -444,7 +444,7 @@
     'Representante Legal:': 'Legal Representative:',
     'Diretoria Executiva G6 Cloud.': 'G6 Cloud Executive Board.',
     'Canais de Contato:': 'Contact Channels:',
-    'Telefone/WhatsApp: (11) 97659-6203': 'Phone/WhatsApp: +55 11 97659-6203',
+    'Telefone/WhatsApp: +55 11 96293-5308': 'Phone/WhatsApp: +55 11 96293-5308',
     'Site Oficial: https://g6cloud.com.br': 'Official Website: https://g6cloud.com.br',
     '2. Descrição dos Serviços': '2. Description of Services',
     'A G6 Cloud é uma empresa de consultoria especializada em soluções de nuvem. Nossos serviços incluem, mas não se limitam a:': 'G6 Cloud is a consulting company specializing in cloud solutions. Our services include, but are not limited to:',

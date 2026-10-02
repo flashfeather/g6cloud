@@ -62,7 +62,7 @@ src="https://www.facebook.com/tr?id=945662804995232&ev=PageView&noscript=1"
     "description": "Especialistas em migração, infraestrutura, DevOps, FinOps e serviços gerenciados em nuvem para pequenas e médias empresas.",
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+55-11-97659-6203",
+      "telephone": "+55 11 96293-5308",
       "contactType": "customer service",
       "email": "g6cloud@g6cloud.com.br"
     },
@@ -1501,14 +1501,14 @@ html.dark .stat-meta {
               Multi-cloud · AWS · Azure · GCP
             </div>
             <h1 class="fade-in fade-in-1">
-              Transforme seu<br>negócio com a<br><em>nuvem</em>
+              Receba um diagnóstico<br>gratuito da sua<br><em>nuvem</em>
             </h1>
             <p class="hero-sub fade-in fade-in-2">
-              Especialistas em migração, infraestrutura, DevOps e FinOps para pequenas e médias empresas. PMEs economizam em média <strong style="color:var(--orange)">37% nos custos</strong> com nossa otimização.
+              Identificamos desperdícios, riscos e oportunidades em AWS, Azure ou GCP. Em poucos minutos voce descobre onde pode reduzir custos e ganhar estabilidade.
             </p>
             <div class="hero-actions fade-in fade-in-3">
               <a href="#calculadora" class="btn-primary">
-                Calcular minha economia
+                Calcular diagnóstico gratuito
                 <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
               </a>
               <a href="#servicos" class="btn-ghost">Ver serviços</a>
@@ -1704,7 +1704,7 @@ html.dark .stat-meta {
               </div>
 
               <button class="btn-primary" style="width:100%;justify-content:center;margin-top:4px" onclick="openModal()">
-                Quero economizar — falar com especialista
+                Receber diagnóstico gratuito
                 <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
               </button>
 
@@ -1840,15 +1840,15 @@ html.dark .stat-meta {
       <div class="container">
         <div class="cta-box">
           <div>
-            <h2>Pronto para ter estabilidade total?</h2>
-            <p>Deixe a complexidade da nuvem com a gente e foque no que realmente importa: o seu negócio.</p>
+            <h2>Quer saber onde sua nuvem esta desperdiçando dinheiro?</h2>
+            <p>Solicite um diagnóstico gratuito com estimativa de economia, riscos prioritários e próximos passos para sua operação cloud.</p>
           </div>
           <div class="cta-actions">
             <button onclick="openModal()" class="btn-primary">
-              Entre em contato
+              Quero meu diagnóstico
               <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
             </button>
-            <a href="https://wa.me/5511976596203?text=Ol%C3%A1%20G6%20Cloud!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" class="btn-ghost">
+            <a href="https://wa.me/5511962935308?text=Ol%C3%A1%20G6%20Cloud!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="btn-ghost">
               <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.446l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884z"/></svg>
               WhatsApp
             </a>
@@ -1863,14 +1863,26 @@ html.dark .stat-meta {
   <div class="modal-overlay" id="contact-modal" onclick="handleModalClick(event)">
     <div class="modal">
       <div class="modal-header">
-        <h2><span class="text-accent">Entre em contato</span></h2>
+        <h2><span class="text-accent">Diagnóstico gratuito de cloud</span></h2>
         <button class="btn-close" onclick="closeModal()">
           <span class="material-symbols-outlined" style="font-size:18px">close</span>
         </button>
       </div>
-      <p class="modal-desc">Vamos conversar sobre como podemos ajudar sua empresa a crescer com as melhores soluções em nuvem.</p>
+      <p class="modal-desc">Envie seus dados e receba uma avaliação inicial com estimativa de economia, riscos e oportunidades de melhoria.</p>
 
       <form class="modal-form" id="contact-modal-form" action="send_form.php" method="POST">
+        <div class="field" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+          <label for="modal-website">Website</label>
+          <input type="text" id="modal-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="hidden" id="calc-provider" name="calc_provider">
+        <input type="hidden" id="calc-monthly-spend" name="calc_monthly_spend">
+        <input type="hidden" id="calc-instances" name="calc_instances">
+        <input type="hidden" id="calc-maturity" name="calc_maturity">
+        <input type="hidden" id="calc-reservations" name="calc_reservations">
+        <input type="hidden" id="calc-monthly-waste" name="calc_monthly_waste">
+        <input type="hidden" id="calc-annual-savings" name="calc_annual_savings">
+        <input type="hidden" id="calc-payback" name="calc_payback">
 
         <div class="form-row">
           <div class="field">
@@ -1955,14 +1967,14 @@ html.dark .stat-meta {
 
         <div class="field">
           <label for="modal-message">Qual é a sua necessidade? *</label>
-          <textarea id="modal-message" name="message" rows="3" placeholder="Descreva brevemente o que precisa — migração, suporte, DevOps, FinOps..." required></textarea>
+          <textarea id="modal-message" name="message" rows="3" placeholder="Conte rapidamente seu cenário atual, principal dor ou objetivo com cloud." required></textarea>
         </div>
 
         <div class="status-msg" id="modal-status"></div>
 
         <button type="submit" class="btn-submit" id="modal-submit">
           <span class="material-symbols-outlined" style="font-size:18px;vertical-align:middle;margin-right:6px">send</span>
-          Enviar mensagem
+          Solicitar diagnóstico
         </button>
         <p class="privacy-note">🔒 Seus dados são protegidos pela LGPD. Sem spam.</p>
       </form>
@@ -1982,7 +1994,7 @@ html.dark .stat-meta {
           <div class="footer-contact">
             <p>Fale Conosco:</p>
             <a href="mailto:g6cloud@g6cloud.com.br">g6cloud@g6cloud.com.br</a>
-            <p>(11) 97659-6203</p>
+            <p>+55 11 96293-5308</p>
           </div>
         </div>
 
@@ -2003,13 +2015,13 @@ html.dark .stat-meta {
         <div class="footer-col">
           <h4>Siga-nos</h4>
           <div class="social-links">
-            <a href="https://wa.me/5511976596203" target="_blank" class="social-btn" aria-label="WhatsApp">
+            <a href="https://wa.me/5511962935308" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
               <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.446l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884z"/></svg>
             </a>
-            <a href="https://www.linkedin.com/company/g6-cloud" target="_blank" class="social-btn" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/g6-cloud" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24"><path d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.07 20.45H3.56V9h3.51v11.45zM5.31 7.43a2.04 2.04 0 1 1 0-4.08 2.04 2.04 0 0 1 0 4.08zm15.14 13.02h-3.51v-5.57c0-1.33-.03-3.04-1.86-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.43V9h3.37v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.25 2.37 4.25 5.46v6.28z"/></svg>
             </a>
-            <a href="https://www.instagram.com/g6cloud/" target="_blank" class="social-btn" aria-label="Instagram">
+            <a href="https://www.instagram.com/g6cloud/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
               <svg viewBox="0 0 16 16"><path d="M8 0C5.83 0 5.56.01 4.7.05 3.85.09 3.27.22 2.76.42a3.9 3.9 0 0 0-1.42.92A3.9 3.9 0 0 0 .42 2.76C.22 3.27.09 3.85.05 4.7.01 5.56 0 5.83 0 8c0 2.17.01 2.44.05 3.3.04.85.17 1.43.37 1.94.21.52.48.97.93 1.42.44.45.89.72 1.42.93.51.2 1.09.33 1.94.37.86.04 1.14.05 3.3.05s2.44-.01 3.3-.05c.85-.04 1.43-.17 1.94-.37a3.9 3.9 0 0 0 1.42-.93c.45-.45.72-.9.93-1.42.2-.51.33-1.09.37-1.94.04-.86.05-1.14.05-3.3s-.01-2.44-.05-3.3c-.04-.85-.17-1.43-.37-1.94a3.9 3.9 0 0 0-.93-1.42A3.9 3.9 0 0 0 13.24.42C12.73.22 12.15.09 11.3.05 10.44.01 10.17 0 8 0Zm-.72 1.44h.72c2.13 0 2.39.01 3.23.05.78.03 1.2.16 1.49.27.37.14.64.32.92.6.28.28.46.55.6.92.11.29.24.71.27 1.49.04.84.05 1.1.05 3.23s-.01 2.39-.05 3.23c-.03.78-.16 1.2-.27 1.49a2.5 2.5 0 0 1-.6.92c-.28.28-.55.46-.92.6-.29.11-.71.24-1.49.28-.84.03-1.1.04-3.23.04s-2.39-.01-3.23-.04c-.78-.04-1.2-.17-1.49-.28a2.5 2.5 0 0 1-.92-.6 2.5 2.5 0 0 1-.6-.92c-.11-.29-.24-.71-.28-1.49C1.45 10.39 1.44 10.13 1.44 8c0-2.13.01-2.39.04-3.23.04-.78.17-1.2.28-1.49.14-.37.32-.64.6-.92s.55-.46.92-.6c.29-.11.71-.24 1.49-.28.84-.03 1.1-.04 3.23-.04ZM8 3.89a4.11 4.11 0 1 0 0 8.22 4.11 4.11 0 0 0 0-8.22Zm0 1.44a2.67 2.67 0 1 1 0 5.34 2.67 2.67 0 0 1 0-5.34Zm4.28-1.56a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92Z"/></svg>
             </a>
           </div>
@@ -2039,6 +2051,7 @@ html.dark .stat-meta {
 
     /* ── MODAL ── */
     function openModal() {
+      populateCalculatorLeadData();
       document.getElementById('contact-modal').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -2097,6 +2110,7 @@ html.dark .stat-meta {
 
     modalForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      populateCalculatorLeadData();
       const formData = new FormData(modalForm);
       const name = (formData.get('name') || '').trim();
       const company = (formData.get('company') || '').trim();
@@ -2146,6 +2160,39 @@ html.dark .stat-meta {
       return 'R$ ' + Math.round(v).toLocaleString('pt-BR');
     }
 
+    function getSelectedText(id) {
+      const el = document.getElementById(id);
+      return el && el.selectedOptions.length ? el.selectedOptions[0].textContent.trim() : '';
+    }
+
+    function populateCalculatorLeadData() {
+      const provider = getSelectedText('provider');
+      const maturity = getSelectedText('maturidade');
+      const reservations = getSelectedText('reservas');
+      const modalProvider = document.getElementById('modal-provedor');
+
+      if (modalProvider && provider) {
+        const providerMap = { aws: 'AWS', azure: 'Azure', gcp: 'GCP', multi: 'Multi-cloud' };
+        modalProvider.value = providerMap[document.getElementById('provider').value] || modalProvider.value;
+      }
+
+      const fields = {
+        'calc-provider': provider,
+        'calc-monthly-spend': document.getElementById('r-atual').textContent,
+        'calc-instances': document.getElementById('instVal').textContent,
+        'calc-maturity': maturity,
+        'calc-reservations': reservations,
+        'calc-monthly-waste': document.getElementById('r-desperdicio').textContent,
+        'calc-annual-savings': document.getElementById('r-anual').textContent,
+        'calc-payback': document.getElementById('r-payback').textContent
+      };
+
+      Object.entries(fields).forEach(([id, value]) => {
+        const input = document.getElementById(id);
+        if (input) input.value = value || '';
+      });
+    }
+
     function calcular() {
       const gasto = parseInt(document.getElementById('gasto').value);
       const instancias = parseInt(document.getElementById('instancias').value);
@@ -2172,6 +2219,7 @@ html.dark .stat-meta {
       document.getElementById('r-note').textContent = `≈ ${Math.round(taxa * 100)}% do gasto atual`;
       document.getElementById('r-anual').textContent = fmt(anual);
       document.getElementById('r-payback').textContent = payback <= 1 ? '< 1 mês' : payback + ' meses';
+      populateCalculatorLeadData();
     }
 
     calcular();

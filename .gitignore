@@ -1,0 +1,12 @@
+# Local secrets / environment
+.env
+.env.*
+!.env.example
+
+# Dependencies and local tooling
+node_modules/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
