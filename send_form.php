@@ -255,7 +255,10 @@ $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 $curlError = curl_error($ch);
 curl_close($ch);
 
-if ($response !== false && in_array($httpCode, [200, 201], true)) {
+$responseData = $response === false ? null : json_decode($response, true);
+$panelConfirmed = is_array($responseData) && ($responseData['success'] ?? false) === true;
+
+if ($response !== false && in_array($httpCode, [200, 201], true) && $panelConfirmed) {
     echo json_encode([
         'success' => true,
         'message' => 'Mensagem enviada com sucesso, em breve entraremos em contato.'
